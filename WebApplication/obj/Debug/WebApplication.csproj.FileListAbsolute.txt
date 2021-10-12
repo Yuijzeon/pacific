@@ -389,4 +389,7 @@ C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.csproj.Assem
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.dll
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.pdb
+<<<<<<< HEAD
+>>>>>>> parent of 66997f4 (Merge branch 'main' of https://github.com/Yuijzeon/pacific)
+=======
 >>>>>>> parent of 66997f4 (Merge branch 'main' of https://github.com/Yuijzeon/pacific)
