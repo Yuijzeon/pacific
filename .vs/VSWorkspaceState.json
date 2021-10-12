@@ -5,8 +5,9 @@
     "\\WebApplication\\Controllers",
     "\\WebApplication\\Views",
     "\\WebApplication\\Views\\Home",
+    "\\WebApplication\\Views\\Post",
     "\\WebApplication\\Views\\Shared"
   ],
-  "SelectedNode": "\\WebApplication\\Views\\Home\\Index.cshtml",
+  "SelectedNode": "\\WebApplication.sln",
   "PreviewInSolutionExplorer": false
 }
