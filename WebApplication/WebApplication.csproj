@@ -99,6 +99,7 @@
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
+    <Content Include="css\post.css" />
     <Content Include="css\style.css" />
     <Content Include="fonts\flaticon\backup.txt" />
     <Content Include="fonts\flaticon\font\flaticon.css" />
@@ -201,7 +202,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Post\article.cshtml" />
-    <Content Include="Views\Search\search.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
