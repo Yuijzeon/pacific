@@ -41,6 +41,12 @@
                     <li class="nav-item"><a href="hotel.html" class="nav-link">地區</a></li>
                     <li class="nav-item"><a href="blog.html" class="nav-link">興趣</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">關於我們</a></li>
+                    <li class="nav-item">@if (ViewBag.User != null) {
+                        @ViewBag.User;
+                    } else {
+                        @Html.Raw("<a href=\"SignUp\" class=\"nav-link\">登入</a>");
+                    }
+                        </li>
                 </ul>
             </div>
         </div>

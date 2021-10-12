@@ -385,6 +385,5 @@ C:\Users\YUIJUHN\Repository\WebApplication\bin\zh-Hant\System.Web.Helpers.resour
 C:\Users\YUIJUHN\Repository\WebApplication\bin\zh-Hant\System.Web.Mvc.resources.dll
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.csproj.AssemblyReference.cache
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.csproj.CoreCompileInputs.cache
-C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.csproj.CopyComplete
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.dll
 C:\Users\YUIJUHN\Repository\WebApplication\obj\Debug\WebApplication.pdb
