@@ -9,7 +9,15 @@ namespace 第二組期末專題.Models
 {
     public class 資料庫任務
     {
-        public string 連線字串 = "Server=tcp:teamtwodb.database.windows.net,1433;Initial Catalog=teamdb2;Persist Security Info=False;User ID=teamtwo;Password=abcTwo22;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public string 連線字串 = "Server=tcp:teamtwodb.database.windows.net,1433;" +
+                                 "Initial Catalog=teamdb2;" +
+                                 "Persist Security Info=False;" +
+                                 "User ID=teamtwo;" +
+                                 "Password=abcTwo22;" +
+                                 "MultipleActiveResultSets=False;" +
+                                 "Encrypt=True;" +
+                                 "TrustServerCertificate=False;" +
+                                 "Connection Timeout=30;";
 
         public string 查詢字串 { get; set; }
 
