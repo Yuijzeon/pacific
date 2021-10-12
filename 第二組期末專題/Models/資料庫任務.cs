@@ -13,6 +13,11 @@ namespace 第二組期末專題.Models
 
         public string 查詢字串 { get; set; }
 
+        public 資料庫任務(string str)
+            {
+                查詢字串 = str;
+            }
+
 
         public DataTable Get資料表()
         {
