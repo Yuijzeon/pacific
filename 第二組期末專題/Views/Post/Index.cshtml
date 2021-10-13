@@ -1,4 +1,9 @@
-﻿<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
+﻿
+@{
+    ViewBag.Title = @ViewBag.文章.標題;
+}
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
@@ -14,7 +19,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 ftco-animate py-md-5 mt-md-5">
-                <div>@Html.Raw(ViewBag.文章.內容)</div>
+                <div id="文章內容"></div>
                 <div class="tag-widget post-tag-container mb-5 mt-5">
                     <div class="tagcloud">
                         <a href="#" class="tag-cloud-link">Life</a>
@@ -232,3 +237,14 @@
         </div>
     </div>
 </section>
+
+<script src="~/Content/js/QuillDeltaToHtmlConverter.bundle.js"></script>
+<script>
+    var delta = JSON.parse(String.raw`@Html.Raw(ViewBag.文章.內容)`);
+    var converter = new window.QuillDeltaToHtmlConverter(delta.ops);
+    document.getElementById('文章內容').innerHTML = converter.convert();
+    //Quill 編輯器的資料格式 Delta 以 JSON 格式運作
+    //先將(ViewBag.文章.內容)從 string 轉成 JSON 物件
+    //這裡渲染器用的是 QuillDeltaToHtmlConverter
+    //https://github.com/nozer/quill-delta-to-html
+</script>
