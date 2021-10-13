@@ -15,7 +15,7 @@ namespace 第二組期末專題.Controllers
         {
             if (id == null)
             {
-                ViewBag.文章 = new 貼文();
+                return Redirect("/Search");
             }
             else
             {
