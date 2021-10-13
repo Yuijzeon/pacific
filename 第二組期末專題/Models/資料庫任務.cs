@@ -15,7 +15,12 @@ namespace 第二組期末專題.Models
         //建構函式 結束
 
         //物件屬性 開始
-        public string 連線字串 = Teamdb2.連線字串;
+        private string _連線字串 = Teamdb2.連線字串;
+        public string 連線字串
+        {
+            get { return _連線字串; }
+            set { _連線字串 = value; }
+        }
 
         public string 查詢字串 { get; set; }
 
@@ -24,7 +29,7 @@ namespace 第二組期末專題.Models
         {
             return 指令;
         };
-        /*  也可以這樣寫:
+        /*  也可以用懶大語句寫:
             public 回呼指令 注入參數 = (指令) => 指令;  */
         //物件屬性 結束
 
@@ -46,6 +51,11 @@ namespace 第二組期末專題.Models
         public DataRow Get資料列()
         {
             return Get資料表().Rows[0];
+        }
+
+        public object Get資料格()
+        {
+            return Get資料表().Rows[0][0];
         }
 
         public void Set更新()
