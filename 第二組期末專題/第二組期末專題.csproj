@@ -303,6 +303,7 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\Post\article.cshtml" />
+    <Content Include="Views\SignUp\SelectInterest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

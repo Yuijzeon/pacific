@@ -13,5 +13,11 @@ namespace 第二組期末專題.Controllers
         {
             return View();
         }
+
+        public ActionResult SelectInterest()
+        {
+            return View();
+        }
+
     }
 }
