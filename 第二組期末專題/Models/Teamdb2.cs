@@ -38,9 +38,9 @@ namespace 第二組期末專題.Models
             return new 貼文()
             {
                 Id = (int)資料列["id"],
-                文章title = (string)資料列["文章title"],
-                文章內容 = (string)資料列["文章內容"],
-                User = Get用戶ById((int)資料列["發文userId"])
+                標題 = (string)資料列["文章title"],
+                內容 = (string)資料列["文章內容"],
+                作者 = Get用戶ById((int)資料列["發文userId"])
             };
         }
     }

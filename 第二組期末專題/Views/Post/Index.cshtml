@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">@ViewBag.文章.User.名字 <i class="fa fa-chevron-right"></i></a></span></p>
-                <h1 class="mb-0 bread">@ViewBag.文章.文章title</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">@ViewBag.文章.作者.名字 <i class="fa fa-chevron-right"></i></a></span></p>
+                <h1 class="mb-0 bread">@ViewBag.文章.標題</h1>
             </div>
         </div>
     </div>
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 ftco-animate py-md-5 mt-md-5">
-                <div>@Html.Raw(ViewBag.文章.文章內容)</div>
+                <div>@Html.Raw(ViewBag.文章.內容)</div>
                 <div class="tag-widget post-tag-container mb-5 mt-5">
                     <div class="tagcloud">
                         <a href="#" class="tag-cloud-link">Life</a>
