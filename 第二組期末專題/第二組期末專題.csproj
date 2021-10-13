@@ -193,6 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\用戶.cs" />
+    <Compile Include="Models\Teamdb2.cs" />
+    <Compile Include="Models\貼文.cs" />
     <Compile Include="Models\資料庫任務.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -304,6 +307,7 @@
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\Post\article.cshtml" />
     <Content Include="Views\SignUp\SelectInterest.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

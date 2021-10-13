@@ -5,23 +5,17 @@ namespace 第二組期末專題.Models
 {
     public class 資料庫任務
     {
+        //建構函式 開始
         public 資料庫任務() {}
 
         public 資料庫任務(string str)
         {
             查詢字串 = str;
         }
+        //建構函式 結束
 
-
-        public string 連線字串 = "Server=tcp:teamtwodb.database.windows.net,1433;" +
-                                 "Initial Catalog=teamdb2;" +
-                                 "Persist Security Info=False;" +
-                                 "User ID=teamtwo;" +
-                                 "Password=abcTwo22;" +
-                                 "MultipleActiveResultSets=False;" +
-                                 "Encrypt=True;" +
-                                 "TrustServerCertificate=False;" +
-                                 "Connection Timeout=30;";
+        //物件屬性 開始
+        public string 連線字串 = Teamdb2.連線字串;
 
         public string 查詢字串 { get; set; }
 
@@ -30,8 +24,11 @@ namespace 第二組期末專題.Models
         {
             return 指令;
         };
+        /*  也可以這樣寫:
+            public 回呼指令 注入參數 = (指令) => 指令;  */
+        //物件屬性 結束
 
-
+        //物件方法 開始
         public DataTable Get資料表()
         {
             DataTable 資料表 = new DataTable();
@@ -46,6 +43,10 @@ namespace 第二組期末專題.Models
             return 資料表;
         }
 
+        public DataRow Get資料列()
+        {
+            return Get資料表().Rows[0];
+        }
 
         public void Set更新()
         {
@@ -56,5 +57,6 @@ namespace 第二組期末專題.Models
                 指令.ExecuteNonQuery();
             }
         }
+        //物件方法 結束
     }
 }
