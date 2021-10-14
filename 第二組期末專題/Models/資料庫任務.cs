@@ -25,12 +25,16 @@ namespace 第二組期末專題.Models
         public string 查詢字串 { get; set; }
 
         public delegate SqlCommand 回呼指令(SqlCommand 指令);
-        public 回呼指令 注入參數 = delegate (SqlCommand 指令)
-        {
-            return 指令;
-        };
+        private 回呼指令 _注入參數 = delegate (SqlCommand 指令) { return 指令; };
         /*  也可以用懶大語句寫:
-            public 回呼指令 注入參數 = (指令) => 指令;  */
+            private 回呼指令 _注入參數 = (指令) => 指令;
+            也可以用懶大語句寫(多行):
+            private 回呼指令 _注入參數 = (指令) => { return 指令; };*/
+        public 回呼指令 注入參數
+        {
+            get { return _注入參數; }
+            set { _注入參數 = value; }
+        }
         //物件屬性 結束
 
         //物件方法 開始
