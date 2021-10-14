@@ -151,7 +151,9 @@
 
 
     <script>
-        if (@Html.Raw(ViewBag.isScroll)) {
+        //載入頁面後是否自動滾動 60vh
+        //應該用 CSS 處理較佳，這裡為方便先用 JS 控制
+        if ('@ViewBag.isScroll' != '' && '@ViewBag.isScroll' == 'true') {
             var scrollNum = window.innerHeight * 0.6;
 
             window.addEventListener('resize', updateScrollNum);
