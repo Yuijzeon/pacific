@@ -151,10 +151,21 @@
 
 
     <script>
-        if (@ViewBag.isScroll) {
+        if (@Html.Raw(ViewBag.isScroll)) {
             var scrollNum = window.innerHeight * 0.6;
-            window.scrollTo(0, scrollNum);
-        }
+
+            window.addEventListener('resize', updateScrollNum);
+            function updateScrollNum() {
+                scrollNum = window.innerHeight * 0.6;
+            }
+
+            window.addEventListener('scroll', revert60vh);
+            function revert60vh () {
+                if (scrollNum > window.scrollY)
+                    window.scrollTo(0, scrollNum);
+            }
+            revert60vh();
+        };
     </script>
 </body>
 
