@@ -149,6 +149,13 @@
     <script src="~/Content/js/google-map.js"></script>
     <script src="~/Content/js/main.js"></script>
 
+
+    <script>
+        if (@ViewBag.isScroll) {
+            var scrollNum = window.innerHeight * 0.6;
+            window.scrollTo(0, scrollNum);
+        }
+    </script>
 </body>
 
 </html>
