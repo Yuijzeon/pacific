@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -22,7 +23,9 @@ namespace 第二組期末專題.Models
         {
             string 查詢字串 = "USE [teamdb2] SELECT * FROM [User]" +
                 $" WHERE id={id}";
+
             DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
+
             return new 用戶()
             {
                 Id = (int)資料列["id"],
@@ -30,17 +33,59 @@ namespace 第二組期末專題.Models
             };
         }
 
+        public static Hashtag GetHashtagById(int id)
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [Hashtag]" +
+                $" WHERE id={id}";
+
+            DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
+
+            return new Hashtag()
+            {
+                Id = (int)資料列["id"],
+                名稱 = (string)資料列["hashtag名稱"],
+                類別 = (string)資料列["hashtag類別"]
+            };
+        }
+
+        public static List<Hashtag> GetHashtag集By文章Id(int 文章Id)
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [Journey_Hashtag]" +
+                $" WHERE PostId_FK={文章Id}";
+
+            List<Hashtag> hashtag集 = new List<Hashtag>();
+
+            new 資料庫任務(查詢字串) {
+                When擷取到一筆資料 = delegate (SqlDataReader 資料擷取器)
+                {
+                    hashtag集.Add(GetHashtagById((int)資料擷取器["Hashtag_FK"]));
+                }
+            }.擷取();
+
+            return hashtag集;
+        }
+
         public static 貼文 Get貼文ById(int id)
         {
             string 查詢字串 = "USE [teamdb2] SELECT * FROM [Post]" +
                 $" WHERE id={id}";
+
             DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
+
             return new 貼文()
             {
                 Id = (int)資料列["id"],
                 標題 = (string)資料列["文章title"],
+                作者 = Get用戶ById((int)資料列["發文userId"]),
                 內容 = (string)資料列["文章內容"],
-                作者 = Get用戶ById((int)資料列["發文userId"])
+                日期起始 = (DateTime)資料列["日期起始"],
+                日期結束 = (DateTime)資料列["日期結束"],
+                時段起始 = (string)資料列["時段起始"],
+                時段 = (string)資料列["時段"],
+                地點 = (string)資料列["地點"],
+                接待人數 = (int)資料列["接待人數"],
+                類型 = (string)資料列["類型"],
+                Hashtag集 = GetHashtag集By文章Id((int)資料列["id"])
             };
         }
     }
