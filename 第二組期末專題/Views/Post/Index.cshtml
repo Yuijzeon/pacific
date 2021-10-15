@@ -251,11 +251,18 @@
 
     @{
         List<string> Hashtags = new List<string>();
-        for (int i = 0; i < ViewBag.文章.Hashtag集.Count; i++)
+        for (int i = 0; i < ViewBag.文章.Hashtag清單.Count; i++)
         {
-            Hashtags.Add(ViewBag.文章.Hashtag集[i].名稱);
+            Hashtags.Add(ViewBag.文章.Hashtag清單[i].名稱);
         }
         ViewBag.TEST = String.Join(", ", Hashtags);
     }
     console.log('@ViewBag.TEST');
+
+    @if (ViewBag.文章.所屬旅程包 != null)
+    {
+        ViewBag.旅程包標題 = ViewBag.文章.所屬旅程包.標題;
+    }
+
+    console.log('@ViewBag.旅程包標題');
 </script>

@@ -74,8 +74,8 @@
                                 foreach (Hashtag t in Model)
                                 {
                                     @*<input type="checkbox" name="check" class="btn-check" id="@t.id" autocomplete="off" value="@t.id">
-                                        <label class="btn btn-outline-primary" for="@t.id">@t.hashtag名稱</label>*@
-                                    @Html.ActionLink(t.hashtag名稱, "AddUserHashtag", "SignUp", new { id = t.id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                        <label class="btn btn-outline-primary" for="@t.id">@t.名稱</label>*@
+                                    @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
                                 }
                             }
 

@@ -15,6 +15,6 @@ namespace 第二組期末專題.Models
         public DateTime 註冊日期 { get; set; }
         public string 大頭貼 { get; set; }
         public int 點數 { get; set; }
-        public List<Hashtag> Hashtag集 { get; set; }
+        public List<Hashtag> Hashtag清單 { get; set; }
     }
 }

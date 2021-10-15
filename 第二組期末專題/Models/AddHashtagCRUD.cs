@@ -15,12 +15,7 @@ namespace 第二組期末專題.Models
             sql += "N'" + a.UserId_FK + "',";
             sql += " N'" + a.Hashtag_FK + "')";
 
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=tcp:teamtwodb.database.windows.net,1433;Initial Catalog=teamdb2;Persist Security Info=False;User ID=teamtwo;Password=abcTwo22;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.ExecuteNonQuery();
+            new 資料庫任務(sql).Set更新();
         }
     }
 }

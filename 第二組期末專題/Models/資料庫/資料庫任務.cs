@@ -6,7 +6,8 @@ namespace 第二組期末專題.Models
     public class 資料庫任務
     {
         //建構函式 開始
-        public 資料庫任務() {}
+        public 資料庫任務() {
+        }
 
         public 資料庫任務(string str)
         {
@@ -38,31 +39,32 @@ namespace 第二組期末專題.Models
             set { _注入參數 = value; }
         }
 
-        public delegate void 回呼SqlDataReader(SqlDataReader 資料擷取器);
-        private 回呼SqlDataReader _When擷取到一筆資料 = (資料擷取器) => { };
-        public 回呼SqlDataReader When擷取到一筆資料
+        public delegate void 回呼SqlDataReader(SqlDataReader 資料讀取器);
+        private 回呼SqlDataReader _When讀取到一筆資料 = (資料讀取器) => { };
+        public 回呼SqlDataReader When讀取到一筆資料
         {
-            get { return _When擷取到一筆資料; }
-            set { _When擷取到一筆資料 = value; }
+            get { return _When讀取到一筆資料; }
+            set { _When讀取到一筆資料 = value; }
         }
         //物件屬性 結束
 
         //物件方法 開始
-        public void 擷取()
+        public void 讀取()
         {
             using (SqlConnection 連線 = new SqlConnection(連線字串))
             {
                 連線.Open();
                 SqlCommand 指令 = 注入參數(new SqlCommand(查詢字串, 連線));
 
-                SqlDataReader 資料擷取器 = 指令.ExecuteReader();
-                while (資料擷取器.Read())
+                SqlDataReader 資料讀取器 = 指令.ExecuteReader();
+                while (資料讀取器.Read())
                 {
-                    When擷取到一筆資料(資料擷取器);
+                    When讀取到一筆資料(資料讀取器);
                 }
             }
         }
 
+        /*
         public DataTable Get資料表()
         {
             DataTable 資料表 = new DataTable();
@@ -74,6 +76,9 @@ namespace 第二組期末專題.Models
                 SqlDataAdapter 資料中繼器 = new SqlDataAdapter(指令);
                 資料中繼器.Fill(資料表);
             }
+
+            if (資料表.Rows.Count == 0) return null;
+
             return 資料表;
         }
 
@@ -81,10 +86,18 @@ namespace 第二組期末專題.Models
         {
             return Get資料表().Rows[0];
         }
+        */
 
         public object Get資料格()
         {
-            return Get資料表().Rows[0][0];
+            object 資料格 = new object();
+            using (SqlConnection 連線 = new SqlConnection(連線字串))
+            {
+                連線.Open();
+                SqlCommand 指令 = 注入參數(new SqlCommand(查詢字串, 連線));
+                資料格 = 指令.ExecuteScalar();
+            }
+            return 資料格;
         }
 
         public void Set更新()

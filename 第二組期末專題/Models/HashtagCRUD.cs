@@ -12,36 +12,31 @@ namespace 第二組期末專題.Models
         public void Create(Hashtag p)
         {
             string sql = "INSERT INTO Hashtag (hashtag名稱, hashtag類別) VALUES (";
-            sql += "N'" + p.hashtag名稱 + "',";
-            sql += " N'" + p.hashtag類別 + "')";
-
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=tcp:teamtwodb.database.windows.net,1433;Initial Catalog=teamdb2;Persist Security Info=False;User ID=teamtwo;Password=abcTwo22;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            con.Open();
-
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.ExecuteNonQuery();
+            sql += "N'" + p.名稱 + "',";
+            sql += " N'" + p.類別 + "')";
+            
+            new 資料庫任務(sql).Set更新();
         }
 
         //資料庫讀取字串
         private List<Hashtag> queryBySql(string sql)
         {
             List<Hashtag> list = new List<Hashtag>();
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = @"Server=tcp:teamtwodb.database.windows.net,1433;Initial Catalog=teamdb2;Persist Security Info=False;User ID=teamtwo;Password=abcTwo22;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
+
+
+            new 資料庫任務(sql)
             {
-                list.Add(new Hashtag()
+                When讀取到一筆資料 = (reader) =>
                 {
-                    id = (int)reader["id"],
-                    hashtag名稱 = reader["hashtag名稱"].ToString(),
-                    hashtag類別 = reader["hashtag類別"].ToString()
-                });
-            }
-            con.Close();
+                    list.Add(new Hashtag()
+                    {
+                        Id = (int)reader["id"],
+                        名稱 = reader["hashtag名稱"].ToString(),
+                        類別 = reader["hashtag類別"].ToString()
+                    });
+                }
+            };
+
             return list;
         }
 

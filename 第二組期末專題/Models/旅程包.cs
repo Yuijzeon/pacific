@@ -5,10 +5,11 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class Hashtag
+    public class 旅程包
     {
         public int Id { get; set; }
-        public string 名稱 { get; set; }
-        public string 類別 { get; set; }
+        public string 標題 { get; set; }
+        public string 內容 { get; set; }
+        public 用戶 作者 { get; set; }
     }
 }

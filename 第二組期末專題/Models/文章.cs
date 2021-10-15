@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 貼文
+    public class 文章
     {
         public int Id { get; set; }
         public string 標題 { get; set; }
@@ -19,7 +19,8 @@ namespace 第二組期末專題.Models
         public string 地點 { get; set; }
         public int 接待人數 { get; set; }
         public string 類型 { get; set; }
-        public List<Hashtag> Hashtag集 { get; set; }
+        public 旅程包 所屬旅程包 { get; set; }
+        public List<Hashtag> Hashtag清單 { get; set; }
 
         public int Get收藏數()
         {

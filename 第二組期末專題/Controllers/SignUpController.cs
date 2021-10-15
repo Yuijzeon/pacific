@@ -41,8 +41,8 @@ namespace 第二組期末專題.Controllers
         public string Testinsert()
         {
             Hashtag x = new Hashtag();
-            x.hashtag名稱 = "書籍";
-            x.hashtag類別 = "愛好";
+            x.名稱 = "書籍";
+            x.類別 = "愛好";
 
             (new HashtagCRUD()).Create(x);
             return "新增標籤成功";

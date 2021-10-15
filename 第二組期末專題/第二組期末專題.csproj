@@ -199,10 +199,16 @@
     <Compile Include="Models\AddHashtagCRUD.cs" />
     <Compile Include="Models\Hashtag.cs" />
     <Compile Include="Models\HashtagCRUD.cs" />
+    <Compile Include="Models\資料庫\Teamdb2.cs" />
+    <Compile Include="Models\資料庫\讀取Hashtag清單任務.cs" />
+    <Compile Include="Models\資料庫\讀取用戶任務.cs" />
+    <Compile Include="Models\資料庫\讀取旅程包任務.cs" />
+    <Compile Include="Models\資料庫\讀取文章任務.cs" />
+    <Compile Include="Models\資料庫\讀取Hashtag任務.cs" />
+    <Compile Include="Models\旅程包.cs" />
     <Compile Include="Models\用戶.cs" />
-    <Compile Include="Models\Teamdb2.cs" />
-    <Compile Include="Models\貼文.cs" />
-    <Compile Include="Models\資料庫任務.cs" />
+    <Compile Include="Models\文章.cs" />
+    <Compile Include="Models\資料庫\資料庫任務.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
