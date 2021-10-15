@@ -23,7 +23,7 @@ namespace 第二組期末專題.Models
 
         public List<Hashtag> GetHashtag清單()
         {
-            return new SelectHashtagList("Post", Id).Get();
+            return new SelectHashtag清單("Post", Id).Get();
         }
 
         public int Get收藏數()

@@ -18,7 +18,7 @@ namespace 第二組期末專題.Models
 
         public List<Hashtag> GetHashtag清單()
         {
-            return new SelectHashtagList("User", Id).Get();
+            return new SelectHashtag清單("User", Id).Get();
         }
     }
 }
