@@ -156,6 +156,8 @@
     <Content Include="Content\images\place-3.jpg" />
     <Content Include="Content\images\place-4.jpg" />
     <Content Include="Content\images\place-5.jpg" />
+    <Content Include="Content\images\post_img_1.jpg" />
+    <Content Include="Content\images\post_img_1_s.jpg" />
     <Content Include="Content\images\services-1.jpg" />
     <Content Include="Content\images\services-2.jpg" />
     <Content Include="Content\images\services-3.jpg" />
