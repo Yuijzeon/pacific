@@ -23,7 +23,6 @@ namespace 第二組期末專題.Models
         {
             List<Hashtag> list = new List<Hashtag>();
 
-
             new 資料庫任務(sql)
             {
                 When讀取到一筆資料 = (reader) =>
@@ -35,7 +34,7 @@ namespace 第二組期末專題.Models
                         類別 = reader["hashtag類別"].ToString()
                     });
                 }
-            };
+            }.讀取();
 
             return list;
         }
