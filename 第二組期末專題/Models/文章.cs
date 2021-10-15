@@ -20,7 +20,11 @@ namespace 第二組期末專題.Models
         public int 接待人數 { get; set; }
         public string 類型 { get; set; }
         public 旅程包 所屬旅程包 { get; set; }
-        public List<Hashtag> Hashtag清單 { get; set; }
+
+        public List<Hashtag> GetHashtag清單()
+        {
+            return new SelectHashtagList("Post", Id).Get();
+        }
 
         public int Get收藏數()
         {

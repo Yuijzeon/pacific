@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
             sql += "N'" + p.名稱 + "',";
             sql += " N'" + p.類別 + "')";
             
-            new 資料庫任務(sql).Set更新();
+            new 資料庫任務(sql).更新資料庫();
         }
 
         //資料庫讀取字串
@@ -34,7 +34,7 @@ namespace 第二組期末專題.Models
                         類別 = reader["hashtag類別"].ToString()
                     });
                 }
-            }.讀取();
+            }.讀取資料庫();
 
             return list;
         }

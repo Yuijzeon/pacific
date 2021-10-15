@@ -6,8 +6,7 @@ namespace 第二組期末專題.Models
     public class 資料庫任務
     {
         //建構函式 開始
-        public 資料庫任務() {
-        }
+        public 資料庫任務() { }
 
         public 資料庫任務(string str)
         {
@@ -49,7 +48,7 @@ namespace 第二組期末專題.Models
         //物件屬性 結束
 
         //物件方法 開始
-        public void 讀取()
+        public void 讀取資料庫()
         {
             using (SqlConnection 連線 = new SqlConnection(連線字串))
             {
@@ -100,7 +99,7 @@ namespace 第二組期末專題.Models
             return 資料格;
         }
 
-        public void Set更新()
+        public void 更新資料庫()
         {
             using (SqlConnection 連線 = new SqlConnection(連線字串))
             {
