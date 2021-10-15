@@ -35,14 +35,9 @@
 
                 </div>
                 <div id="form-container" class="col col-md-9">
-                    <form>
-                        <div class="">
-                            <div class="col-xs-4">
-                                <img src="~/Content/images/post_img_1_s.jpg" sizes="5vw">
-                                <a class="change-link" href='#'> 上傳照片 / Upload picture </a>
-                            </div>
-
-                        </div>
+                    <form class="postform col">
+                        <section class="uploadImg"></section>
+                        <button class="change-link">上傳照片 / Upload picture</button>
                         <div class="form-group">
                             <label for="about" type="hidden"></label>
                             <div class="postIntro">▋ 旅程簡介</div>
@@ -69,14 +64,14 @@
                             </script>
                         </div>
                         <div class="row">
-                            <button class="btn btn-primary" type="submit">Save Profile</button>
+                            <button class="btn btn-primary" type="submit">分享旅程</button>
                         </div>
                     </form>
                 </div>
 
 
             </div>
-            <div class="row mt-5">
+            @*<div class="row mt-5">
                 <div class="col text-center">
                     <div class="block-27">
                         <ul>
@@ -90,7 +85,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </section>
 
@@ -131,10 +126,10 @@
         var form = document.querySelector('form');
         form.onsubmit = function () {
             // Populate hidden form on submit
-            var about = document.querySelector('input[name=about]');
-            about.value = JSON.stringify(quill.getContents());
+            //var about = document.querySelector('input[name=about]');
+            //about.value = JSON.stringify(quill.getContents());
 
-            console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+            //console.log("Submitted", $(form).serialize(), $(form).serializeArray());
 
             // No back end to actually submit to!
             alert('Open the console to see the submit data!')
