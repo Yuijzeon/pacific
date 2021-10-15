@@ -19,24 +19,10 @@ namespace 第二組期末專題.Models
                                        "TrustServerCertificate=False;" +
                                        "Connection Timeout=30;";
 
-        public static 用戶 Get用戶ById(int id)
-        {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [User]" +
-                $" WHERE id={id}";
-
-            DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
-
-            return new 用戶()
-            {
-                Id = (int)資料列["id"],
-                名字 = (string)資料列["名字"]
-            };
-        }
-
         public static Hashtag GetHashtagById(int id)
         {
             string 查詢字串 = "USE [teamdb2] SELECT * FROM [Hashtag]" +
-                $" WHERE id={id}";
+                " WHERE id=" + id;
 
             DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
 
@@ -48,14 +34,15 @@ namespace 第二組期末專題.Models
             };
         }
 
-        public static List<Hashtag> GetHashtag集By文章Id(int 文章Id)
+        public static List<Hashtag> GetHashtag集ById(string 資料表名稱, int id)
         {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [Journey_Hashtag]" +
-                $" WHERE PostId_FK={文章Id}";
-
             List<Hashtag> hashtag集 = new List<Hashtag>();
 
-            new 資料庫任務(查詢字串) {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM " + 資料表名稱 +
+                " WHERE PostId_FK=" + id;
+
+            new 資料庫任務(查詢字串)
+            {
                 When擷取到一筆資料 = delegate (SqlDataReader 資料擷取器)
                 {
                     hashtag集.Add(GetHashtagById((int)資料擷取器["Hashtag_FK"]));
@@ -65,10 +52,31 @@ namespace 第二組期末專題.Models
             return hashtag集;
         }
 
+        public static 用戶 Get用戶ById(int id)
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [User]" +
+                " WHERE id=" + id;
+
+            DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
+
+            return new 用戶()
+            {
+                Id = (int)資料列["id"],
+                帳號 = (string)資料列["帳號"],
+                密碼 = (string)資料列["密碼"],
+                名字 = (string)資料列["名字"],
+                手機 = (string)資料列["手機"],
+                註冊日期 = (DateTime)資料列["註冊日期"],
+                大頭貼 = (string)資料列["大頭貼"],
+                點數 = (int)資料列["點數"],
+                Hashtag集 = GetHashtag集ById("User_Hashtag", (int)資料列["id"])
+            };
+        }
+
         public static 貼文 Get貼文ById(int id)
         {
             string 查詢字串 = "USE [teamdb2] SELECT * FROM [Post]" +
-                $" WHERE id={id}";
+                " WHERE id=" + id;
 
             DataRow 資料列 = new 資料庫任務(查詢字串).Get資料列();
 
@@ -85,7 +93,7 @@ namespace 第二組期末專題.Models
                 地點 = (string)資料列["地點"],
                 接待人數 = (int)資料列["接待人數"],
                 類型 = (string)資料列["類型"],
-                Hashtag集 = GetHashtag集By文章Id((int)資料列["id"])
+                Hashtag集 = GetHashtag集ById("Journey_Hashtag", (int)資料列["id"])
             };
         }
     }

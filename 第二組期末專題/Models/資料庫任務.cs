@@ -24,23 +24,23 @@ namespace 第二組期末專題.Models
 
         public string 查詢字串 { get; set; }
 
-        public delegate SqlCommand 回呼指令(SqlCommand 指令);
-        private 回呼指令 _注入參數 = (指令) => 指令;
+        public delegate SqlCommand 回呼SqlCommand(SqlCommand 指令);
+        private 回呼SqlCommand _注入參數 = (指令) => 指令;
         /*  delegate語句寫法:
             private 回呼指令 _注入參數 = delegate (SqlCommand 指令) { return 指令; }
             懶大語句寫法:
             private 回呼指令 _注入參數 = (指令) => 指令;
             懶大語句寫法(多行):
             private 回呼指令 _注入參數 = (指令) => { return 指令; };  */
-        public 回呼指令 注入參數
+        public 回呼SqlCommand 注入參數
         {
             get { return _注入參數; }
             set { _注入參數 = value; }
         }
 
-        public delegate void 回呼資料擷取器(SqlDataReader 資料擷取器);
-        private 回呼資料擷取器 _When擷取到一筆資料 = (資料擷取器) => { };
-        public 回呼資料擷取器 When擷取到一筆資料
+        public delegate void 回呼SqlDataReader(SqlDataReader 資料擷取器);
+        private 回呼SqlDataReader _When擷取到一筆資料 = (資料擷取器) => { };
+        public 回呼SqlDataReader When擷取到一筆資料
         {
             get { return _When擷取到一筆資料; }
             set { _When擷取到一筆資料 = value; }
