@@ -7,8 +7,8 @@ namespace 第二組期末專題.Models
 {
     public class Hashtag
     {
-        public int Id { get; set; }
-        public string 名稱 { get; set; }
-        public string 類別 { get; set; }
+        public int id { get; set; }
+        public string hashtag名稱 { get; set; }
+        public string hashtag類別 { get; set; }
     }
 }

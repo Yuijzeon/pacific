@@ -1,4 +1,5 @@
-﻿
+﻿@using 第二組期末專題.Models
+@model List<Hashtag>
 @{
     Layout = null;
 }
@@ -56,7 +57,8 @@
 </head>
 
 <body style="background-image: url('../../Content/images/bg_5.jpg');">
-    <form>
+    @using (Html.BeginForm())
+    {
         <section class="ftco-intro ftco-section ftco-no-pt">
             <div class="container mt-5">
                 <div class="row justify-content-center">
@@ -67,59 +69,46 @@
                             <div class="overlay"></div>
 
                             <br><h2 style="color:black">請選擇興趣</h2>
-                            <input type="checkbox" class="btn-check" id="cb1" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb1">#電影</label>
+                            <!--展示出hashtag名稱-->
+                            @{
+                                foreach (Hashtag t in Model)
+                                {
+                                    @*<input type="checkbox" name="check" class="btn-check" id="@t.id" autocomplete="off" value="@t.id">
+                                        <label class="btn btn-outline-primary" for="@t.id">@t.hashtag名稱</label>*@
+                                    @Html.ActionLink(t.hashtag名稱, "AddUserHashtag", "SignUp", new { id = t.id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                }
+                            }
 
-                            <input type="checkbox" class="btn-check" id="cb2" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb2">#自然</label>
-
-                            <input type="checkbox" class="btn-check" id="cb3" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb3">#水上活動</label>
-
-                            <input type="checkbox" class="btn-check" id="cb4" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb4">#陸上活動</label><br>
-
-                            <input type="checkbox" class="btn-check" id="cb5" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb5">#水上活動</label>
-
-                            <input type="checkbox" class="btn-check" id="cb6" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb6">#水上活動</label>
-
-                            <input type="checkbox" class="btn-check" id="cb7" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb7">#水上活動</label>
-
-                            <input type="checkbox" class="btn-check" id="cb8" autocomplete="off">
-                            <label class="btn btn-outline-primary" for="cb8">#水上活動</label>
                             <hr />
 
                             <h2 style="color:black">請選擇地區</h2>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio1">
+                            <input type="radio" class="btn-check" name="check" id="radio1">
                             <label class="btn btn-outline-danger" for="radio1">台中</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio2">
+                            <input type="radio" class="btn-check" name="check" id="radio2">
                             <label class="btn btn-outline-danger" for="radio2">南投</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio3">
+                            <input type="radio" class="btn-check" name="check" id="radio3">
                             <label class="btn btn-outline-danger" for="radio3">嘉義</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio4">
+                            <input type="radio" class="btn-check" name="check" id="radio4">
                             <label class="btn btn-outline-danger" for="radio4">台南</label><br>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio5">
+                            <input type="radio" class="btn-check" name="check" id="radio5">
                             <label class="btn btn-outline-danger" for="radio5">高雄</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio6">
+                            <input type="radio" class="btn-check" name="check" id="radio6">
                             <label class="btn btn-outline-danger" for="radio6">屏東</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio7">
+                            <input type="radio" class="btn-check" name="check" id="radio7">
                             <label class="btn btn-outline-danger" for="radio7">台東</label>
 
-                            <input type="radio" class="btn-check" name="rdocheck" id="radio8">
+                            <input type="radio" class="btn-check" name="check" id="radio8">
                             <label class="btn btn-outline-danger" for="radio8">花蓮</label>
 
                             <p class="mb-0" style="width: 100%;">
-                                <br><a href="#" class="btn btn-primary px-4 py-1 mx-3">完成</a>
+                                <br>@Html.ActionLink("完成", "back", "SignUp", new { @class = "btn btn-outline-danger", style = "margin:5px" })
                             </p>
                             <br>
                         </div>
@@ -127,6 +116,6 @@
                 </div>
             </div>
         </section>
-    </form>
+    }
 </body>
 </html>
