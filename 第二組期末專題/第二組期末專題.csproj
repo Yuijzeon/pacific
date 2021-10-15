@@ -195,7 +195,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AddHashtag.cs" />
+    <Compile Include="Models\AddHashtagCRUD.cs" />
     <Compile Include="Models\Hashtag.cs" />
+    <Compile Include="Models\HashtagCRUD.cs" />
     <Compile Include="Models\用戶.cs" />
     <Compile Include="Models\Teamdb2.cs" />
     <Compile Include="Models\貼文.cs" />

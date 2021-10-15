@@ -28,9 +28,9 @@ namespace 第二組期末專題.Models
 
             return new Hashtag()
             {
-                Id = (int)資料列["id"],
-                名稱 = (string)資料列["hashtag名稱"],
-                類別 = (string)資料列["hashtag類別"]
+                id = (int)資料列["id"],
+                hashtag名稱 = (string)資料列["hashtag名稱"],
+                hashtag類別 = (string)資料列["hashtag類別"]
             };
         }
 
