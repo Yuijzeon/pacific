@@ -5,15 +5,15 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶Hashtag
+    public class 文章Hashtag
     {
-        public int 用戶_FK;
+        public int 文章_FK;
         public int Hashtag_FK;
 
 
-        public 用戶 Get作者()
+        public 文章 Get文章()
         {
-            return new SelectById<用戶>(用戶_FK).Get();
+            return new SelectById<文章>(文章_FK).Get();
         }
 
         public Hashtag GetHashtag()

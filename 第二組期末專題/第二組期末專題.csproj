@@ -195,8 +195,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\QnA.cs" />
+    <Compile Include="Models\圖片.cs" />
+    <Compile Include="Models\文章Hashtag.cs" />
+    <Compile Include="Models\用戶Favorite.cs" />
+    <Compile Include="Models\評級.cs" />
     <Compile Include="Models\用戶Hashtag.cs" />
-    <Compile Include="Models\AddHashtagCRUD.cs" />
+    <Compile Include="Models\用戶HashtagCRUD.cs" />
     <Compile Include="Models\Hashtag.cs" />
     <Compile Include="Models\HashtagCRUD.cs" />
     <Compile Include="Models\資料庫\InsertInto.cs" />

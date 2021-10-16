@@ -31,7 +31,7 @@ namespace 第二組期末專題.Controllers
                 用戶Hashtag x = new 用戶Hashtag();
                 x.用戶_FK = 1;
                 x.Hashtag_FK = (int)id;
-                (new AddHashtagCRUD()).Create(x);
+                (new 用戶HashtagCRUD()).Create(x);
             }
 
             return RedirectToAction("SelectInterest");

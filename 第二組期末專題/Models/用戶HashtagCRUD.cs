@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class AddHashtagCRUD
+    public class 用戶HashtagCRUD
     {
         //UserHashtag 新增
         public void Create(用戶Hashtag a)

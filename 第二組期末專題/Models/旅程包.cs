@@ -18,7 +18,7 @@ namespace 第二組期末專題.Models
             return new SelectById<用戶>(作者用戶_FK).Get();
         }
         
-        public List<文章> Get所屬文章()
+        public List<文章> Get文章清單()
         {
             string 查詢字串 = "SELECT * FROM [旅程包_link] WHERE 旅程包_FK=" + Id;
             return new SelectList<文章>(查詢字串).Get();
