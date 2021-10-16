@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
             sql += "N'" + p.名稱 + "',";
             sql += " N'" + p.類別 + "')";
             
-            new 資料庫任務(sql).更新資料庫();
+            new 資料庫任務(sql).Set();
         }
 
         //資料庫讀取字串

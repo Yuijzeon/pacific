@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
             sql += "N'" + a.用戶_FK + "',";
             sql += " N'" + a.Hashtag_FK + "')";
 
-            new 資料庫任務(sql).更新資料庫();
+            new 資料庫任務(sql).Set();
         }
     }
 }

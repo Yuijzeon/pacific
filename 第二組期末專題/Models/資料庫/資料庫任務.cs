@@ -99,7 +99,7 @@ namespace 第二組期末專題.Models
             return 資料格;
         }
 
-        public void 更新資料庫()
+        public void Set()
         {
             using (SqlConnection 連線 = new SqlConnection(連線字串))
             {

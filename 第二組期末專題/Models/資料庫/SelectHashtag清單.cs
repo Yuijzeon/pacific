@@ -14,13 +14,12 @@ namespace 第二組期末專題.Models
         {
             List<Hashtag> Hashtag清單 = new List<Hashtag>();
 
-            new 資料庫任務(查詢字串)
+            When讀取到一筆資料 = (資料讀取器) =>
             {
-                When讀取到一筆資料 = (資料讀取器) =>
-                {
-                    Hashtag清單.Add(new SelectHashtagById((int)資料讀取器["Hashtag_FK"]).Get());
-                }
-            }.讀取資料庫();
+                Hashtag清單.Add(new SelectHashtagById((int)資料讀取器["Hashtag_FK"]).Get());
+            };
+
+            讀取資料庫();
 
             return Hashtag清單;
         }

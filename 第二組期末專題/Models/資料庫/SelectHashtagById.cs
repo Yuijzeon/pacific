@@ -15,19 +15,19 @@ namespace 第二組期末專題.Models
             查詢字串 = "USE [teamdb2] SELECT * FROM [Hashtag] WHERE id=" + HashtagId;
         }
 
+
         public Hashtag Get()
         {
             Hashtag hashtag = new Hashtag();
 
-            new 資料庫任務(查詢字串)
+            When讀取到一筆資料 = (資料讀取器) =>
             {
-                When讀取到一筆資料 = (資料讀取器) =>
-                {
-                    hashtag.Id = HashtagId;
-                    hashtag.名稱 = (string)資料讀取器["名稱"];
-                    hashtag.類別 = (string)資料讀取器["類別"];
-                }
-            }.讀取資料庫();
+                hashtag.Id = HashtagId;
+                hashtag.名稱 = (string)資料讀取器["名稱"];
+                hashtag.類別 = (string)資料讀取器["類別"];
+            };
+
+            讀取資料庫();
 
             return hashtag;
         }
