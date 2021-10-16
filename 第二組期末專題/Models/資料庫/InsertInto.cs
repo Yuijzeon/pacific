@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Web;
 
-namespace 第二組期末專題.Models.資料庫
+namespace 第二組期末專題.Models
 {
     public class InsertInto<某類別> : 資料庫任務
     {
@@ -20,6 +20,8 @@ namespace 第二組期末專題.Models.資料庫
 
             foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
             {
+                if (屬性.Name == "Id") continue;
+
                 屬性名稱清單.Add(屬性.Name);
                 值清單.Add(屬性.GetValue(物件));
             }
