@@ -16,7 +16,7 @@ namespace 第二組期末專題.Controllers
             if (id == null)
                 return Redirect("/Search");
 
-            文章 此文章 = new Select文章ById((int)id).Get();
+            文章 此文章 = new SelectById<文章>((int)id).Get();
 
             if (此文章 == null)
                 return Redirect("/Search");
@@ -24,7 +24,7 @@ namespace 第二組期末專題.Controllers
                 ViewBag.文章 = 此文章;
 
             if (post != null)
-                ViewBag.旅程包 = new Select旅程包ById((int)post).Get();
+                ViewBag.旅程包 = new SelectById<旅程包>((int)post).Get();
 
             return View();
         }

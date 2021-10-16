@@ -22,7 +22,7 @@ namespace 第二組期末專題.Models
 
         public 用戶 Get作者()
         {
-            return new Select用戶ById(作者用戶_FK).Get();
+            return new SelectById<用戶>(作者用戶_FK).Get();
         }
 
         public List<Hashtag> GetHashtag清單()

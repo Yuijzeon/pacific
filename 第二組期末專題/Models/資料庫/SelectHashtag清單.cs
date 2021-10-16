@@ -16,7 +16,7 @@ namespace 第二組期末專題.Models
 
             When讀取到一筆資料 = (資料讀取器) =>
             {
-                Hashtag清單.Add(new SelectHashtagById((int)資料讀取器["Hashtag_FK"]).Get());
+                Hashtag清單.Add(new SelectById<Hashtag>((int)資料讀取器["Hashtag_FK"]).Get());
             };
 
             讀取資料庫();
