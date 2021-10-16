@@ -28,7 +28,7 @@ namespace 第二組期末專題.Controllers
         {
             if (id != null)
             {
-                AddHashtag x = new AddHashtag();
+                用戶Hashtag x = new 用戶Hashtag();
                 x.用戶_FK = 1;
                 x.Hashtag_FK = (int)id;
                 (new AddHashtagCRUD()).Create(x);

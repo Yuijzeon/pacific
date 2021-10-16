@@ -16,6 +16,31 @@ namespace 第二組期末專題.Models
         public string 大頭貼 { get; set; }
         public int 點數 { get; set; }
 
+
+        public List<Hashtag> GetHashtag清單()
+        {
+            string 查詢字串 = "SELECT * FROM [用戶Hashtag] WHERE 用戶_FK=" + Id;
+            return new SelectList<Hashtag>(查詢字串).GetBy("Hashtag_FK");
+        }
+
+        public List<文章> Get創作清單()
+        {
+            string 查詢字串 = "SELECT * FROM [文章] WHERE 作者用戶_FK=" + Id;
+            return new SelectList<文章>(查詢字串).Get();
+        }
+
+        public List<文章> Get收藏清單()
+        {
+            string 查詢字串 = "SELECT * FROM [用戶Favorite] WHERE 用戶_FK=" + Id;
+            return new SelectList<文章>(查詢字串).GetBy("收藏文章_FK");
+        }
+
+        public List<旅程包> Get旅程包清單()
+        {
+            string 查詢字串 = "SELECT * FROM [旅程包] WHERE 作者用戶_FK=" + Id;
+            return new SelectList<旅程包>(查詢字串).Get();
+        }
+
         /*
         public List<圖片> Get上傳圖片清單()
         {
@@ -26,39 +51,7 @@ namespace 第二組期末專題.Models
         }
         */
 
-        public List<Hashtag> GetHashtag清單()
-        {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [用戶_Hashtag]" +
-                    " WHERE 用戶_FK=" + Id;
-
-            return new SelectHashtag清單(查詢字串).Get();
-        }
-
         /*
-        public List<文章> Get創作清單()
-        {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [文章]" +
-                    " WHERE 作者用戶_FK=" + Id;
-
-            return new Select文章清單(查詢字串).Get();
-        }
-
-        public List<文章> Get收藏清單()
-        {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [用戶_Favorite]" +
-                    " WHERE 用戶_FK=" + Id;
-
-            return new Select文章清單(查詢字串).Get();
-        }
-
-        public List<旅程包> Get旅程包清單()
-        {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [旅程包]" +
-                    " WHERE 作者用戶_FK=" + Id;
-
-            return new Select旅程包清單(查詢字串).Get();
-        }
-
         public List<提問> Get提問清單()
         {
             string 查詢字串 = "USE [teamdb2] SELECT * FROM [QnA]" +

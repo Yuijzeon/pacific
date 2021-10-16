@@ -195,14 +195,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AddHashtag.cs" />
+    <Compile Include="Models\用戶Hashtag.cs" />
     <Compile Include="Models\AddHashtagCRUD.cs" />
     <Compile Include="Models\Hashtag.cs" />
     <Compile Include="Models\HashtagCRUD.cs" />
-    <Compile Include="Models\資料庫\InsertInto用戶.cs" />
+    <Compile Include="Models\資料庫\InsertInto.cs" />
     <Compile Include="Models\資料庫\SelectById.cs" />
+    <Compile Include="Models\資料庫\SelectList.cs" />
     <Compile Include="Models\資料庫\Teamdb2.cs" />
-    <Compile Include="Models\資料庫\SelectHashtag清單.cs" />
     <Compile Include="Models\旅程包.cs" />
     <Compile Include="Models\用戶.cs" />
     <Compile Include="Models\文章.cs" />

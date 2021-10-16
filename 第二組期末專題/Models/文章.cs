@@ -27,15 +27,13 @@ namespace 第二組期末專題.Models
 
         public List<Hashtag> GetHashtag清單()
         {
-            string 查詢字串 = "USE [teamdb2] SELECT * FROM [文章_Hashtag]" +
-                    " WHERE 文章_FK=" + Id;
-            return new SelectHashtag清單(查詢字串).Get();
+            string 查詢字串 = "SELECT * FROM [文章Hashtag] WHERE 文章_FK=" + Id + ";";
+            return new SelectList<Hashtag>(查詢字串).GetBy("Hashtag_FK");
         }
 
         public int Get收藏數()
         {
-            string 查詢字串 = "USE [teamdb2] SELECT COUNT(*) FROM [Favorite]" +
-                $" WHERE 文章id={Id}";
+            string 查詢字串 = "SELECT COUNT(*) FROM [用戶Favorite] WHERE 用戶_FK=" + Id + ";";
             return (int)new 資料庫任務(查詢字串).Get資料格();
         }
     }
