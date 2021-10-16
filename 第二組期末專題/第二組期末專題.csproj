@@ -204,9 +204,10 @@
     <Compile Include="Models\用戶HashtagCRUD.cs" />
     <Compile Include="Models\Hashtag.cs" />
     <Compile Include="Models\HashtagCRUD.cs" />
-    <Compile Include="Models\資料庫\InsertInto.cs" />
-    <Compile Include="Models\資料庫\SelectById.cs" />
-    <Compile Include="Models\資料庫\SelectList.cs" />
+    <Compile Include="Models\資料庫\任務Update.cs" />
+    <Compile Include="Models\資料庫\任務InsertInto.cs" />
+    <Compile Include="Models\資料庫\任務SelectById.cs" />
+    <Compile Include="Models\資料庫\任務SelectList.cs" />
     <Compile Include="Models\資料庫\Teamdb2.cs" />
     <Compile Include="Models\旅程包.cs" />
     <Compile Include="Models\用戶.cs" />

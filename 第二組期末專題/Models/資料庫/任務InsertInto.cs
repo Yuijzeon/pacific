@@ -6,9 +6,9 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class InsertInto<某類別> : 資料庫任務
+    public class 任務InsertInto<某類別> : 資料庫任務
     {
-        public InsertInto(某類別 物件)
+        public 任務InsertInto(某類別 物件)
         {
             查詢字串 = Get查詢字串(物件);
         }

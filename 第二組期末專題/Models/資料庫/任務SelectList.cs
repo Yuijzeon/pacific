@@ -6,9 +6,9 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class SelectList<某類別> : 資料庫任務 where 某類別 : new()
+    public class 任務SelectList<某類別> : 資料庫任務 where 某類別 : new()
     {
-        public SelectList(string 查詢字串) : base(查詢字串) {}
+        public 任務SelectList(string 查詢字串) : base(查詢字串) {}
 
 
         public List<某類別> Get()
@@ -38,7 +38,7 @@ namespace 第二組期末專題.Models
 
             When讀取到一筆資料 = (資料讀取器) =>
             {
-                某類別清單.Add(new SelectById<某類別>((int)資料讀取器[外鍵欄位名稱]).Get());
+                某類別清單.Add(new 任務SelectById<某類別>((int)資料讀取器[外鍵欄位名稱]).Get());
             };
 
             讀取資料庫();
