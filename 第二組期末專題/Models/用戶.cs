@@ -16,9 +16,57 @@ namespace 第二組期末專題.Models
         public string 大頭貼 { get; set; }
         public int 點數 { get; set; }
 
+        /*
+        public List<圖片> Get上傳圖片清單()
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [圖片]" +
+                    " WHERE 上傳用戶_FK=" + Id;
+
+            return new Select圖片清單(查詢字串).Get();
+        }
+        */
+
         public List<Hashtag> GetHashtag清單()
         {
-            return new SelectHashtag清單("User", Id).Get();
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [用戶_Hashtag]" +
+                    " WHERE 用戶_FK=" + Id;
+
+            return new SelectHashtag清單(查詢字串).Get();
         }
+
+        /*
+        public List<文章> Get創作清單()
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [文章]" +
+                    " WHERE 作者用戶_FK=" + Id;
+
+            return new Select文章清單(查詢字串).Get();
+        }
+
+        public List<文章> Get收藏清單()
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [用戶_Favorite]" +
+                    " WHERE 用戶_FK=" + Id;
+
+            return new Select文章清單(查詢字串).Get();
+        }
+
+        public List<旅程包> Get旅程包清單()
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [旅程包]" +
+                    " WHERE 作者用戶_FK=" + Id;
+
+            return new Select旅程包清單(查詢字串).Get();
+        }
+
+        public List<提問> Get提問清單()
+        {
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [QnA]" +
+                    " WHERE 提問用戶_FK=" + Id;
+
+            return new Select提問清單(查詢字串).Get();
+        }
+        */
+
     }
 }

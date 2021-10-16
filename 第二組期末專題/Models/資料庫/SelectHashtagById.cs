@@ -5,16 +5,15 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class SelectHashtag : 資料庫任務
+    public class SelectHashtagById : 資料庫任務
     {
-        public int HashtagId { get; set; }
+        private int HashtagId { get; set; }
 
-        public SelectHashtag(int HashtagId)
+        public SelectHashtagById(int HashtagId)
         {
             this.HashtagId = HashtagId;
             查詢字串 = "USE [teamdb2] SELECT * FROM [Hashtag] WHERE id=" + HashtagId;
         }
-
 
         public Hashtag Get()
         {
@@ -25,8 +24,8 @@ namespace 第二組期末專題.Models
                 When讀取到一筆資料 = (資料讀取器) =>
                 {
                     hashtag.Id = HashtagId;
-                    hashtag.名稱 = (string)資料讀取器["hashtag名稱"];
-                    hashtag.類別 = (string)資料讀取器["hashtag類別"];
+                    hashtag.名稱 = (string)資料讀取器["名稱"];
+                    hashtag.類別 = (string)資料讀取器["類別"];
                 }
             }.讀取資料庫();
 

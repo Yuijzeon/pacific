@@ -5,14 +5,14 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class Select文章 : 資料庫任務
+    public class Select文章ById : 資料庫任務
     {
-        public int 文章id { get; set; }
+        private int 文章Id { get; set; }
 
-        public Select文章(int 文章id)
+        public Select文章ById(int 文章Id)
         {
-            this.文章id = 文章id;
-            查詢字串 = "USE [teamdb2] SELECT * FROM [Post] WHERE id=" + 文章id;
+            this.文章Id = 文章Id;
+            查詢字串 = "SELECT * FROM [文章] WHERE id=" + 文章Id;
         }
 
 
@@ -24,10 +24,10 @@ namespace 第二組期末專題.Models
             {
                 When讀取到一筆資料 = (資料讀取器) =>
                 {
-                    此文章.Id = 文章id;
-                    此文章.標題 = (string)資料讀取器["文章title"];
-                    此文章.作者 = new Select用戶(文章id).Get();
-                    此文章.內容 = (string)資料讀取器["文章內容"];
+                    此文章.Id = 文章Id;
+                    此文章.標題 = (string)資料讀取器["標題"];
+                    此文章.作者用戶_FK = (int)資料讀取器["作者用戶_FK"];
+                    此文章.內容 = (string)資料讀取器["內容"];
                     此文章.日期起始 = (DateTime)資料讀取器["日期起始"];
                     此文章.日期結束 = (DateTime)資料讀取器["日期結束"];
                     此文章.時段起始 = (string)資料讀取器["時段起始"];

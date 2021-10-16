@@ -6,11 +6,11 @@ namespace 第二組期末專題.Models
     public class 資料庫任務
     {
         //建構函式 開始
-        public 資料庫任務() { }
+        public 資料庫任務() {}
 
-        public 資料庫任務(string str)
+        public 資料庫任務(string 查詢字串)
         {
-            查詢字串 = str;
+            this.查詢字串 = 查詢字串;
         }
         //建構函式 結束
 

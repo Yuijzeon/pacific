@@ -10,7 +10,7 @@ namespace 第二組期末專題.Models
     {
         public int Id { get; set; }
         public string 標題 { get; set; }
-        public 用戶 作者 { get; set; }
+        public int 作者用戶_FK { get; set; }
         public string 內容 { get; set; }
         public DateTime 日期起始 { get; set; }
         public DateTime 日期結束 { get; set; }
@@ -19,11 +19,17 @@ namespace 第二組期末專題.Models
         public string 地點 { get; set; }
         public int 接待人數 { get; set; }
         public string 類型 { get; set; }
-        public 旅程包 所屬旅程包 { get; set; }
+
+        public 用戶 Get作者()
+        {
+            return new Select用戶ById(作者用戶_FK).Get();
+        }
 
         public List<Hashtag> GetHashtag清單()
         {
-            return new SelectHashtag清單("Post", Id).Get();
+            string 查詢字串 = "USE [teamdb2] SELECT * FROM [文章_Hashtag]" +
+                    " WHERE 文章_FK=" + Id;
+            return new SelectHashtag清單(查詢字串).Get();
         }
 
         public int Get收藏數()

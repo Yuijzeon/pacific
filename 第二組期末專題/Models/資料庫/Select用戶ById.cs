@@ -5,14 +5,14 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class Select用戶 : 資料庫任務
+    public class Select用戶ById : 資料庫任務
     {
-        public int 用戶id { get; set; }
+        private int 用戶Id { get; set; }
 
-        public Select用戶(int 用戶id)
+        public Select用戶ById(int 用戶Id)
         {
-            this.用戶id = 用戶id;
-            查詢字串 = "USE [teamdb2] SELECT * FROM [User] WHERE id=" + 用戶id;
+            this.用戶Id = 用戶Id;
+            查詢字串 = "SELECT * FROM [用戶] WHERE id=" + 用戶Id;
         }
 
 
@@ -24,7 +24,7 @@ namespace 第二組期末專題.Models
             {
                 When讀取到一筆資料 = (資料讀取器) =>
                 {
-                    此用戶.Id = 用戶id;
+                    此用戶.Id = 用戶Id;
                     此用戶.帳號 = (string)資料讀取器["帳號"];
                     此用戶.密碼 = (string)資料讀取器["密碼"];
                     此用戶.名字 = (string)資料讀取器["名字"];
