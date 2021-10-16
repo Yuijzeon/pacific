@@ -203,7 +203,7 @@
     <Compile Include="Models\資料庫\Teamdb2.cs" />
     <Compile Include="Models\資料庫\SelectHashtag清單.cs" />
     <Compile Include="Models\資料庫\Select用戶ById.cs" />
-    <Compile Include="Models\資料庫\Select旅程包.cs" />
+    <Compile Include="Models\資料庫\Select旅程包ById.cs" />
     <Compile Include="Models\資料庫\Select文章ById.cs" />
     <Compile Include="Models\資料庫\SelectHashtagById.cs" />
     <Compile Include="Models\旅程包.cs" />
