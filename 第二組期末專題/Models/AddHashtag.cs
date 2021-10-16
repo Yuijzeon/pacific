@@ -7,8 +7,7 @@ namespace 第二組期末專題.Models
 {
     public class AddHashtag
     {
-        public int UserId_FK;
-
+        public int 用戶_FK;
         public int Hashtag_FK;
     }
 }

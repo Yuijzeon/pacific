@@ -11,7 +11,7 @@ namespace 第二組期末專題.Models
         //新增Hashtag類別方法
         public void Create(Hashtag p)
         {
-            string sql = "INSERT INTO Hashtag (hashtag名稱, hashtag類別) VALUES (";
+            string sql = "INSERT INTO Hashtag (名稱, 類別) VALUES (";
             sql += "N'" + p.名稱 + "',";
             sql += " N'" + p.類別 + "')";
             
@@ -30,8 +30,8 @@ namespace 第二組期末專題.Models
                     list.Add(new Hashtag()
                     {
                         Id = (int)reader["id"],
-                        名稱 = reader["hashtag名稱"].ToString(),
-                        類別 = reader["hashtag類別"].ToString()
+                        名稱 = reader["名稱"].ToString(),
+                        類別 = reader["類別"].ToString()
                     });
                 }
             }.讀取資料庫();
