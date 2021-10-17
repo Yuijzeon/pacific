@@ -32,6 +32,7 @@ namespace 第二組期末專題.Controllers
             user.名字 = Request.Form["user名字"];
             user.手機 = Request.Form["user手機"];
 
+            return RedirectToAction("Index");
         }
 
         //新增用戶標籤
