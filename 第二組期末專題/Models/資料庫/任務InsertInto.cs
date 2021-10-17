@@ -23,7 +23,7 @@ namespace 第二組期末專題.Models
                 if (屬性.Name == "Id") continue;
 
                 屬性名稱清單.Add(屬性.Name);
-                值清單.Add(屬性.GetValue(物件));
+                值清單.Add("'" + 屬性.GetValue(物件) + "'");
             }
 
             return "INSERT INTO [" + typeof(某類別).Name + "] (" +
