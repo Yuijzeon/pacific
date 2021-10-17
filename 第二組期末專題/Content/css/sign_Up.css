@@ -98,7 +98,7 @@ a{
     border: 1px solid #b5b5b5;
     outline: none;
 }
-.login-show input[type="button"] {
+/*.login-show button {
     max-width: 150px;
     width: 100%;
     background: #444444;
@@ -107,9 +107,9 @@ a{
     padding: 10px;
     text-transform: uppercase;
     border-radius: 2px;
-    float:right;
-    cursor:pointer;
-}
+    float: right;
+    cursor: pointer;
+}*/
 .login-show a{
     display:inline-block;
     padding:10px 0;
@@ -123,7 +123,7 @@ a{
     border: 1px solid #b5b5b5;
     outline: none;
 }
-.register-show input[type="button"] {
+.bottom {
     max-width: 150px;
     width: 100%;
     background: #444444;
@@ -132,8 +132,8 @@ a{
     padding: 10px;
     text-transform: uppercase;
     border-radius: 2px;
-    float:right;
-    cursor:pointer;
+    float: right;
+    cursor: pointer;
 }
 .credit {
     position:absolute;

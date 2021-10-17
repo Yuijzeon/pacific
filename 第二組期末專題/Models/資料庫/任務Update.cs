@@ -26,7 +26,7 @@ namespace 第二組期末專題.Models
                     continue; 
                 }
 
-                屬性鍵值對.Add(屬性.Name + "=" + 屬性.GetValue(物件) + ", ");
+                屬性鍵值對.Add("[" + 屬性.Name + "]=N'" + 屬性.GetValue(物件) + "', ");
             }
 
             return "UPDATE [" + typeof(某類別).Name + "] SET " +

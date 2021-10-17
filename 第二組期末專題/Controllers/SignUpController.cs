@@ -22,17 +22,28 @@ namespace 第二組期末專題.Controllers
             datas = (new HashtagCRUD()).queryAll();
             return View(datas);
         }
-        
-        //新用戶註冊
-        public ActionResult AddUser()
-        {
-            用戶 user = new 用戶();
-            user.帳號 = Request.Form["user帳號"];
-            user.密碼 = Request.Form["user密碼"];
-            user.名字 = Request.Form["user名字"];
-            user.手機 = Request.Form["user手機"];
 
-            return RedirectToAction("Index");
+        //新用戶註冊
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult Login(string 帳號, string 密碼, string 名字, string 手機)
+        {
+            if (帳號 == "" || 帳號 == null)
+                return View();
+            if (密碼 == "" || 密碼 == null)
+                return View();
+            if (名字 == "" || 名字 == null)
+                return View();
+            if (手機 == "" || 手機 == null)
+                return View();
+            新增用戶 addUser = new 新增用戶();
+            addUser.帳號 = 帳號;
+            addUser.密碼 = 密碼;
+            addUser.名字 = 名字;
+            addUser.手機 = 手機;
+            addUser.註冊日期 = DateTime.Now;
+            return View();
+
         }
 
         //新增用戶標籤

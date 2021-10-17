@@ -61,6 +61,7 @@ namespace 第二組期末專題.Models
                 {
                     When讀取到一筆資料(資料讀取器);
                 }
+                連線.Close(); 
             }
         }
 
@@ -96,6 +97,7 @@ namespace 第二組期末專題.Models
                 連線.Open();
                 SqlCommand 指令 = 注入參數(new SqlCommand(查詢字串, 連線));
                 資料格 = 指令.ExecuteScalar();
+                連線.Close();
             }
             return 資料格;
         }
@@ -107,6 +109,7 @@ namespace 第二組期末專題.Models
                 連線.Open();
                 SqlCommand 指令 = 注入參數(new SqlCommand(查詢字串, 連線));
                 指令.ExecuteNonQuery();
+                連線.Close();
             }
         }
         //物件方法 結束
