@@ -71,40 +71,26 @@
                             <!--展示出hashtag名稱-->
                             @{
                                 foreach (Hashtag t in Model)
-                                {
-                                    @*<input type="checkbox" name="check" class="btn-check" id="@t.id" autocomplete="off" value="@t.id">
-                                        <label class="btn btn-outline-primary" for="@t.id">@t.名稱</label>*@
-                                    @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                    {
+                                    if (t.類別 == "愛好")
+                                        {
+                                          @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id },         new { @class = "btn btn-outline-danger", onclick = "return confirm('是否新增標籤?')",style = "margin:5px" })
+                                        }
+                                    }
                                 }
-                            }
 
                             <hr />
 
                             <h2 style="color:black">請選擇地區</h2>
 
-                            <input type="radio" class="btn-check" name="check" id="radio1">
-                            <label class="btn btn-outline-danger" for="radio1">台中</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio2">
-                            <label class="btn btn-outline-danger" for="radio2">南投</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio3">
-                            <label class="btn btn-outline-danger" for="radio3">嘉義</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio4">
-                            <label class="btn btn-outline-danger" for="radio4">台南</label><br>
-
-                            <input type="radio" class="btn-check" name="check" id="radio5">
-                            <label class="btn btn-outline-danger" for="radio5">高雄</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio6">
-                            <label class="btn btn-outline-danger" for="radio6">屏東</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio7">
-                            <label class="btn btn-outline-danger" for="radio7">台東</label>
-
-                            <input type="radio" class="btn-check" name="check" id="radio8">
-                            <label class="btn btn-outline-danger" for="radio8">花蓮</label>
+                            @{
+                                foreach (Hashtag t in Model)
+                                    {
+                                    if (t.類別 == "地區"){
+                                    @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                        }
+                                    }
+                                }
 
                             <p class="mb-0" style="width: 100%;">
                                 <br>@Html.ActionLink("完成", "back", "SignUp", new { @class = "btn btn-outline-danger", style = "margin:5px" })

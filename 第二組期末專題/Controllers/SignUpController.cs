@@ -15,7 +15,7 @@ namespace 第二組期末專題.Controllers
             return View();
         }
 
-        //選取興趣愛好
+        //SHOW出所有標籤
         public ActionResult SelectInterest()
         {
             List<Hashtag> datas = null;
@@ -23,27 +23,18 @@ namespace 第二組期末專題.Controllers
             return View(datas);
         }
 
-        //新用戶註冊
-        [AllowAnonymous]
-        [HttpPost]
-        public ActionResult Login(string 帳號, string 密碼, string 名字, string 手機)
+        //用戶註冊
+        public ActionResult 註冊()
         {
-            if (帳號 == "" || 帳號 == null)
-                return View();
-            if (密碼 == "" || 密碼 == null)
-                return View();
-            if (名字 == "" || 名字 == null)
-                return View();
-            if (手機 == "" || 手機 == null)
-                return View();
-            新增用戶 addUser = new 新增用戶();
-            addUser.帳號 = 帳號;
-            addUser.密碼 = 密碼;
-            addUser.名字 = 名字;
-            addUser.手機 = 手機;
-            addUser.註冊日期 = DateTime.Now;
-            return View();
-
+            用戶 x = new 用戶();
+            x.帳號 = Request.Form["Email"];
+            x.密碼 = Request.Form["Password"];
+            x.名字 = Request.Form["Name"];
+            x.手機 = Request.Form["Phone"];
+            x.註冊日期 = DateTime.Now.ToString("yyyy-MM-dd");
+            x.點數 = 1;
+            new 用戶CRUD().註冊(x);
+            return RedirectToAction("Index", "Home");
         }
 
         //新增用戶標籤
