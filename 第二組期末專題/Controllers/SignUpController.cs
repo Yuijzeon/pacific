@@ -22,6 +22,18 @@ namespace 第二組期末專題.Controllers
             datas = (new HashtagCRUD()).queryAll();
             return View(datas);
         }
+        
+        //新用戶註冊
+        public ActionResult AddUser()
+        {
+            用戶 user = new 用戶();
+            user.帳號 = Request.Form["user帳號"];
+            user.密碼 = Request.Form["user密碼"];
+            user.名字 = Request.Form["user名字"];
+            user.手機 = Request.Form["user手機"];
+
+            return RedirectToAction("Index");
+        }
 
         //新增用戶標籤
         public ActionResult AddUserHashtag(int? id)

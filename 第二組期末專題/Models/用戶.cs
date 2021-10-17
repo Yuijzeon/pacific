@@ -17,6 +17,7 @@ namespace 第二組期末專題.Models
         public int 點數 { get; set; }
 
 
+        
         public List<Hashtag> GetHashtag清單()
         {
             string 查詢字串 = "SELECT * FROM [用戶Hashtag] WHERE 用戶_FK=" + Id;
