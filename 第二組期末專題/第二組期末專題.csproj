@@ -198,6 +198,7 @@
     <Compile Include="Models\提問.cs" />
     <Compile Include="Models\圖片.cs" />
     <Compile Include="Models\文章Hashtag.cs" />
+    <Compile Include="Models\新增用戶.cs" />
     <Compile Include="Models\用戶Favorite.cs" />
     <Compile Include="Models\評級.cs" />
     <Compile Include="Models\用戶Hashtag.cs" />
