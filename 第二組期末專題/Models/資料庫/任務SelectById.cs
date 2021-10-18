@@ -29,7 +29,11 @@ namespace 第二組期末專題.Models
             {
                 foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
                 {
-                    if (屬性.PropertyType == typeof(DateTime))
+                    if (資料讀取器[屬性.Name].GetType() == typeof(DBNull))
+                    {
+                        continue;
+                    }
+                    else if (屬性.PropertyType == typeof(DateTime))
                     {
                         屬性.SetValue(物件, Convert.ToDateTime(資料讀取器[屬性.Name]));
                     }
