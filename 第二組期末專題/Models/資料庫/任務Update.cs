@@ -9,24 +9,15 @@ namespace 第二組期末專題.Models
     public class 任務Update<某類別> : 資料庫任務
     {
         private int 目標Id { get; set; }
-        private List<KeyValuePair<string, object>> 屬性鍵值對清單 { get; set; }
+        string 資料表名稱 { get; set; }
+        Dictionary<string, object> 欲修改欄位 { get; set; }
 
         public 任務Update(某類別 物件)
         {
-            Set屬性鍵值對清單(物件);
-            Set查詢字串();
-            Set注入參數();
-        }
+            資料表名稱 = typeof(某類別).Name;
+            欲修改欄位 = new Dictionary<string, object>();
+            Dictionary<string, object> 注入參數鍵值 = new Dictionary<string, object>();
 
-        public void SetBy欄位(string[] 指定欄位)
-        {
-            Set屬性鍵值對清單By(指定欄位);
-            Set查詢字串();
-            Set();
-        }
-
-        private void Set屬性鍵值對清單(某類別 物件) {
-            List<KeyValuePair<string, object>> 屬性鍵值對清單 = new List<KeyValuePair<string, object>>();
             foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
             {
                 string 屬性鍵 = 屬性.Name;
@@ -38,63 +29,56 @@ namespace 第二組期末專題.Models
                     continue;
                 }
 
-                屬性鍵值對清單.Add(new KeyValuePair<string, object>(屬性鍵, 屬性值));
-            }
-            this.屬性鍵值對清單 = 屬性鍵值對清單;
-        }
+                if (屬性值 == null) {
+                    欲修改欄位.Add(屬性鍵, "NULL");
+                    //"[" + 屬性鍵 + "]=NULL"
+                    continue;
+                }
 
-        private void Set查詢字串()
-        {
-            List<string> 屬性字串清單 = new List<string>();
+                欲修改欄位.Add(屬性鍵, "@" + 屬性鍵);
+                //"[" + 屬性鍵 + "]=@" + 屬性鍵
 
-            foreach (KeyValuePair<string, object> 屬性鍵值對 in 屬性鍵值對清單)
-            {
-                string 屬性鍵 = 屬性鍵值對.Key;
-                object 屬性值 = 屬性鍵值對.Value;
-
-                if (屬性值 == null) 屬性值 = "NULL";
-                else 屬性值 = "@" + 屬性鍵;
-
-                屬性字串清單.Add("[" + 屬性鍵 + "]=" + 屬性值);
+                注入參數鍵值.Add("@" + 屬性鍵, 屬性值);
             }
 
-            查詢字串 = "UPDATE [" + typeof(某類別).Name + "] SET " + string.Join(", ", 屬性字串清單) + " WHERE Id=" + 目標Id + ";";
+            查詢字串 = "UPDATE [" + 資料表名稱 + "] SET " + Get欄位更新值By(欲修改欄位) + " WHERE Id=" + 目標Id + ";";
+
+            大量注入參數by(注入參數鍵值);
         }
 
-        private void Set屬性鍵值對清單By(string[] 指定欄位)
+        public void SetBy欄位(string[] 指定欄位)
         {
-            List<KeyValuePair<string, object>> 指定屬性鍵值對清單 = new List<KeyValuePair<string, object>>();
+            更新欲修改欄位By(指定欄位);
 
-            foreach (KeyValuePair<string, object> 屬性鍵值對 in 屬性鍵值對清單)
+            查詢字串 = "UPDATE [" + 資料表名稱 + "] SET " + Get欄位更新值By(欲修改欄位) + " WHERE Id=" + 目標Id + ";";
+
+            Set();
+        }
+
+        private string Get欄位更新值By(Dictionary<string, object> 欲修改欄位)
+        {
+            List<string> 欄位更新值 = new List<string>();
+
+            foreach (KeyValuePair<string, object> 欄位鍵值對 in 欲修改欄位)
             {
-                if (指定欄位.Contains(屬性鍵值對.Key))
+                欄位更新值.Add("[" + 欄位鍵值對.Key + "]=" + 欄位鍵值對.Value);
+            }
+
+            return string.Join(", ", 欄位更新值);
+        }
+
+        private void 更新欲修改欄位By(string[] 指定欄位)
+        {
+            Dictionary<string, object> 指定更新欄位 = new Dictionary<string, object>();
+
+            foreach (KeyValuePair<string, object> 欄位 in 欲修改欄位)
+            {
+                if (指定欄位.Contains(欄位.Key))
                 {
-                    指定屬性鍵值對清單.Add(屬性鍵值對);
+                    指定更新欄位.Add(欄位.Key, 欄位.Value);
                 }
             }
-            屬性鍵值對清單 = 指定屬性鍵值對清單;
-        }
-
-        private void Set注入參數()
-        {
-            注入參數 = (指令) =>
-            {
-                foreach (KeyValuePair<string, object> 屬性鍵值對 in 屬性鍵值對清單)
-                {
-                    string 屬性鍵 = "@" + 屬性鍵值對.Key;
-                    object 屬性值 = 屬性鍵值對.Value;
-
-                    if (屬性值 == null) continue;
-
-                    if (屬性值.GetType() == typeof(DateTime))
-                    {
-                        屬性值 = ((DateTime)屬性值).ToString("yyyy-MM-dd HH:mm:ss");
-                    }
-
-                    指令.Parameters.AddWithValue(屬性鍵, 屬性值);
-                }
-                return 指令;
-            };
+            欲修改欄位 = 指定更新欄位;
         }
     }
 }

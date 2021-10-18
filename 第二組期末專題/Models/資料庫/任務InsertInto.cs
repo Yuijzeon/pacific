@@ -10,43 +10,27 @@ namespace 第二組期末專題.Models
     {
         public 任務InsertInto(某類別 物件)
         {
-            查詢字串 = Get查詢字串(物件);
-        }
-
-        private string Get查詢字串(某類別 物件) {
-
+            string 資料表名稱 = typeof(某類別).Name;
             List<string> 屬性鍵清單 = new List<string>();
             List<string> 屬性值清單 = new List<string>();
+            Dictionary<string, object> 注入鍵值字典 = new Dictionary<string, object>();
 
             foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
             {
                 string 屬性鍵 = 屬性.Name;
                 object 屬性值 = 屬性.GetValue(物件);
-                Type 屬性型別 = 屬性.PropertyType;
 
                 if (屬性鍵 == "Id") continue;
 
                 屬性鍵清單.Add("[" + 屬性鍵 + "]");
+                屬性值清單.Add("@" + 屬性鍵);
 
-                if (屬性值 == null)
-                {
-                    屬性值清單.Add("NULL");
-                }
-                else if (屬性型別 == typeof(DateTime))
-                {
-                    屬性值清單.Add("N'" + ((DateTime)屬性值).ToString("yyyy-MM-dd hh:mm:ss") + "'");
-                }
-                else if (屬性型別 == typeof(int))
-                {
-                    屬性值清單.Add(屬性值.ToString());
-                }
-                else
-                {
-                    屬性值清單.Add("N'" + 屬性值.ToString() + "'");
-                }
+                注入鍵值字典.Add("@" + 屬性鍵, 屬性值);
             }
 
-            return "INSERT INTO [" + typeof(某類別).Name + "] (" + string.Join(", ", 屬性鍵清單) + ") VALUES(" + string.Join(", ", 屬性值清單) + ");";
+            查詢字串 = "INSERT INTO [" + 資料表名稱 + "] (" + string.Join(", ", 屬性鍵清單) + ") VALUES(" + string.Join(", ", 屬性值清單) + ");";
+
+            大量注入參數by(注入鍵值字典);
         }
     }
 }
