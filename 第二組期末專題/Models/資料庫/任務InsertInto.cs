@@ -30,7 +30,7 @@ namespace 第二組期末專題.Models
 
             查詢字串 = "INSERT INTO [" + 資料表名稱 + "] (" + string.Join(", ", 屬性鍵清單) + ") VALUES(" + string.Join(", ", 屬性值清單) + ");";
 
-            大量注入參數by(注入鍵值字典);
+            注入參數by(注入鍵值字典);
         }
     }
 }

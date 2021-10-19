@@ -45,5 +45,8 @@ function 刪除資料列() {
     $.ajax({
         type: 'GET',
         url: '../Test/DeleteUser?id=' + 資料列.children('.Id').text()
-    }).done(生成用戶列表);
+    }).done(function (新資料s) {
+        $('#showAllUserData').html('');
+        生成用戶列表(新資料s)
+    });
 }

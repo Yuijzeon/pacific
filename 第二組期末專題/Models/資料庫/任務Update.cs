@@ -43,7 +43,7 @@ namespace 第二組期末專題.Models
 
             查詢字串 = "UPDATE [" + 資料表名稱 + "] SET " + Get欄位更新值By(欲修改欄位) + " WHERE Id=" + 目標Id + ";";
 
-            大量注入參數by(注入參數鍵值);
+            注入參數by(注入參數鍵值);
         }
 
         public void SetBy欄位(string[] 指定欄位)

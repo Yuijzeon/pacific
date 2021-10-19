@@ -103,7 +103,7 @@ namespace 第二組期末專題.Models
             }
         }
 
-        public 資料庫任務 大量注入參數by(Dictionary<string, object> 注入鍵值字典)
+        public 資料庫任務 注入參數by(Dictionary<string, object> 注入鍵值字典)
         {
             注入參數 = (指令) =>
             {
@@ -127,7 +127,7 @@ namespace 第二組期末專題.Models
         }
 
 
-        public 資料庫任務 大量注入參數by(object 注入鍵值)
+        public 資料庫任務 注入參數by(object 注入鍵值)
         {
             注入參數 = (指令) =>
             {
