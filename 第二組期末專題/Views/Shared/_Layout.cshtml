@@ -47,7 +47,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="Home" class="nav-link">主畫面</a></li>
                     <li class="nav-item"><a href="/Search" class="nav-link">主題旅遊</a></li>
-                    <li class="nav-item"><a href="/Search?group=located" class="nav-link">地區</a></li>
+                    <li class="nav-item"><a href="/Test/GetUser?id=1" class="nav-link">Test</a></li>
                     <li class="nav-item"><a href="/Post" class="nav-link">興趣</a></li>
                     <li class="nav-item"><a href="/Post?id=2" class="nav-link">關於我們</a></li>
                     <li class="nav-item"><a href="/Post/article" class="nav-link">Post</a></li>
@@ -169,12 +169,14 @@
 
             window.addEventListener('scroll', revert60vh);
             function revert60vh () {
-                if (scrollNum > window.scrollY)
-                    window.scrollTo(0, scrollNum);
+                if (scrollNum > window.scrollY) window.scrollTo(0, scrollNum);
             }
             revert60vh();
         };
     </script>
+
+
+    <script src="~/Content/js/test.js"></script>
 </body>
 
 </html>
