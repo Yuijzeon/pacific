@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace 第二組期末專題.Models
 {
@@ -119,6 +120,31 @@ namespace 第二組期末專題.Models
                     }
                     
                     指令.Parameters.AddWithValue(屬性鍵, 屬性值);
+                }
+                return 指令;
+            };
+            return this;
+        }
+
+
+        public 資料庫任務 大量注入參數by(object 注入鍵值)
+        {
+            注入參數 = (指令) =>
+            {
+                foreach (PropertyInfo 屬性 in 注入鍵值.GetType().GetProperties())
+                //foreach (var 注入鍵值對 in 注入鍵值字典)
+                {
+                    string 注入鍵 = 屬性.Name;
+                    object 注入值 = 屬性.GetValue(注入鍵值);
+
+                    if (注入值 == null) continue;
+
+                    if (注入值.GetType() == typeof(DateTime))
+                    {
+                        注入值 = ((DateTime)注入值).ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+
+                    指令.Parameters.AddWithValue(注入鍵, 注入值);
                 }
                 return 指令;
             };

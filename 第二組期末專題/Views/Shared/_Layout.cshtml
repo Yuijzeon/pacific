@@ -30,7 +30,6 @@
         {
             @Html.Raw(css);
         }
-
     }
 </head>
 
@@ -176,7 +175,11 @@
     </script>
 
 
-    <script src="~/Content/js/test.js"></script>
+    @if (ViewBag.myJS != null)
+    {
+        <script src="~/Content/js/@ViewBag.myJS"></script>
+    }
+
 </body>
 
 </html>

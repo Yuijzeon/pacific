@@ -27,12 +27,16 @@ namespace 第二組期末專題.Controllers
                     return 指令;
                 }
             }.Get資料表();
-            */
+            
             new 任務Update<用戶>(new 用戶 {
                 Id = 6,
                 手機 = "0988888888",
                 註冊日期 = DateTime.Parse("2021-10-18 16:30:00")
             }).SetBy欄位(new[] {"大頭貼", "手機" , "註冊日期" });
+            */
+
+            new 資料庫任務($"UPDATE [用戶] SET [名字]=@NAME WHERE [Id]=@ID")
+                .大量注入參數by(new { NAME = "哀低十一號", ID = 11 }).Set();
 
             return View();
         }
