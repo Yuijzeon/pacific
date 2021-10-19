@@ -23,7 +23,7 @@ namespace 第二組期末專題.Controllers
 
         public JsonResult GetAllUser()
         {
-            var 全部用戶 = new 資料庫任務("SELECT [帳號],[密碼] FROM [用戶]").Get();
+            var 全部用戶 = new 資料庫任務("SELECT * FROM [用戶]").Get();
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
     }
