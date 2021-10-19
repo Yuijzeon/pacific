@@ -21,7 +21,7 @@ namespace 第二組期末專題.Models
         }
 
 
-        public 某類別 Get()
+        new public 某類別 Get()
         {
             某類別 物件 = new 某類別();
 

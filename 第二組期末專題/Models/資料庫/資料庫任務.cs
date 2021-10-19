@@ -57,6 +57,27 @@ namespace 第二組期末專題.Models
             }
         }
 
+        public List<Dictionary<string, object>> Get()
+        {
+            List<Dictionary<string, object>> 字典清單 = new List<Dictionary<string, object>>();
+
+            When讀取到一筆資料 = delegate (SqlDataReader 資料讀取器)
+            {
+                Dictionary<string, object> 字典 = new Dictionary<string, object>();
+                for (int i = 0; i < 資料讀取器.FieldCount; i++)
+                {
+                    string 欄位標題 = 資料讀取器.GetName(i);
+                    object 儲存格值 = 資料讀取器[i];
+                    字典.Add(欄位標題, 儲存格值);
+                }
+                字典清單.Add(字典);
+            };
+
+            讀取資料庫();
+
+            return 字典清單;
+        }
+
         public object Get資料格()
         {
             object 資料格 = new object();

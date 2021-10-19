@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
 
         public 任務SelectList(string 查詢字串) : base(查詢字串) {}
 
-        public List<某類別> Get()
+        new public List<某類別> Get()
         {
             List<某類別> 某類別清單 = new List<某類別>();
 
