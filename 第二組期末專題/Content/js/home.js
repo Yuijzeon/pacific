@@ -10,7 +10,6 @@ $(document).ready(function () {
 function 生成精選旅程(文章s) {
     console.log(文章s);
 
-    var html = "";
     for (var 文章 of 文章s) {
         var 未結束旅程 = 旅程是否開始(文章);
         if (!未結束旅程) continue;
@@ -23,10 +22,10 @@ function 生成精選旅程(文章s) {
         //這裡渲染器用的是 QuillDeltaToHtmlConverter
         //https://github.com/nozer/quill-delta-to-html
 
-        html += `
+        var html = `
             <div class="item">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20"
+                    <a href="../Post?id=${文章.Id}" class="block-20"
                         style="background-image: url('../../Content/images/${文章.路徑}');">
                     </a>
                     <div class="text">
@@ -50,14 +49,14 @@ function 生成精選旅程(文章s) {
                 </div>
             </div>
         `;
+        $('#精選旅程').trigger('add.owl.carousel', html).trigger('refresh.owl.carousel');
+        //請查閱輪播插件OwlCarousel2的官方API文檔
+        //https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html
     }
-    $('#精選旅程').append(html);
-
-    重設輪播();
 }
 
 function 旅程是否開始(文章) {
-    var today = new Date();
+    //var today = new Date();
     var 開始day = new Date(文章.日期起始);
     var 結束day = new Date(文章.日期結束);
 
@@ -70,27 +69,4 @@ function 旅程是否開始(文章) {
             date: 開始day.getDate()
         };
     //}
-}
-
-function 重設輪播() {
-    $('.owl-carousel').owlCarousel({
-        center: true,
-        loop: true,
-        items: 1,
-        margin: 30,
-        stagePadding: 0,
-        nav: false,
-        navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
 }
