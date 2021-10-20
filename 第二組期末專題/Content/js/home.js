@@ -27,7 +27,7 @@ function 生成精選旅程(文章s) {
             <div class="item">
                 <div class="blog-entry justify-content-end">
                     <a href="blog-single.html" class="block-20"
-                        style="background-image: url('../../Content/images/image_1.jpg');">
+                        style="background-image: url('../../Content/images/${文章.路徑}');">
                     </a>
                     <div class="text">
                         <div class="d-flex align-items-center mb-4 topp">
