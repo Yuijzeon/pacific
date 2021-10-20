@@ -69,6 +69,12 @@ namespace 第二組期末專題.Models
                 {
                     string 欄位標題 = 資料讀取器.GetName(i);
                     object 儲存格值 = 資料讀取器[i];
+
+                    if (儲存格值.GetType() == typeof(DateTime))
+                    {
+                        儲存格值 = ((DateTime)儲存格值).ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+
                     字典.Add(欄位標題, 儲存格值);
                 }
                 字典清單.Add(字典);

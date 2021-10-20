@@ -50,8 +50,14 @@ namespace 第二組期末專題.Controllers
 
             new 資料庫任務($"UPDATE [用戶] SET [名字]=@NAME WHERE [Id]=@ID")
                 .注入參數by(new { NAME = "哀低七號", ID = 7 }).Set();
-
+            
             return View();
+        }
+
+        public JsonResult GetJourneys()
+        {
+            var 全部文章 = new 資料庫任務("SELECT * FROM [文章]").Get();
+            return Json(全部文章, JsonRequestBehavior.AllowGet);
         }
     }
 }
