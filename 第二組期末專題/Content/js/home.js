@@ -74,9 +74,13 @@ function 旅程是否開始(文章) {
 
 function 重設輪播() {
     $('.owl-carousel').owlCarousel({
+        center: true,
         loop: true,
-        margin: 10,
-        nav: true,
+        items: 1,
+        margin: 30,
+        stagePadding: 0,
+        nav: false,
+        navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
         responsive: {
             0: {
                 items: 1
