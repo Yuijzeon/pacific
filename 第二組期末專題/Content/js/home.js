@@ -38,7 +38,7 @@ function 生成精選旅程(文章s) {
                                 <span class="mos">${未結束旅程.month}</span>
                             </div>
                         </div>
-                        <h3 class="heading"><a href="#">${文章.標題}</a></h3>
+                        <h3 class="heading">${文章.標題}</h3>
                         <!-- <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p> -->
                         <p class="mb-4">${文章.內容}</p>
                         <div class="btn-group" role="group" style="width: 100%;">

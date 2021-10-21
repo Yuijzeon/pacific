@@ -34,22 +34,6 @@ namespace 第二組期末專題.Controllers
                 註冊日期 = DateTime.Parse("2021-10-18 16:30:00")
             }).SetBy欄位(new[] {"大頭貼", "手機" , "註冊日期" });
             */
-
-            new 資料庫任務($"UPDATE [用戶] SET [名字]=@NAME WHERE [Id]=@ID") {
-                注入參數 = (指令) => {
-                    指令.Parameters.AddWithValue("NAME", "哀低五號");
-                    指令.Parameters.AddWithValue("ID", 5);
-                    return 指令;
-                }
-            }.Set();
-
-            new 任務Update<用戶>(new 用戶() {
-                Id = 6,
-                名字 = "哀低六號"
-            }).SetBy欄位(new[] { "名字" });
-
-            new 資料庫任務($"UPDATE [用戶] SET [名字]=@NAME WHERE [Id]=@ID")
-                .注入參數by(new { NAME = "哀低七號", ID = 7 }).Set();
             
             return View();
         }
