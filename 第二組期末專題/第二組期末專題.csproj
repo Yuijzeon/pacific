@@ -210,6 +210,7 @@
     <Compile Include="Models\文章Hashtag.cs" />
     <Compile Include="Models\用戶CRUD.cs" />
     <Compile Include="Models\用戶Favorite.cs" />
+    <Compile Include="Models\登入view.cs" />
     <Compile Include="Models\評級.cs" />
     <Compile Include="Models\用戶Hashtag.cs" />
     <Compile Include="Models\用戶HashtagCRUD.cs" />
@@ -345,6 +346,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -12,6 +12,7 @@ namespace 第二組期末專題.Controllers
         // GET: SignUp
         public ActionResult Index()
         {
+            ViewBag.msg1 = Session["msg"];
             return View();
         }
 
@@ -33,8 +34,16 @@ namespace 第二組期末專題.Controllers
             x.手機 = Request.Form["Phone"];
             x.註冊日期 = DateTime.Now;
             x.點數 = 1;
-            new 用戶CRUD().註冊(x);
-            return RedirectToAction("Index", "Home");
+            if (x.帳號 == "" || x.密碼 == "" || x.名字 == "" || x.手機 == "")
+            {
+                Session["msg"] = "不可以空白";
+                return RedirectToAction("Index", "SignUp");
+            }
+            else {
+                new 用戶CRUD().註冊(x);
+                Session["Name"] = x.名字;
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         //新增用戶標籤
@@ -51,7 +60,7 @@ namespace 第二組期末專題.Controllers
             return RedirectToAction("SelectInterest");
         }
 
-        //測試新增
+        //測試標籤新增
         public string Testinsert()
         {
             Hashtag x = new Hashtag();
@@ -68,5 +77,26 @@ namespace 第二組期末專題.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //登入比對
+        [HttpPost]
+        public ActionResult index()
+        {
+            List<用戶> datas = null;
+            登入view x = new 登入view();
+            x.帳號 = Request.Form["帳號"];
+            x.密碼 = Request.Form["密碼"];
+            datas = new 用戶CRUD().登入(x.帳號, x.密碼);
+            if (datas.Count == 0)
+            {
+                ViewBag.msg = "帳號密碼錯誤";
+                return View();
+            }
+      
+            string Name = datas[0].名字;
+            ViewBag.Name = Name;
+            Session["ID"] = datas[0].Id;
+            Session["Name"] = Name;
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

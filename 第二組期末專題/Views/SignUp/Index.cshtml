@@ -34,23 +34,25 @@
         </div>
 
         <div class="white-panel">
-            <form action="#">
+            <form method="post" action="~/SignUp/index">
                 <div class="login-show">
                     <h2>登入</h2>
-                    <input type="text" placeholder="電子郵件">
-                    <input type="password" placeholder="密碼">
-                    <input type="button" value="登入">
-                    <a href="">Forgot password?</a>
+                    <input type="text" placeholder="電子郵件" name="帳號">
+                    <input type="password" placeholder="密碼" name="密碼">
+                    <input type="submit" value="登入" id="Login">
+                    <a href="">Forgot password?</a><br>
+                    <a style="color:red">@ViewBag.msg</a>
                 </div>
             </form>
             <form method="post" action="~/SignUp/註冊">
                 <div class="register-show">
                     <h2>註冊</h2>
-                    <input name="Email" type="text" placeholder="電子郵件">
+                    <input name="Email" type="text" placeholder="電子郵件" id="test">
                     <input name="Password" type="password" placeholder="密碼">
                     <input name="Name" type="text" placeholder="姓名">
                     <input name="Phone" type="text" placeholder="手機號碼">
-                    <input type="submit" value="送出">
+                    <input type="submit" value="送出" id="register"><br>
+                    <a style="color:red">@ViewBag.msg1</a>
                 </div>
             </form>
         </div>
@@ -59,8 +61,8 @@
         $(document).ready(function () {
             $('.login-info-box').fadeOut();
             $('.login-show').addClass('show-log-panel');
-        });
-
+         });
+        
 
         $('.login-reg-panel input[type="radio"]').on('change', function () {
             if ($('#log-login-show').is(':checked')) {

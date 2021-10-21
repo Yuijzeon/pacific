@@ -34,7 +34,7 @@ namespace 第二組期末專題.Controllers
                 註冊日期 = DateTime.Parse("2021-10-18 16:30:00")
             }).SetBy欄位(new[] {"大頭貼", "手機" , "註冊日期" });
             */
-            
+            ViewBag.Name = Session["Name"];
             return View();
         }
 
