@@ -31,7 +31,7 @@ namespace 第二組期末專題.Controllers
             x.密碼 = Request.Form["Password"];
             x.名字 = Request.Form["Name"];
             x.手機 = Request.Form["Phone"];
-            x.註冊日期 = DateTime.Now;
+            x.註冊日期 = DateTime.Now.ToString("yyyy-MM-dd");
             x.點數 = 1;
             new 用戶CRUD().註冊(x);
             return RedirectToAction("Index", "Home");
