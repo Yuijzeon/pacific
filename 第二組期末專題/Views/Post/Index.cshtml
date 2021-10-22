@@ -1,6 +1,7 @@
-﻿
+﻿@model 第二組期末專題.ViewModels.Post
+
 @{
-    ViewBag.Title = @ViewBag.文章.標題;
+    ViewBag.Title = @Model.文章.標題;
     ViewBag.isScroll = "true";
 }
 
@@ -9,8 +10,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center">
-                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">@ViewBag.文章.Get作者().名字 <i class="fa fa-chevron-right"></i></a></span></p>
-                <h1 class="mb-0 bread">@ViewBag.文章.標題</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">@Model.文章.Get作者().名字 <i class="fa fa-chevron-right"></i></a></span></p>
+                <h1 class="mb-0 bread">@Model.文章.標題</h1>
             </div>
         </div>
     </div>
@@ -23,10 +24,15 @@
                 <div id="文章內容"></div>
                 <div class="tag-widget post-tag-container mb-5 mt-5">
                     <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">Life</a>
-                        <a href="#" class="tag-cloud-link">Sport</a>
-                        <a href="#" class="tag-cloud-link">Tech</a>
-                        <a href="#" class="tag-cloud-link">Travel</a>
+
+                        @{
+                            var Hashtag清單 = Model.文章.GetHashtag清單();
+                            for (int i = 0; i < Hashtag清單.Count; i++)
+                            {
+                                <a href="/Search/@Hashtag清單[i].名稱" class="tag-cloud-link">@Hashtag清單[i].名稱</a>
+                            }
+                        }
+
                     </div>
                 </div>
 
@@ -241,7 +247,7 @@
 
 <script src="~/Content/js/QuillDeltaToHtmlConverter.bundle.js"></script>
 <script>
-    var delta = JSON.parse(String.raw`@Html.Raw(ViewBag.文章.內容)`);
+    var delta = JSON.parse(String.raw`@Html.Raw(@Model.文章.內容)`);
     var converter = new window.QuillDeltaToHtmlConverter(delta.ops);
     document.getElementById('文章內容').innerHTML = converter.convert();
     //Quill 編輯器的資料格式 Delta 以 JSON 格式運作
@@ -249,14 +255,7 @@
     //這裡渲染器用的是 QuillDeltaToHtmlConverter
     //https://github.com/nozer/quill-delta-to-html
 
-    @{
-        List<string> Hashtags = new List<string>();
-        for (int i = 0; i < ViewBag.文章.GetHashtag清單().Count; i++)
-        {
-            Hashtags.Add(ViewBag.文章.GetHashtag清單()[i].名稱);
-        }
-        ViewBag.TEST = String.Join(", ", Hashtags);
-    }
+
     console.log('@ViewBag.TEST');
 
     @if (ViewBag.旅程包 != null)
