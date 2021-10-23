@@ -12,22 +12,8 @@ namespace 第二組期末專題.Controllers
     public class PostController : Controller
     {
         // GET: Post
-        public ActionResult Index(int? id, int? pack)
-        {
-            if (id == null)
-                return Redirect("/Search");
 
-            Post 貼文 = new Post();
-            貼文.文章 = new 任務SelectById<文章>((int)id).Get();
-
-            if (pack != null)
-                貼文.旅程包 = new 任務SelectById<旅程包>((int)pack).Get();
-            
-
-            return View(貼文);
-        }
-
-        public ActionResult article()
+        public ActionResult Index()
         {
             return View();
         }

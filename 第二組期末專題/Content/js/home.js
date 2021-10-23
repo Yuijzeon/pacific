@@ -25,7 +25,7 @@ function 生成精選旅程(文章s) {
         var html = `
             <div class="item">
                 <div class="blog-entry justify-content-end">
-                    <a href="../Post?id=${文章.Id}" class="block-20"
+                    <a href="../Article?id=${文章.Id}" class="block-20"
                         style="background-image: url('../../Content/images/${文章.路徑}');">
                     </a>
                     <div class="text">
