@@ -10,8 +10,24 @@
 }
 
 <head>
-    <link href="~/Content/css/post.css" rel="stylesheet" />
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="~/Content/css/post.css" />
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" />
+    <link rel="stylesheet" href="~/Content/css/jquery-ui-1.13.0.custom/jquery-ui.css" />
+    <script src="https://kit.fontawesome.com/af1cff1fa5.js" crossorigin="anonymous"></script>
+    <script src="~/Content/js/jquery-3.6.0.min.js"></script>
+    <script src="~/Content/js/jquery-ui.min.js"></script>
+    <script src="~/Content/js/jquery.ui.datepicker-zh-TW.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("input[name=startDate]").datepicker({
+                dateFormat: 'yy/mm/dd',
+                buttonText: "請挑選開始日期",
+                changeYear: true,
+                changeMonth: true
+            });
+        });
+    </script>
+
 </head>
 <body>
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
@@ -30,12 +46,25 @@
         <div class="container">
             <div class="row p_row">
                 <div class="col col-md-3 my-3">
-                    <h5>請輸入旅程標題</h5>
-                    <input id="pTitle" type="text" placeholder=" 旅遊行程標題" size="22" />
-
+                    <div class="postform_L">
+                        <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
+                        <input id="pTitle" type="text" placeholder=" 旅遊行程標題" size="22" />
+                    </div>
+                    <div class="postform_L">
+                        <label class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
+                        <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="22" />
+                    </div>
+                    <div class="postform_L">
+                        <label class="postLabel" for="pEndDate"><i class="far fa-calendar-minus"></i>請選擇結束日期</label>
+                        <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="22" />
+                    </div>
+                    <div class="postform_L">
+                        <label class="postLabel" for="ppNumber"><i class="far fa-calendar-minus"></i>接待人數</label>
+                        <input id="ppNumber" type="text" name="ppNumber" class="pFormInput" size="22" />
+                    </div>
                 </div>
                 <div id="form-container" class="col col-md-9">
-                    <form class="postform col">
+                    <form class="postform_R col">
                         <section class="uploadImg"></section>
                         <button class="change-link">上傳照片 / Upload picture</button>
                         <div class="form-group">

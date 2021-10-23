@@ -8,7 +8,7 @@
 }
 
 
-.postform {
+.postform_R {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -23,19 +23,6 @@
     background-position: center;
     z-index:0;
 }
-
-.uploadImg:hover{
-    filter:blur(1px);
-}
-/*img{
-    width:100%;
-    height:auto;
-    position:relative;
-}
-
-img:hover {
-    filter:opacity(50%);
-}*/
 
 
 .row.form-group {
@@ -85,4 +72,22 @@ button.change-link {
     font-size:1rem;
     letter-spacing:0.5px;
 
+}
+
+.postform_L{
+    margin:0 0 1.5rem 0;
+}
+
+.postLabel {
+    letter-spacing: 0.3px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.fas{
+    padding:0 8px 1px 0;
+}
+.far {
+    padding: 0 8px 1px 0;
 }
