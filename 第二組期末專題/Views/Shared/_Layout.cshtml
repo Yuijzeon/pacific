@@ -48,7 +48,7 @@
                     <li class="nav-item"><a href="/Article" class="nav-link">興趣</a></li>
                     <li class="nav-item"><a href="/Article?id=2" class="nav-link">關於我們</a></li>
                     <li class="nav-item"><a href="/Post" class="nav-link">Post</a></li>
-                    <li class="nav-item"><a href="/SignUp" class="nav-link" id="Login">登入</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" id="Login">登入</a></li>
                 </ul>
             </div>
         </div>
@@ -184,7 +184,18 @@
     </script>
 
     @RenderSection("HtmlBodyEnd", required: false)
-
+<script>
+    var login = document.getElementById("Login");
+    login.addEventListener("click", function () {
+        if (login.text == "登入") {
+            document.location.href = "/SignUp";
+        }
+        else {
+            document.location.href = "#";
+        }
+    });
+    
+</script>
 </body>
 
 </html>

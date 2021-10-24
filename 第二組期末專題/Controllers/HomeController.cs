@@ -20,7 +20,7 @@ namespace 第二組期末專題.Controllers
             {
                 查詢字串 = 我的查詢,
                 注入參數 = (指令) =>
-                {
+                {   
                     指令.Parameters.AddWithValue("@1", "AAA");
                     指令.Parameters.AddWithValue("@2", "BBB");
                     指令.Parameters.AddWithValue("@3", "CCC");
