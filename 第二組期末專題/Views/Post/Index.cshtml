@@ -38,7 +38,6 @@
             //    max: 10 , min: 1
             //});
         });
-        
     </script>
 }
 
@@ -56,11 +55,11 @@
 
 <section class="ftco-section">
     <div class="container">
-        <div class="row p_row">
+        <form class="row p_row">
             <div class="postform col col-12 col-md-6 col-lg-3 my-3">
                 <div class="postform_L">
                     <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
-                    <input id="pTitle" type="text" placeholder=" 旅遊行程標題" size="22" />
+                    <input id="pTitle" type="text" name="title" placeholder=" 旅遊行程標題" size="22" />
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
@@ -76,7 +75,7 @@
                 </div>
             </div>
             <div id="form-container" class="col col-12 col-md-6 col-lg-9 ">
-                <form class="postform_R col">
+                <div class="postform_R col">
                     <section class="uploadImg"></section>
                     <button class="change-link">上傳照片 / Upload picture</button>
                     <div class="form-group">
@@ -98,21 +97,19 @@
                             @*Hashtags放這邊*@
 
                         </div>
-                        <script>
+                        @*<script>
                             function function1() {
                                 document.getElementById("btn1").style.backgroundColor = "black";
                                 document.getElementById("btn1").style.color = "white";
                             }
-                        </script>
+                        </script>*@
                     </div>
                     <div class="row">
                         <button class="btn btn-primary" type="submit">分享旅程</button>
                     </div>
-                </form>
+                </div>
             </div>
-
-
-        </div>
+        </form>
         @*<div class="row mt-5">
                 <div class="col text-center">
                     <div class="block-27">
@@ -172,39 +169,51 @@
             //var about = document.querySelector('input[name=about]');
             //about.value = JSON.stringify(quill.getContents());
 
-            //console.log("Submitted", $(form).serialize(), $(form).serializeArray());
+            console.log("Submitted", $(form).serialize(), $(form).serializeArray());
 
             // No back end to actually submit to!
-            alert('Open the console to see the submit data!')
+            // alert('Open the console to see the submit data!')
+
+            $.ajax({
+                type: 'Post',
+                url: '../Post/New',
+                data: $(form).serialize()
+            }).done(function (msg) {
+                alert(msg);
+            });
+
             return false;
         };
 
-                // 取得 Hashtags
-                //$(document).ready(function () {
-                //    $.ajax({
-                //        type: 'GET',
-                //        url: '../Post/GetHashtags'
-                //    }).done(function (Hashtags) {
-                //        var html = '';
-                //        for (var Hashtag of Hashtags) {
-                //            console.log(Hashtag);
-                //            html +=
-                //                `<input type="button" class="post-btn btn-outline-dark" hashtagId="${Hashtag.Id}" category="${Hashtag.類別}" value="${Hashtag.名稱}" />`;
-                //        }
-                //        $('#Hashtag選擇區').append(html);
+        // 取得 Hashtags
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '../Post/GetHashtags'
+            }).done(function (Hashtags) {
+                var html = '';
+                for (var Hashtag of Hashtags) {
+                    html +=
+                        `<input type="ckeckbox" class="post-btn btn-outline-dark" hashtagId="${Hashtag.Id}" category="${Hashtag.類別}" value="${Hashtag.名稱}" />`;
+                }
+                $('#Hashtag選擇區').append(html);
 
-                //        $('#Hashtag選擇區 input').click(function () {
-                //            var Hashtag類別 = $(this).attr('category');
-                //            switch (Hashtag類別) {
-                //                case '愛好':
-                //                    $(this).toggleClass('btn-danger');
-                //                    break;
-                //                case '地區':
-                //                    $(this).toggleClass('btn-success');
-                //                    break;
-                //            }
-                //        });
-                //    });
-                //});
+                $('#Hashtag選擇區 input').click(function () {
+                    $(this).attr('name', function (index, attr) {
+                        return attr == 'Hashtag' ? null : 'Hashtag';
+                    });
+
+                    var Hashtag類別 = $(this).attr('category');
+                    switch (Hashtag類別) {
+                        case '愛好':
+                            $(this).toggleClass('btn-danger');
+                            break;
+                        case '地區':
+                            $(this).toggleClass('btn-success');
+                            break;
+                    }
+                });
+            });
+        });
     </script>
 }
