@@ -79,10 +79,11 @@
                             <div class="postIntro">▋ 詳細地址</div>
                             <input class="form-control" name="display_name" type="text" placeholder=" 請輸入詳細地址">
                         </div>
-                        <div class="form-group">
+                        <div id="Hashtag選擇區" class="form-group">
                             <div class="postIntro"> Hashtags</div>
-                            <button id="btn1" type="button" class="post-btn btn-outline-dark" onclick="function1()"># 私人景點</button>
-                            <button type="button" class="post-btn btn-outline-dark"># 自然景點</button>
+
+                            @*Hashtags放這邊*@
+
                         </div>
                         <script>
                             function function1() {
@@ -164,5 +165,33 @@
             alert('Open the console to see the submit data!')
             return false;
         };
+
+        // 取得 Hashtags
+        $(document).ready(function () {
+            $.ajax({
+                type: 'GET',
+                url: '../Post/GetHashtags'
+            }).done(function (Hashtags) {
+                var html = '';
+                for (var Hashtag of Hashtags) {
+                    console.log(Hashtag);
+                    html +=
+                        `<input type="button" class="post-btn btn-outline-dark" hashtagId="${Hashtag.Id}" category="${Hashtag.類別}" value="${Hashtag.名稱}" />`;
+                }
+                $('#Hashtag選擇區').append(html);
+
+                $('#Hashtag選擇區 input').click(function () {
+                    var Hashtag類別 = $(this).attr('category');
+                    switch (Hashtag類別) {
+                        case '愛好':
+                            $(this).toggleClass('btn-danger');
+                            break;
+                        case '地區':
+                            $(this).toggleClass('btn-success');
+                            break;
+                    }
+                });
+            });
+        });
     </script>
 }
