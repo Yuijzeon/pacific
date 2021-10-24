@@ -1,12 +1,19 @@
-﻿#form-container {
+﻿
+#form-container {
     width: 500px;
     height:auto;
 }
 
-.p_row {
+
+.p_row{
+    display:flex;
+    flex-wrap:wrap;
     margin-top: 15px;
 }
 
+.col{
+    flex-grow:1;
+}
 
 .postform_R {
     display: flex;
@@ -83,11 +90,34 @@ button.change-link {
     color: black;
     font-size: 1rem;
     font-weight: bold;
+    padding: 0 18px 0 0;
 }
 
-.fas{
-    padding:0 8px 1px 0;
+.postLabelPeo {
+    letter-spacing: 0.3px;
+    color: black;
+    font-size: 1rem;
+    font-weight: bold;
+    padding:0 60px 0 0;
+}
+
+.fas {
+    padding: 0 8px 1px 0;
 }
 .far {
     padding: 0 8px 1px 0;
+}
+
+@media screen and (max-width:720px){
+    .row{
+        display:flex;
+    }
+    .postform {
+        align-content:center;
+    }
+    .postform_L{
+        padding:0 1.8rem;
+        margin:0 0 1.5rem 0;
+        align-items:center;
+    }
 }
