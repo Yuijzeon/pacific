@@ -2,7 +2,10 @@
 @{
     ViewBag.Title = "測試頁面";
     ViewBag.isScroll = "true";
-    ViewBag.myJS = "test.js";
+}
+
+@section HtmlBodyEnd{
+    <script src="~/Content/js/test.js"></script>
 }
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">

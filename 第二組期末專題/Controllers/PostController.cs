@@ -17,5 +17,12 @@ namespace 第二組期末專題.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public string Index(FormCollection post)
+        {
+            var sss = post[""];
+            return "<html></html>";
+        }
     }
 }

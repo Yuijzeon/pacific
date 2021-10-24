@@ -24,13 +24,7 @@
     <link rel="stylesheet" href="~/Content/css/style.css">
     <link rel="stylesheet" href="~/Content/css/popular.css">
 
-    @if (ViewBag.MyCSSs != null)
-    {
-        foreach (string css in ViewBag.MyCSSs)
-        {
-            @Html.Raw(css);
-        }
-    }
+    @RenderSection("HtmlHeadEnd", required: false)
 </head>
 
 <body>
@@ -183,13 +177,9 @@
             }
             else { };
         })
-
     </script>
 
-    @if (ViewBag.myJS != null)
-    {
-        <script src="~/Content/js/@ViewBag.myJS"></script>
-    }
+    @RenderSection("HtmlBodyEnd", required: false)
 
 </body>
 
