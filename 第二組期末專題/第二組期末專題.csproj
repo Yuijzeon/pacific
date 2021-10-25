@@ -126,6 +126,7 @@
     <Content Include="Content\images\bg_3.jpg" />
     <Content Include="Content\images\bg_4.jpg" />
     <Content Include="Content\images\bg_5.jpg" />
+    <Content Include="Content\images\calendar.png" />
     <Content Include="Content\images\destination-1.jpg" />
     <Content Include="Content\images\destination-10.jpg" />
     <Content Include="Content\images\destination-11.jpg" />
