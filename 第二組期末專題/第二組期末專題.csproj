@@ -232,6 +232,7 @@
     <Compile Include="Models\資料庫\資料庫任務.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Post.cs" />
+    <Compile Include="ViewModels\註冊頁面.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
