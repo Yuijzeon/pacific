@@ -60,21 +60,21 @@
         $(document).ready(function () {
             $('.login-info-box').fadeOut();
             $('.login-show').addClass('show-log-panel');
-            var email = $("#test").attr("value");
-            if (email == "") {
-                window.alert("請輸入電子郵件");
-                $("#test").focus();
-                return false;
-            }
-            else {
-                var emailRegxp = /[\w-]+@@:([\w-]+\.)+[\w-]+/;
-                if (emailRegxp.test(email) != true) {
-                    alert("電子信箱格式錯誤");
-                    $("#test").focus();
-                    $("#test").select();
-                    return false;
-                }
-            }
+            //var email = $("#test").attr("value");
+            //if (email == "") {
+            //    window.alert("請輸入電子郵件");
+            //    $("#test").focus();
+            //    return false;
+            //}
+            //else {
+            //    var emailRegxp = /[\w-]+@@:([\w-]+\.)+[\w-]+/;
+            //    if (emailRegxp.test(email) != true) {
+            //        alert("電子信箱格式錯誤");
+            //        $("#test").focus();
+            //        $("#test").select();
+            //        return false;
+            //    }
+            //}
          });
 
 

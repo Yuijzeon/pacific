@@ -10,6 +10,7 @@ namespace 第二組期末專題.Models
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "不可為空白")]
+        [EmailAddress(ErrorMessage = "Email格式錯誤")]
         public string 帳號 { get; set; }
         [Required(ErrorMessage = "不可為空白")]
         public string 密碼 { get; set; }
