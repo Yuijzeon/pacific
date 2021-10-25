@@ -174,28 +174,27 @@
         };
 
         /*如果NAME 標籤列登入換成NAME*/
-        var Login = '@ViewBag.Name';
+        var Login = '@Session["Name"]';
         $(function () {
             if (Login != "") {
-                $("#Login").text("@ViewBag.Name");
+                $("#Login").text("@Session["Name"]");
             }
             else { };
         })
+
+        var login = document.getElementById("Login");
+        login.addEventListener("click", function () {
+            if (login.text == "登入") {
+                document.location.href = "/SignUp";
+            }
+            else {
+                document.location.href = "/Member";
+            }
+        });
     </script>
 
     @RenderSection("HtmlBodyEnd", required: false)
-<script>
-    var login = document.getElementById("Login");
-    login.addEventListener("click", function () {
-        if (login.text == "登入") {
-            document.location.href = "/SignUp";
-        }
-        else {
-            document.location.href = "/Member";
-        }
-    });
-    
-</script>
+
 </body>
 
 </html>
