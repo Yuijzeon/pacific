@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using 第二組期末專題.Models;
@@ -40,10 +41,17 @@ namespace 第二組期末專題.Controllers
                 return RedirectToAction("Index", "SignUp");
             }
             else {
-                new 用戶CRUD().註冊(x);
-                Session["Name"] = x.名字;
-                return RedirectToAction("Index", "Home");
-            }
+                string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+                         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+                         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})";
+                Regex re = new Regex(emailRegex);
+                if (!re.IsMatch(x.帳號))
+                    {
+                        Session["msg"] = "Email格式錯誤";
+                        return RedirectToAction("Index", "SignUp");
+                }
+            } 
+            return RedirectToAction("Index", "Home");
         }
 
         //新增用戶標籤
