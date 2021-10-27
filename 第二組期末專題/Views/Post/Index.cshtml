@@ -67,7 +67,7 @@
                             <input class="form-control" name="display_name" type="text" placeholder=" 請輸入詳細地址">
                         </div>
                         <div id="Hashtag選擇區" class="form-group">
-                            <div class="postIntro"> Hashtags</div>
+                            <div class="postIntro">Hashtags</div>
 
                             @*Hashtags放這邊*@
 
@@ -185,33 +185,44 @@
         };
 
         // 取得 Hashtags
+        //$(document).ready(function () {
+        //    $.ajax({
+        //        type: 'GET',
+        //        url: '../Post/GetHashtags'
+        //    }).done(function (Hashtags) {
+        //        var html = '';
+        //        for (var Hashtag of Hashtags) {
+        //            html +=
+        //                `<input type="ckeckbox" class="post-btn btn-outline-dark border:none" hashtagId="${Hashtag.Id}" category="${Hashtag.類別}" value="${Hashtag.名稱}" />`;
+        //        }
+        //        $('#Hashtag選擇區').append(html);
+
+        //        $('#Hashtag選擇區 input').click(function () {
+        //            $(this).attr('name', function (index, attr) {
+        //                return attr == 'Hashtag' ? null : 'Hashtag';
+        //            });
+
+        //            var Hashtag類別 = $(this).attr('category');
+        //            switch (Hashtag類別) {
+        //                case '愛好':
+        //                    $(this).toggleClass('btn-warning');
+        //                    break;
+        //                case '地區':
+        //                    $(this).toggleClass('btn-info');
+        //                    break;
+        //            }
+        //        });
+        //    });
+        //});
+    </script>
+    <script src="~/Content/js/Hashtag群組.js"></script>
+    <script>
         $(document).ready(function () {
             $.ajax({
                 type: 'GET',
-                url: '../Post/GetHashtags'
-            }).done(function (Hashtags) {
-                var html = '';
-                for (var Hashtag of Hashtags) {
-                    html +=
-                        `<input type="ckeckbox" class="post-btn btn-outline-dark border:none" hashtagId="${Hashtag.Id}" category="${Hashtag.類別}" value="${Hashtag.名稱}" />`;
-                }
-                $('#Hashtag選擇區').append(html);
-
-                $('#Hashtag選擇區 input').click(function () {
-                    $(this).attr('name', function (index, attr) {
-                        return attr == 'Hashtag' ? null : 'Hashtag';
-                    });
-
-                    var Hashtag類別 = $(this).attr('category');
-                    switch (Hashtag類別) {
-                        case '愛好':
-                            $(this).toggleClass('btn-warning');
-                            break;
-                        case '地區':
-                            $(this).toggleClass('btn-info');
-                            break;
-                    }
-                });
+                url: '/Post/GetHashtags'
+            }).done(function (hashtags) {
+                new Hashtag群組(hashtags, { 編輯模式: true }).at(document.getElementById('Hashtag選擇區'));
             });
         });
     </script>

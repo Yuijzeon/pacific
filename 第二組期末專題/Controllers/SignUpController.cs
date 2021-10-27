@@ -48,7 +48,7 @@ namespace 第二組期末專題.Controllers
                 if (!re.IsMatch(x.帳號))
                     {
                         Session["msg"] = "Email格式錯誤";
-                        return View("Index", );
+                        return View("Index");
                     }
             } 
             return RedirectToAction("Index", "Home");
