@@ -17,11 +17,6 @@ namespace 第二組期末專題.Controllers
             return View();
         }
 
-        public JsonResult GetHashtags()
-        {
-            return Json(new 任務SelectList<Hashtag>().Get(), JsonRequestBehavior.AllowGet);
-        }
-
         public string New()
         {
             try
@@ -49,6 +44,34 @@ namespace 第二組期末專題.Controllers
             }
 
             return "增加成功";
+        }
+
+        public JsonResult GetHashtags()
+        {
+            return Json(new 任務SelectList<Hashtag>().Get(), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AddHashtag()
+        {
+            object result;
+            try
+            {
+                HttpRequestBase post = Request;
+                // 將回傳的東西存進資料庫
+                Hashtag 新Hashtag = new Hashtag()
+                {
+                    名稱 = post["名稱"],
+                    類別 = post["類別"]
+                };
+                new 任務InsertInto<Hashtag>(新Hashtag).Set();
+
+                result = new 資料庫任務("SELECT * FROM [Hashtag] WHERE [名稱]=@NAME").注入參數by(new {NAME = post["名稱"] }).Get();
+            }
+            catch (Exception e)
+            {
+                return Json(e, JsonRequestBehavior.AllowGet);
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

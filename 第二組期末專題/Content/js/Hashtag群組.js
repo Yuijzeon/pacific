@@ -1,10 +1,11 @@
 class Hashtag群組 {
     目標容器;
     編輯模式 = false;
+    name = 'hashtags';
     hashtags;
 
     onchange = () => {
-        var 隱藏的input = this.目標容器.querySelector('input[name="hashtags"]');
+        var 隱藏的input = this.目標容器.querySelector(`input[name="${this.name}"]`);
         隱藏的input.setAttribute('value', this.value);
         console.log(this.value);
     }
@@ -21,7 +22,7 @@ class Hashtag群組 {
     隱藏的input = () => {
         var 隱藏的input = document.createElement('input');
         隱藏的input.type = 'hidden';
-        隱藏的input.setAttribute('name', 'hashtags');
+        隱藏的input.setAttribute('name', this.name);
         return 隱藏的input;
     };
 
@@ -78,6 +79,7 @@ class Hashtag群組 {
     類別風格 = {
         "愛好": (標籤) => {
             標籤.classList.add('btn-warning');
+            標籤.style.color = 'Black';
             return 標籤;
         },
         "地區": (標籤) => {
@@ -108,6 +110,7 @@ class Hashtag群組 {
         var 標籤群組 = this.標籤群組();
         var 選擇器 = this.選擇器();
         var 選項表 = this.選項表();
+        var 視窗 = this.#gen視窗();
 
         for (var hashtag of this.hashtags) {
             var 選項 = this.選項(hashtag);
@@ -119,6 +122,7 @@ class Hashtag群組 {
         選擇器.appendChild(選項表);
         標籤群組.appendChild(選擇器);
         目標容器.appendChild(標籤群組);
+        目標容器.appendChild(視窗);
         目標容器.appendChild(隱藏的input);
     }
 
@@ -135,7 +139,13 @@ class Hashtag群組 {
         };
 
         var when無選中項 = () => {
-            alert('無此Hashtag: ' + 選擇器.value);
+            jQuery.noConflict();
+            $('#createHashtag').modal('show');
+            $('#hashtag-name').val(選擇器.value);
+            for (var 類別 of Object.keys(this.類別風格)) {
+                console.log(類別);
+                $('#createHashtagSelect').append($('<option>').text(類別))
+            }
         };
 
         if (選中項) {
@@ -149,6 +159,59 @@ class Hashtag群組 {
 
         選擇器.value = '';
     };
+
+    #gen視窗() {
+        var modal = document.createElement('div');
+        modal.innerHTML = `
+            <div class="modal fade" id="createHashtag" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="createHashtagLabel">新增 Hashtag</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Hashtag 名稱:</label>
+                      <input type="text" class="form-control" id="hashtag-name">
+                      <label for="recipient-name" class="col-form-label">Hashtag 類別:</label>
+                      <select class="form-control" id="createHashtagSelect"></select>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="createHashtagSubmit">新增</button>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        var that = this;
+        modal.querySelector('#createHashtagSubmit').onclick = function() {
+            $.ajax({
+                type: 'POST',
+                url: '/Post/AddHashtag',
+                data: {
+                    名稱: document.getElementById('hashtag-name').value,
+                    類別: document.getElementById('createHashtagSelect').value
+                }
+            }).done(function (hashtag) {
+                var 標籤群組 = that.目標容器.querySelector('div.tagcloud');
+                var 選擇器 = that.目標容器.querySelector('input');
+
+                var 新選項 = that.選項(hashtag[0]);
+                新選項.setAttribute('disabled', 'disabled');
+                that.目標容器.querySelector('datalist[id="hashtags"]').appendChild(新選項);
+
+                var 標籤 = that.#gen可移除標籤(hashtag[0]);
+                標籤群組.insertBefore(標籤, 選擇器);
+
+                $('#createHashtag').modal('hide');
+            });
+        };
+        return modal.firstElementChild;
+    }
 
     #attributeToHashtag(element) {
         return {
