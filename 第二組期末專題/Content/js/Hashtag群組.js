@@ -129,7 +129,6 @@ class Hashtag群組 {
                 }))[0];
 
                 hashtags.push(新Hashtag);
-                console.log(新Hashtag);
                 input選項列表.append(convertToElement(this.Input選項(新Hashtag)));
                 input輸入框.value = 新Hashtag.名稱;
                 hashtag存在();
