@@ -4,20 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using 第二組期末專題.Models;
+using 第二組期末專題.ViewModels;
 
 namespace 第二組期末專題.Controllers
 {
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult Index()
+        public ActionResult Index(int? user)
         {
-            string str = "SELECT * FROM [文章]";
-            任務SelectList<文章> 新任務 = new 任務SelectList<文章>(str);
+            if (user != null)
+            {
+                var 選擇的用戶 = new 任務SelectById<用戶>((int)user).Get();
 
-            List<文章> 文章列表 = 新任務.Get();
+                return View(new Search()
+                {
+                    搜尋結果 = 選擇的用戶.Get創作文章清單()
+                });
+            }
 
-            return View(文章列表);
+            List<文章> 搜尋結果文章列表 = new 任務SelectList<文章>("SELECT * FROM [文章]").Get();
+
+            return View(new Search() {
+                搜尋結果 = 搜尋結果文章列表
+            });
         }
     }
 }

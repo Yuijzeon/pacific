@@ -222,7 +222,7 @@
                 type: 'GET',
                 url: '/Post/GetHashtags'
             }).done(function (hashtags) {
-                new Hashtag群組(hashtags, { 編輯模式: true }).at(document.getElementById('Hashtag選擇區'));
+                new Hashtag群組(hashtags, { 編輯模式: false }).at('#Hashtag選擇區');
             });
         });
     </script>
