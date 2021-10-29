@@ -50,6 +50,17 @@
                     <li class="nav-item"><a href="/Post" class="nav-link">Post</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" id="Login">登入</a></li>
                 </ul>
+                <div class="dropdown" id="UserMenu">
+                    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    @{ 
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
+                        <a class="dropdown-item" href="#">我的行程</a>
+                        <a class="dropdown-item" href="#">登出</a>
+                    </div>
+                      }
+                </div>
             </div>
         </div>
     </nav>
@@ -176,10 +187,12 @@
         /*如果NAME 標籤列登入換成NAME*/
         var Login = '@Session["Name"]';
         $(function () {
+            $("#dropdownMenuButton").hide();
             if (Login != "") {
-                $("#Login").text("@Session["Name"]");
+                $("#Login").hide();
+                $("#dropdownMenuButton").show();
+                $("#dropdownMenuButton").text("@Session["Name"]");
             }
-            else { };
         })
 
         var login = document.getElementById("Login");

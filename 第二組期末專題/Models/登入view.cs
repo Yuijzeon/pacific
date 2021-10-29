@@ -10,5 +10,6 @@ namespace 第二組期末專題.Models
         public string 帳號 { get; set; }
 
         public string 密碼 { get; set; }
+
     }
 }

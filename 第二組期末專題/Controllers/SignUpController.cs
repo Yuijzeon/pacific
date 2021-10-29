@@ -85,7 +85,7 @@ namespace 第二組期末專題.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //登入比對
+        //登入
         [HttpPost]
         public ActionResult index()
         {
@@ -99,11 +99,9 @@ namespace 第二組期末專題.Controllers
                 ViewBag.msg = "帳號密碼錯誤";
                 return View();
             }
-      
-            string Name = datas[0].名字;
-            ViewBag.Name = Name;
+            
             Session["ID"] = datas[0].Id;
-            Session["Name"] = Name;
+            Session["Name"] = datas[0].名字;
             return RedirectToAction("Index", "Home");
         }
     }

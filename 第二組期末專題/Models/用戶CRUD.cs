@@ -51,5 +51,15 @@ namespace 第二組期末專題.Models
         {
             return queryBySql("SELECT *  FROM 用戶 WHERE 帳號 LIKE"+" '"+帳號 +"' " +"AND 密碼  LIKE"+" '"+密碼+"'");
         }
+
+        //會員資料編輯
+        public 用戶 queryById(int fid)
+        {
+            string sql = "SELECT * FROM 用戶 WHERE Id = " + fid;
+            List<用戶> x = queryBySql(sql);
+            if (x.Count == 0)
+                return null;
+            return x[0];
+        }
     }
 }
