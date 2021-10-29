@@ -44,8 +44,7 @@ class Hashtag群組 {
             $.ajax({
                 type: 'POST',
                 url: '/Post/AddHashtag',
-                data: newHashtag,
-                async: false
+                data: newHashtag
             }).done((hashtag) => {
                 resolve(hashtag);
             });
@@ -124,12 +123,13 @@ class Hashtag群組 {
 
         新hashtagSubmit.onclick = () => {
             (async () => {
-                var 新Hashtag = await this.新增Hashtag({
+                var 新Hashtag = (await this.新增Hashtag({
                     名稱: 新hashtag名稱.value,
                     類別: 新hashtag類別.value
-                });
+                }))[0];
 
                 hashtags.push(新Hashtag);
+                console.log(新Hashtag);
                 input選項列表.append(convertToElement(this.Input選項(新Hashtag)));
                 input輸入框.value = 新Hashtag.名稱;
                 hashtag存在();
