@@ -36,7 +36,7 @@ namespace 第二組期末專題.Models
                         密碼 = reader["密碼"].ToString(),
                         名字 = reader["名字"].ToString(),
                         手機 = reader["手機"].ToString(),
-                        //註冊日期 = (DateTime)reader["註冊日期"],
+                        註冊日期 = (string)reader["註冊日期"],
                         大頭貼 = reader["大頭貼"].ToString(),
                         點數 =(int)reader["點數"]
                     }); 
@@ -52,7 +52,7 @@ namespace 第二組期末專題.Models
             return queryBySql("SELECT *  FROM 用戶 WHERE 帳號 LIKE"+" '"+帳號 +"' " +"AND 密碼  LIKE"+" '"+密碼+"'");
         }
 
-        //會員資料編輯
+        //登入中會員資料抓取
         public 用戶 queryById(int fid)
         {
             string sql = "SELECT * FROM 用戶 WHERE Id = " + fid;
@@ -61,5 +61,7 @@ namespace 第二組期末專題.Models
                 return null;
             return x[0];
         }
+
+        //更新會員資料
     }
 }
