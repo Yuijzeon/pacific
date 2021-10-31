@@ -108,7 +108,11 @@ button.change-link {
     padding: 0 8px 1px 0;
 }
 
-@media screen and (max-width:720px){
+.cbxType{
+    color:black;
+}
+
+@media screen and (max-width:720px) {
     .row{
         display:flex;
     }
