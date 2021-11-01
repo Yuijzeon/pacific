@@ -20,6 +20,24 @@
             height: 45px;
             width: 347px
         }
+
+        .register-show input[type="email"] {
+            width: 100%;
+            display: block;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #b5b5b5;
+            outline: none;
+        }
+
+        .login-show input[type="email"] {
+            width: 100%;
+            display: block;
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #b5b5b5;
+            outline: none;
+        }
     </style>
 </head>
 
@@ -51,7 +69,7 @@
             <form method="post" action="~/SignUp/註冊">
                 <div class="register-show">
                     <h2>註冊</h2>
-                        <input name="Email" type="email" id="test" placeholder="電子郵件" required />
+                        <input name="Email" size="40" type="email" id="test" placeholder="電子郵件" required />
                         <input name="Password" type="password" placeholder="密碼" required/>
                         <input name="Name" type="text" placeholder="姓名" required/>
                         <input name="Phone" type="text" placeholder="手機號碼" required/>
