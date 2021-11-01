@@ -112,6 +112,15 @@ button.change-link {
     color:black;
 }
 
+.pCbx{
+    padding:0 1rem;
+}
+
+
+@media screen and (max-width:1182px) {
+    
+}
+
 @media screen and (max-width:720px) {
     .row{
         display:flex;
@@ -124,4 +133,5 @@ button.change-link {
         margin:0 0 1.5rem 0;
         align-items:center;
     }
+    
 }

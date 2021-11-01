@@ -30,19 +30,25 @@
 
 <section class="ftco-section">
     <div class="container">
-        <form class="row p_row">
+        <form class="row p_row" id="postform">
             <div class="postform col col-12 col-md-6 col-lg-3 my-3">
+                
+                    <input type="hidden" name="pId" value="1"/>
                 <div class="postform_L">
                     <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
-                    <input id="pTitle" type="text" name="ptitle" placeholder=" 旅遊行程標題" size="22" />
+                    <input id="pTitle" type="text" name="pTitle" placeholder=" 旅遊行程標題" size="22" />
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
-                    <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="18" />
+                    <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="16" />
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pEndDate"><i class="far fa-calendar-minus"></i>請選擇結束日期</label>
-                    <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="18" />
+                    <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="16" />
+                </div>
+                <div class="postform_L">
+                    <label class="postLabelPeo" for="pTimezone"><i class="fas fa-user-check"></i>時段</label>
+                    <input id="pTimezone" type="text" name="pTimezone" class="pFormInput" placeholder=" 例如 : 12:00~13:00 " size="22" />
                 </div>
                 <div class="postform_L">
                     <label class="postLabelPeo" for="pplNumber"><i class="fas fa-user-check"></i>接待人數</label>
@@ -50,9 +56,9 @@
                 </div>
                 <div class="postform_L">
                     <label class="postLabel"><i class="fas fa-user-check"></i>活動類型</label><br />
-                    <label class="cbxType" for="typeRoom">出租房間</label> <input id="typeRoom" type="checkbox" name="ptype" class="pFormInput" /><br />
-                    <label class="cbxType" for="typeFood">共享美食</label> <input id="typeFood" type="checkbox" name="ptype" class="pFormInput" /><br />
-                    <label class="cbxType" for="typeTrip">分享旅程</label> <input id="typeTrip" type="checkbox" name="ptype" class="pFormInput" /><br />
+                    <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInput" /> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
+                    <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInput" /> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
+                    <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInput" /> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
                 </div>
             </div>
             <div id="form-container" class="col col-12 col-md-6 col-lg-9 ">
@@ -62,7 +68,7 @@
                     <div class="form-group">
                         <label for="about" type="hidden"></label>
                         <div class="postIntro">▋ 旅程簡介</div>
-                        <input name="about" type="hidden">
+                        <input name="pContent" type="hidden">
                         <div id="editor-container">
 
                         </div>
@@ -70,7 +76,7 @@
                     <div class="col-xs-8">
                         <div class="form-group">
                             <div class="postIntro">▋ 詳細地址</div>
-                            <input class="form-control" name="display_name" type="text" placeholder=" 請輸入詳細地址">
+                            <input class="form-control" name="pAddress" type="text" placeholder=" 請輸入詳細地址">
                         </div>
                         <div id="Hashtag選擇區" class="form-group">
                             <div class="postIntro">Hashtags</div>
@@ -81,7 +87,7 @@
                         
                     </div>
                     <div class="row">
-                        <button class="btn btn-primary" type="submit">分享旅程</button>
+                        <button id="postSubmit" class="btn btn-primary" type="button">分享旅程</button>
                     </div>
                 </div>
             </div>
@@ -169,26 +175,36 @@
         });
 
         var form = document.querySelector('form');
-        form.onsubmit = function () {
+        $("#postSubmit").click(function () {
             // Populate hidden form on submit
             //var about = document.querySelector('input[name=about]');
             //about.value = JSON.stringify(quill.getContents());
 
+            
+
+            var formdatas = $("#postform").serializeArray();
+
             console.log("Submitted", $(form).serialize(), $(form).serializeArray());
-
-            // No back end to actually submit to!
-            // alert('Open the console to see the submit data!')
-
+            
             $.ajax({
                 type: 'Post',
                 url: '../Post/New',
-                data: $(form).serialize()
+                data: $(form).serialize(),
+                success: function () {
+                    alert("success!");
+                }
+                //data: $(form).serialize()
             }).done(function (msg) {
                 alert(msg);
             });
 
-            return false;
-        };
+            // No back end to actually submit to!
+            // alert('Open the console to see the submit data!')
+
+            
+
+            //return false;
+        });
 
         // 取得 Hashtags
         //$(document).ready(function () {
