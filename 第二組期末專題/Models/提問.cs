@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
 
         public 用戶 Get提問用戶()
         {
-            return new 任務SelectById<用戶>(提問用戶_FK).Get();
+            return new 任務SelectById<用戶>(this["提問用戶_FK"]).Get();
         }
     }
 }

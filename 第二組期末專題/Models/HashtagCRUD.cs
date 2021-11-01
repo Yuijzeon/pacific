@@ -12,8 +12,8 @@ namespace 第二組期末專題.Models
         public void Create(Hashtag p)
         {
             string sql = "INSERT INTO Hashtag (名稱, 類別) VALUES (";
-            sql += "N'" + p.名稱 + "',";
-            sql += " N'" + p.類別 + "')";
+            sql += "N'" + p["名稱"] + "',";
+            sql += " N'" + p["類別"] + "')";
             
             new 資料庫任務(sql).Set();
         }

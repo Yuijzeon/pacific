@@ -13,12 +13,12 @@ namespace 第二組期末專題.Models
 
         public 文章 Get文章()
         {
-            return new 任務SelectById<文章>(文章_FK).Get();
+            return new 任務SelectById<文章>(this["文章_FK"]).Get();
         }
 
         public Hashtag GetHashtag()
         {
-            return new 任務SelectById<Hashtag>(Hashtag_FK).Get();
+            return new 任務SelectById<Hashtag>(this["Hashtag_FK"]).Get();
         }
     }
 }

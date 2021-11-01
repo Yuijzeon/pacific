@@ -57,8 +57,8 @@ function 生成精選旅程(文章s) {
 
 function 旅程是否開始(文章) {
     //var today = new Date();
-    var 開始day = new Date(文章.日期起始);
-    var 結束day = new Date(文章.日期結束);
+    var 開始day = new Date(Date(文章.日期起始));
+    var 結束day = new Date(Date(文章.日期結束));
 
     //if (開始day > today) {
         console.log(`活動 ${文章.標題} 於 ${開始day} 開始`);

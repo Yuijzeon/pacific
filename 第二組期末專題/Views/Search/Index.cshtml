@@ -264,20 +264,20 @@
                         </a>
                         <div class="text p-4">
                             <span class="days">8 Days Tour</span>
-                            <h3><a href="#">@文章.標題</a></h3>
+                            <h3><a href="#">@文章["標題"]</a></h3>
                             <p class="location"><span class="fa fa-map-marker"></span> Banaue, Ifugao, Philippines</p>
                             <div class="tagcloud">
                             @{
                                 foreach (var Hashtag in 文章.GetHashtag清單())
                                 {
-                                    <a href="/Search/@Hashtag.名稱" class="tag-cloud-link">@Hashtag.名稱</a>
+                                    <a href="/Search/@Hashtag["名稱"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
                                 }
                             }
                             </div>
                                 <ul>
                                     <li><span class="flaticon-shower"></span>2</li>
                                     <li><span class="flaticon-king-size"></span>3</li>
-                                    <li><span class="flaticon-mountains"></span>@文章.Get作者().名字</li>
+                                    <li><span class="flaticon-mountains"></span>@文章.Get作者()["名字"]</li>
                                 </ul>
                         </div>
                     </div>

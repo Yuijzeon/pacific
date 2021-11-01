@@ -9,7 +9,7 @@ namespace 第二組期末專題.Models
 {
     public class 任務SelectById<某類別> : 資料庫任務 where 某類別 : Dictionary<string, object>, new()
     {
-        public 任務SelectById(int Id)
+        public 任務SelectById(object Id)
         {
             查詢字串 = "SELECT * FROM [" + typeof(某類別).Name + "] WHERE Id=@ID;";
 

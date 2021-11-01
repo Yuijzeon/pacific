@@ -74,7 +74,7 @@
                                     {
                                     if (t.類別 == "愛好")
                                         {
-                                          @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id },         new { @class = "btn btn-outline-danger", onclick = "return confirm('是否新增標籤?')",style = "margin:5px" })
+                                          @Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id },         new { @class = "btn btn-outline-danger", onclick = "return confirm('是否新增標籤?')",style = "margin:5px" })
                                         }
                                     }
                                 }
@@ -87,7 +87,7 @@
                                 foreach (Hashtag t in Model)
                                     {
                                     if (t.類別 == "地區"){
-                                    @Html.ActionLink(t.名稱, "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                    @Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
                                         }
                                     }
                                 }

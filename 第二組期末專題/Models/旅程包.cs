@@ -15,12 +15,12 @@ namespace 第二組期末專題.Models
 
         public 用戶 Get作者()
         {
-            return new 任務SelectById<用戶>(作者用戶_FK).Get();
+            return new 任務SelectById<用戶>(this["作者用戶_FK"]).Get();
         }
         
         public List<文章> Get文章清單()
         {
-            string 查詢字串 = "SELECT * FROM [旅程包_link] WHERE 旅程包_FK=" + Id;
+            string 查詢字串 = "SELECT * FROM [旅程包_link] WHERE 旅程包_FK=" + this["Id"];
             return new 任務SelectList<文章>(查詢字串).Get();
         }
         

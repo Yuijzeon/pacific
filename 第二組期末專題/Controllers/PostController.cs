@@ -25,16 +25,16 @@ namespace 第二組期末專題.Controllers
                 HttpRequestBase post = Request;
             // 將回傳的東西存進資料庫
             文章 新文章 = new 文章();
-            新文章.標題 = post["pTitle"];
-            新文章.作者用戶_FK = Convert.ToInt32(post["pId"]);
-            新文章.內容 = post["pContent"];
-            新文章.日期起始 = Convert.ToDateTime(post["startDate"]);
-            新文章.日期結束 = Convert.ToDateTime(post["endDate"]);
-            新文章.圖片_FK = 1;
-            新文章.時段 = post["pTimezone"];
-            新文章.地點 = post["pAddress"];
-            新文章.接待人數 = Convert.ToInt32(post["pplNumber"]);
-            新文章.類型 = post["ptype"];
+            新文章["標題"] = post["pTitle"];
+            新文章["作者用戶_FK"] = Convert.ToInt32(post["pId"]);
+            新文章["內容"] = post["pContent"];
+            新文章["日期起始"] = Convert.ToDateTime(post["startDate"]);
+            新文章["日期結束"] = Convert.ToDateTime(post["endDate"]);
+            新文章["圖片_FK"] = 1;
+            新文章["時段"] = post["pTimezone"];
+            新文章["地點"] = post["pAddress"];
+            新文章["接待人數"] = Convert.ToInt32(post["pplNumber"]);
+            新文章["類型"] = post["ptype"];
             new 任務InsertInto<文章>(新文章).Set();
             //}
             //catch (Exception e)
@@ -59,8 +59,8 @@ namespace 第二組期末專題.Controllers
                 // 將回傳的東西存進資料庫
                 Hashtag 新Hashtag = new Hashtag()
                 {
-                    名稱 = post["名稱"],
-                    類別 = post["類別"]
+                    ["名稱"] = post["名稱"],
+                    ["類別"] = post["類別"]
                 };
                 new 任務InsertInto<Hashtag>(新Hashtag).Set();
 

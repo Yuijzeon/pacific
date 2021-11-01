@@ -29,12 +29,12 @@ namespace 第二組期末專題.Controllers
         public ActionResult 註冊()
         {
             用戶 x = new 用戶();
-            x.帳號 = Request.Form["Email"];
-            x.密碼 = Request.Form["Password"];
-            x.名字 = Request.Form["Name"];
-            x.手機 = Request.Form["Phone"];
-            x.註冊日期 = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
-            x.點數 = 1;
+            x["帳號"] = Request.Form["Email"];
+            x["密碼"] = Request.Form["Password"];
+            x["名字"] = Request.Form["Name"];
+            x["手機"] = Request.Form["Phone"];
+            x["註冊日期"] = DateTime.Now.ToString("yyyy -MM-dd HH:mm");
+            x["點數"] = 1;
             (new 用戶CRUD()).註冊(x);
             return RedirectToAction("Index", "Home");
         }
@@ -45,8 +45,8 @@ namespace 第二組期末專題.Controllers
             if (id != null)
             {
                 用戶Hashtag x = new 用戶Hashtag();
-                x.用戶_FK = 1;
-                x.Hashtag_FK = (int)id;
+                x["用戶_FK"] = 1;
+                x["Hashtag_FK"] = (int)id;
                 (new 用戶HashtagCRUD()).Create(x);
             }
 
@@ -57,8 +57,8 @@ namespace 第二組期末專題.Controllers
         public string Testinsert()
         {
             Hashtag x = new Hashtag();
-            x.名稱 = "書籍";
-            x.類別 = "愛好";
+            x["名稱"] = "書籍";
+            x["類別"] = "愛好";
 
             (new HashtagCRUD()).Create(x);
             return "新增標籤成功";
