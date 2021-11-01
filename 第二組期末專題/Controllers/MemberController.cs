@@ -13,13 +13,21 @@ namespace 第二組期末專題.Controllers
         //會員編輯資料顯示
         public ActionResult Index(int? id)
         {
-            if (id == 0) 
+            if (id == null) 
                 return RedirectToAction("Index", "Home");
             用戶 x = (new 用戶CRUD()).queryById((int)id);
             return View(x);
         }
 
-
+        [HttpPost]
+        public ActionResult Index(用戶 x)
+        {
+            if (x == null)
+                return RedirectToAction("index");
+            (new 用戶CRUD()).更新(x);
+            Session["Name"] = x.名字;
+            return RedirectToAction("Index", "Home");
+        }
 
     }
 }

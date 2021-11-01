@@ -63,5 +63,29 @@ namespace 第二組期末專題.Models
         }
 
         //更新會員資料
+        public void 更新(用戶 x)
+        {
+            string sql = "UPDATE 用戶 SET ";
+            if (!string.IsNullOrEmpty(x.帳號))
+            {
+                sql += "帳號='" + x.帳號 +"',";
+            }
+            if (!string.IsNullOrEmpty(x.密碼))
+            {
+                sql += "密碼='" + x.密碼 + "',";
+            }
+            if (!string.IsNullOrEmpty(x.名字))
+            {
+                sql += "名字=N'" + x.名字 + "',";
+            }
+            if (!string.IsNullOrEmpty(x.手機))
+            {
+                sql += "手機='" + x.手機 + "',";
+            }
+            if (sql.Trim().Substring(sql.Trim().Length - 1, 1) == ",")
+                sql = sql.Trim().Substring(0,sql.Trim().Length-1);
+            sql += " WHERE Id=" + x.Id;
+            new 資料庫任務(sql).Set();
+        }
     }
 }

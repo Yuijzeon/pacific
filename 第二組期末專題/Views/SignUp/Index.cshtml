@@ -37,7 +37,7 @@
             <form method="post" action="~/SignUp/index">
                 <div class="login-show">
                     <h2>登入</h2>
-                    <input type="text" placeholder="電子郵件" name="帳號">
+                    <input type="email" placeholder="電子郵件" name="帳號">
                     <input type="password" placeholder="密碼" name="密碼">
                     <input type="submit" value="登入">
                     <a style="color:red">@ViewBag.msg</a>
@@ -46,7 +46,7 @@
             <form method="post" action="~/SignUp/註冊">
                 <div class="register-show">
                     <h2>註冊</h2>
-                    <input name="Email" type="text" placeholder="電子郵件" id="test">
+                    <input name="Email" type="email" id="test" placeholder="電子郵件">
                     <input name="Password" type="password" placeholder="密碼">
                     <input name="Name" type="text" placeholder="姓名">
                     <input name="Phone" type="text" placeholder="手機號碼">
