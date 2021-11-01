@@ -6,19 +6,19 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 文章
+    public class 文章 : Dictionary<string, object>
     {
-        public int Id { get; set; }
-        public string 標題 { get; set; }
-        public int 作者用戶_FK { get; set; }
-        public string 內容 { get; set; }
-        public DateTime 日期起始 { get; set; }
-        public DateTime 日期結束 { get; set; }
-        public int 圖片_FK { get; set; }
-        public string 時段 { get; set; }
-        public string 地點 { get; set; }
-        public int 接待人數 { get; set; }
-        public string 類型 { get; set; }
+        public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
+        public string 標題 { get { return (string)this["標題"]; } set { this["標題"] = value; } }
+        public int 作者用戶_FK { get { return (int)this["作者用戶_FK"]; } set { this["作者用戶_FK"] = value; } }
+        public string 內容 { get { return (string)this["內容"]; } set { this["內容"] = value; } }
+        public DateTime 日期起始 { get { return (DateTime)this["日期起始"]; } set { this["日期起始"] = value; } }
+        public DateTime 日期結束 { get { return (DateTime)this["日期結束"]; } set { this["日期結束"] = value; } }
+        public int 圖片_FK { get { return (int)this["圖片_FK"]; } set { this["圖片_FK"] = value; } }
+        public string 時段 { get { return (string)this["時段"]; } set { this["時段"] = value; } }
+        public string 地點 { get { return (string)this["地點"]; } set { this["地點"] = value; } }
+        public int 接待人數 { get { return (int)this["接待人數"]; } set { this["接待人數"] = value; } }
+        public string 類型 { get { return (string)this["類型"]; } set { this["類型"] = value; } }
 
 
         public 用戶 Get作者()

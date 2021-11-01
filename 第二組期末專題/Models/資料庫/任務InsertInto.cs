@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 任務InsertInto<某類別> : 資料庫任務
+    public class 任務InsertInto<某類別> : 資料庫任務 where 某類別 : Dictionary<string, object>
     {
         public 任務InsertInto(某類別 物件)
         {
@@ -15,10 +15,10 @@ namespace 第二組期末專題.Models
             List<string> 屬性值清單 = new List<string>();
             Dictionary<string, object> 注入鍵值字典 = new Dictionary<string, object>();
 
-            foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
+            foreach (var 欄位 in 物件)
             {
-                string 屬性鍵 = 屬性.Name;
-                object 屬性值 = 屬性.GetValue(物件);
+                string 屬性鍵 = 欄位.Key;
+                object 屬性值 = 欄位.Value;
 
                 if (屬性鍵 == "Id") continue;
 

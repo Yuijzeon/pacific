@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 任務Update<某類別> : 資料庫任務
+    public class 任務Update<某類別> : 資料庫任務 where 某類別 : Dictionary<string, object>
     {
         private int 目標Id { get; set; }
         string 資料表名稱 { get; set; }
@@ -18,10 +18,10 @@ namespace 第二組期末專題.Models
             欲修改欄位 = new Dictionary<string, object>();
             Dictionary<string, object> 注入參數鍵值 = new Dictionary<string, object>();
 
-            foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
+            foreach (var 欄位 in 物件)
             {
-                string 屬性鍵 = 屬性.Name;
-                object 屬性值 = 屬性.GetValue(物件);
+                string 屬性鍵 = 欄位.Key;
+                object 屬性值 = 欄位.Value;
 
                 if (屬性鍵.Equals("Id"))
                 {
