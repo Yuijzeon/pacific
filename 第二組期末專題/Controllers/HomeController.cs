@@ -14,6 +14,12 @@ namespace 第二組期末專題.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            var AAA = new 任務SelectById<用戶>(35).Get();
+
+            AAA["註冊日期"] = DateTime.Now;
+
+            new 任務Update<用戶>(AAA).Set();
+
             return View();
         }
 

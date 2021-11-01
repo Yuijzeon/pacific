@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 任務SelectList<某類別> : 資料庫任務 where 某類別 : new()
+    public class 任務SelectList<某類別> : 資料庫任務 where 某類別 : Dictionary<string, object>, new()
     {
         public 任務SelectList() : base()
         {
@@ -17,41 +17,23 @@ namespace 第二組期末專題.Models
 
         new public List<某類別> Get()
         {
-            List<某類別> 某類別清單 = new List<某類別>();
+            List<某類別> 字典清單 = new List<某類別>();
 
             When讀取到一筆資料 = (資料讀取器) =>
             {
-                某類別 物件 = new 某類別();
-
-                foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
+                某類別 字典 = new 某類別();
+                for (int i = 0; i < 資料讀取器.FieldCount; i++)
                 {
-                    try
-                    {
-                        var 資料庫資料 = 資料讀取器[屬性.Name];
-
-                        if (資料庫資料.GetType() == typeof(DBNull))
-                        {
-                            continue;
-                        }
-                        else if (屬性.PropertyType == typeof(DateTime))
-                        {
-                            屬性.SetValue(物件, Convert.ToDateTime(資料庫資料));
-                            continue;
-                        }
-                        else
-                        {
-                            屬性.SetValue(物件, 資料庫資料);
-                        }
-                    }
-                    catch { }
+                    string 欄位標題 = 資料讀取器.GetName(i);
+                    object 儲存格值 = 資料讀取器[i];
+                    字典.Add(欄位標題, 儲存格值);
                 }
-
-                某類別清單.Add(物件);
+                字典清單.Add(字典);
             };
 
             讀取資料庫();
 
-            return 某類別清單;
+            return 字典清單;
         }
 
         public List<某類別> GetBy(string 外鍵欄位名稱)

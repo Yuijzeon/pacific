@@ -7,7 +7,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 任務SelectById<某類別> : 資料庫任務 where 某類別 : new()
+    public class 任務SelectById<某類別> : 資料庫任務 where 某類別 : Dictionary<string, object>, new()
     {
         public 任務SelectById(int Id)
         {
@@ -23,32 +23,21 @@ namespace 第二組期末專題.Models
 
         new public 某類別 Get()
         {
-            某類別 物件 = new 某類別();
+            某類別 字典 = new 某類別();
 
             When讀取到一筆資料 = delegate (SqlDataReader 資料讀取器)
             {
-                foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
+                for (int i = 0; i < 資料讀取器.FieldCount; i++)
                 {
-                    try
-                    {
-                        if (資料讀取器[屬性.Name].GetType() == typeof(DBNull)) continue;
-
-                        else if (屬性.PropertyType == typeof(DateTime))
-                        {
-                            屬性.SetValue(物件, Convert.ToDateTime(資料讀取器[屬性.Name]));
-                        }
-                        else
-                        {
-                            屬性.SetValue(物件, 資料讀取器[屬性.Name]);
-                        }
-                    }
-                    catch { }
+                    string 欄位標題 = 資料讀取器.GetName(i);
+                    object 儲存格值 = 資料讀取器[i];
+                    字典.Add(欄位標題, 儲存格值);
                 }
             };
 
             讀取資料庫();
 
-            return 物件;
+            return 字典;
         }
     }
 }
