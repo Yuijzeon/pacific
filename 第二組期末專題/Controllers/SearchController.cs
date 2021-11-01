@@ -11,15 +11,30 @@ namespace 第二組期末專題.Controllers
     public class SearchController : Controller
     {
         // GET: Search
-        public ActionResult Index(int? user, int? hashtag)
+        public ActionResult Index(int? user, int? hashtag, int? favorite)
         {
             if (user != null)
             {
                 var 選擇的用戶 = new 任務SelectById<用戶>((int)user).Get();
-                return View(new Search()
+
+                var result = new Search()
                 {
                     搜尋結果 = 選擇的用戶.Get創作文章清單()
-                });
+                };
+
+                return View(result);
+            }
+
+            if (favorite != null )
+            {
+                var 最愛收藏名單 = new 任務SelectById<用戶>((int)favorite).Get();
+
+                var result = new Search()
+                {
+                    搜尋結果 = 最愛收藏名單.Get收藏文章清單()
+                };
+
+                return View(result);
             }
 
             if (hashtag != null)
@@ -34,6 +49,8 @@ namespace 第二組期末專題.Controllers
             return View(new Search() {
                 搜尋結果 = new 任務SelectList<文章>("SELECT * FROM [文章]").Get()
             });
+
+            
         }
     }
 }
