@@ -5,12 +5,12 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 旅程包
+    public class 旅程包 : Dictionary<string, object>
     {
-        public int Id { get; set; }
-        public string 標題 { get; set; }
-        public string 描述 { get; set; }
-        public int 作者用戶_FK { get; set; }
+        public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
+        public string 標題 { get { return (string)this["標題"]; } set { this["標題"] = value; } }
+        public string 描述 { get { return (string)this["描述"]; } set { this["描述"] = value; } }
+        public int 作者用戶_FK { get { return (int)this["作者用戶_FK"]; } set { this["作者用戶_FK"] = value; } }
 
 
         public 用戶 Get作者()

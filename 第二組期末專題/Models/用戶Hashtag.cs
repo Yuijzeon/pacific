@@ -5,10 +5,10 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶Hashtag
+    public class 用戶Hashtag : Dictionary<string, object>
     {
-        public int 用戶_FK;
-        public int Hashtag_FK;
+        public int 用戶_FK { get { return (int)this["用戶_FK"]; } set { this["用戶_FK"] = value; } }
+        public int Hashtag_FK { get { return (int)this["Hashtag_FK"]; } set { this["Hashtag_FK"] = value; } }
 
 
         public 用戶 Get作者()

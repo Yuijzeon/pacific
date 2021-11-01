@@ -25,21 +25,25 @@ namespace 第二組期末專題.Models
 
                 foreach (PropertyInfo 屬性 in typeof(某類別).GetProperties())
                 {
-                    var 資料庫資料 = 資料讀取器[屬性.Name];
+                    try
+                    {
+                        var 資料庫資料 = 資料讀取器[屬性.Name];
 
-                    if (資料庫資料.GetType() == typeof(DBNull))
-                    {
-                        continue;
+                        if (資料庫資料.GetType() == typeof(DBNull))
+                        {
+                            continue;
+                        }
+                        else if (屬性.PropertyType == typeof(DateTime))
+                        {
+                            屬性.SetValue(物件, Convert.ToDateTime(資料庫資料));
+                            continue;
+                        }
+                        else
+                        {
+                            屬性.SetValue(物件, 資料庫資料);
+                        }
                     }
-                    else if (屬性.PropertyType == typeof(DateTime))
-                    {
-                        屬性.SetValue(物件, Convert.ToDateTime(資料庫資料));
-                        continue;
-                    }
-                    else
-                    {
-                        屬性.SetValue(物件, 資料庫資料);
-                    }
+                    catch { }
                 }
 
                 某類別清單.Add(物件);

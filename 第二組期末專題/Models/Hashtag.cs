@@ -5,11 +5,11 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class Hashtag
+    public class Hashtag : Dictionary<string, object>
     {
-        public int Id { get; set; }
-        public string 名稱 { get; set; }
-        public string 類別 { get; set; }
+        public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
+        public string 名稱 { get { return (string)this["名稱"]; } set { this["名稱"] = value; } }
+        public string 類別 { get { return (string)this["類別"]; } set { this["類別"] = value; } }
 
         public List<文章> Get文章List()
         {

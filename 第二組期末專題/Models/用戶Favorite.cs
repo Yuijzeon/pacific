@@ -5,10 +5,10 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶Favorite
+    public class 用戶Favorite : Dictionary<string, object>
     {
-        public int 收藏文章_FK;
-        public int 用戶_FK;
+        public int 收藏文章_FK { get { return (int)this["收藏文章_FK"]; } set { this["收藏文章_FK"] = value; } }
+        public int 用戶_FK { get { return (int)this["用戶_FK"]; } set { this["用戶_FK"] = value; } }
 
 
         public 文章 Get收藏文章()

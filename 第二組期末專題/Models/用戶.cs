@@ -6,24 +6,24 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶
+    public class 用戶 : Dictionary<string, object>
     {
-        public int Id { get; set; }
+        public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         [Required(ErrorMessage = "不可為空白")]
         [EmailAddress(ErrorMessage = "Email格式錯誤")]
-        public string 帳號 { get; set; }
+        public string 帳號 { get { return (string)this["帳號"]; } set { this["帳號"] = value; } }
         [Required(ErrorMessage = "不可為空白")]
-        public string 密碼 { get; set; }
+        public string 密碼 { get { return (string)this["密碼"]; } set { this["密碼"] = value; } }
         [Required(ErrorMessage = "不可為空白")]
-        public string 名字 { get; set; }
+        public string 名字 { get { return (string)this["名字"]; } set { this["名字"] = value; } }
         [Required(ErrorMessage = "不可為空白")]
-        public string 手機 { get; set; }
-        public string 註冊日期 { get; set; }
-        public string 大頭貼 { get; set; }
-        public int 點數 { get; set; }
+        public string 手機 { get { return (string)this["手機"]; } set { this["手機"] = value; } }
+        public string 註冊日期 { get { return (string)this["註冊日期"]; } set { this["註冊日期"] = value; } }
+        public string 大頭貼 { get { return (string)this["大頭貼"]; } set { this["大頭貼"] = value; } }
+        public int 點數 { get { return (int)this["點數"]; } set { this["點數"] = value; } }
 
 
-        
+
         public List<Hashtag> GetHashtag清單()
         {
             string 查詢字串 = "SELECT * FROM [用戶Hashtag] WHERE 用戶_FK=" + Id;
