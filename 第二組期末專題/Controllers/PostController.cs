@@ -17,31 +17,30 @@ namespace 第二組期末專題.Controllers
             return View();
         }
 
+
         public string New()
         {
-            try
-            {
+            //try
+            //{
                 HttpRequestBase post = Request;
-                // 將回傳的東西存進資料庫
-                文章 新文章 = new 文章()
-                {
-                    標題 = post["title"],
-                    //作者用戶_FK = Convert.ToInt32(post["name"]),
-                    內容 = post["about"],
-                    日期起始 = Convert.ToDateTime(post["startDate"]),
-                    日期結束 = Convert.ToDateTime(post["endDate"]),
-                    //圖片_FK = Convert.ToInt32(post["name"]),
-                    //時段 = post["name"],
-                    地點 = post["display_name"],
-                    接待人數 = Convert.ToInt32(post["pplNumber"]),
-                    類型 = post["name"]
-                };
-                new 任務InsertInto<文章>(新文章).Set();
-            }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
+            // 將回傳的東西存進資料庫
+            文章 新文章 = new 文章();
+            新文章.標題 = post["pTitle"];
+            新文章.作者用戶_FK = Convert.ToInt32(post["pId"]);
+            新文章.內容 = post["pContent"];
+            新文章.日期起始 = Convert.ToDateTime(post["startDate"]);
+            新文章.日期結束 = Convert.ToDateTime(post["endDate"]);
+            新文章.圖片_FK = 1;
+            新文章.時段 = post["pTimezone"];
+            新文章.地點 = post["pAddress"];
+            新文章.接待人數 = Convert.ToInt32(post["pplNumber"]);
+            新文章.類型 = post["ptype"];
+            new 任務InsertInto<文章>(新文章).Set();
+            //}
+            //catch (Exception e)
+            //{
+            //    return e.ToString();
+            //}
 
             return "增加成功";
         }
