@@ -29,5 +29,12 @@ namespace 第二組期末專題.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //登出
+        public ActionResult 登出(用戶 x)
+        {
+            Session["ID"] = "";
+            Session["Name"] = "";
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="~/Content/css/sign_Up.css">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <style>
+        input {
+            height: 45px;
+            width: 347px
+        }
+    </style>
 </head>
 
 <body>
@@ -37,21 +43,19 @@
             <form method="post" action="~/SignUp/index">
                 <div class="login-show">
                     <h2>登入</h2>
-                    <input type="email" placeholder="電子郵件" name="帳號">
-                    <input type="password" placeholder="密碼" name="密碼">
+                    <input type="email" placeholder="電子郵件" name="帳號" required/>
+                    <input type="password" placeholder="密碼" name="密碼" required />
                     <input type="submit" value="登入">
-                    <a style="color:red">@ViewBag.msg</a>
                 </div>
             </form>
             <form method="post" action="~/SignUp/註冊">
                 <div class="register-show">
                     <h2>註冊</h2>
-                    <input name="Email" type="email" id="test" placeholder="電子郵件">
-                    <input name="Password" type="password" placeholder="密碼">
-                    <input name="Name" type="text" placeholder="姓名">
-                    <input name="Phone" type="text" placeholder="手機號碼">
-                    <input type="submit" value="送出"><br>
-                    <a style="color:red">@ViewBag.msg1</a>
+                        <input name="Email" type="email" id="test" placeholder="電子郵件" required />
+                        <input name="Password" type="password" placeholder="密碼" required/>
+                        <input name="Name" type="text" placeholder="姓名" required/>
+                        <input name="Phone" type="text" placeholder="手機號碼" required/>
+                        <input type="submit" value="送出"><br>
                 </div>
             </form>
         </div>

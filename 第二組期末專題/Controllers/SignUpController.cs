@@ -35,22 +35,7 @@ namespace 第二組期末專題.Controllers
             x.手機 = Request.Form["Phone"];
             x.註冊日期 = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
             x.點數 = 1;
-            if (x.帳號 == "" || x.密碼 == "" || x.名字 == "" || x.手機 == "")
-            {
-                Session["msg"] = "不可以空白";
-                return RedirectToAction("Index", "SignUp");
-            }
-            else {
-                string emailRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                         @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                         @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})";
-                Regex re = new Regex(emailRegex);
-                if (!re.IsMatch(x.帳號))
-                    {
-                        Session["msg"] = "Email格式錯誤";
-                        return View("Index");
-                    }
-            } 
+            (new 用戶CRUD()).註冊(x);
             return RedirectToAction("Index", "Home");
         }
 

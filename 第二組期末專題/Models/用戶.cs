@@ -9,14 +9,13 @@ namespace 第二組期末專題.Models
     public class 用戶 : Dictionary<string, object>
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
-        [Required(ErrorMessage = "不可為空白")]
-        [EmailAddress(ErrorMessage = "Email格式錯誤")]
+        
         public string 帳號 { get { return (string)this["帳號"]; } set { this["帳號"] = value; } }
-        [Required(ErrorMessage = "不可為空白")]
+        
         public string 密碼 { get { return (string)this["密碼"]; } set { this["密碼"] = value; } }
-        [Required(ErrorMessage = "不可為空白")]
+        
         public string 名字 { get { return (string)this["名字"]; } set { this["名字"] = value; } }
-        [Required(ErrorMessage = "不可為空白")]
+        
         public string 手機 { get { return (string)this["手機"]; } set { this["手機"] = value; } }
         public string 註冊日期 { get { return (string)this["註冊日期"]; } set { this["註冊日期"] = value; } }
         public string 大頭貼 { get { return (string)this["大頭貼"]; } set { this["大頭貼"] = value; } }
