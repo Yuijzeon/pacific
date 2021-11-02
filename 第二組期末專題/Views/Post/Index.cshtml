@@ -63,8 +63,10 @@
             </div>
             <div id="form-container" class="col col-12 col-md-6 col-lg-9 ">
                 <div class="postform_R col">
-                    <section class="uploadImg"></section>
-                    <button class="change-link">上傳照片 / Upload picture</button>
+                    <div class="preview" id="preview">
+                        <div class="uploadImg"></div>
+                    </div>
+                    <input class="pUpload" type="file" name="pUpload" id="pUpload" accept="image/*">
                     <div class="form-group">
                         <label for="about" type="hidden"></label>
                         <div class="postIntro">▋ 旅程簡介</div>
@@ -150,12 +152,35 @@
                 changeYear: true,
                 changeMonth: true
             });
+
             $("input[name=ppNumber]").spinner({
                 max: 10 , min: 1
             });
+
+            $("#pUpload").change(function () {
+                $("#preview .uploadImg").html("");
+                previewImg(this.files);
+                
+            });
+
+            function previewImg(files) {
+                if (files.length == 0) {
+                    return;
+                }
+                var file = files[0];
+                var pic = new FileReader();
+
+                pic.onload = function () {
+                    var img = $("<img>").attr({ src: pic.result });
+                    $("#preview .uploadImg").html(img);
+                };
+                pic.readAsDataURL(file);
+            }
         });
     </script>
     <script>
+
+        //編輯器
         var Font = Quill.import('formats/font');
         Font.whiteList = ['mirza', 'roboto'];
         Quill.register(Font, true);
@@ -174,15 +199,16 @@
             theme: 'snow'
         });
 
-        var form = document.querySelector('form');
+        //預覽上傳照片
+        
+
+
+        //var form = document.querySelector('form');
         $("#postSubmit").click(function () {
             // Populate hidden form on submit
             //var about = document.querySelector('input[name=about]');
             //about.value = JSON.stringify(quill.getContents());
 
-            
-
-            var formdatas = $("#postform").serializeArray();
 
             console.log("Submitted", $(form).serialize(), $(form).serializeArray());
             
