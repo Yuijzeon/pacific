@@ -15,7 +15,7 @@ namespace 第二組期末專題.Controllers
         {
             if (user != null)
             {
-                var 選擇的用戶 = new 任務SelectById<用戶>((int)user).Get();
+                var 選擇的用戶 = 資料庫.讀取<用戶>(user);
 
                 var result = new Search()
                 {
@@ -27,7 +27,7 @@ namespace 第二組期末專題.Controllers
 
             if (favorite != null )
             {
-                var 最愛收藏名單 = new 任務SelectById<用戶>((int)favorite).Get();
+                var 最愛收藏名單 = 資料庫.讀取<用戶>(favorite);
 
                 var result = new Search()
                 {
@@ -39,7 +39,7 @@ namespace 第二組期末專題.Controllers
 
             if (hashtag != null)
             {
-                var 選擇的hashtag = new 任務SelectById<Hashtag>((int)hashtag).Get();
+                var 選擇的hashtag = 資料庫.讀取<Hashtag>(hashtag);
                 return View(new Search()
                 {
                     搜尋結果 = 選擇的hashtag.Get文章List()
@@ -47,7 +47,7 @@ namespace 第二組期末專題.Controllers
             }
 
             return View(new Search() {
-                搜尋結果 = new 任務SelectList<文章>("SELECT * FROM [文章]").Get()
+                搜尋結果 = 資料庫.讀取<文章>()
             });
 
             

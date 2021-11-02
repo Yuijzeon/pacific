@@ -17,13 +17,13 @@ namespace 第二組期末專題.Controllers
 
         public JsonResult GetUser(int id)
         {
-            var 指定用戶 = new 任務SelectById<用戶>(id).Get();
+            var 指定用戶 = 資料庫.讀取<用戶>(id);
             return Json(指定用戶, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetAllUser()
         {
-            var 全部用戶 = new 資料庫任務("SELECT * FROM [用戶]").Get();
+            var 全部用戶 = 資料庫.讀取<用戶>();
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
 
@@ -31,7 +31,7 @@ namespace 第二組期末專題.Controllers
         {
             new 資料庫任務("DELETE FROM [用戶] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
 
-            var 全部用戶 = new 資料庫任務("SELECT * FROM [用戶]").Get();
+            var 全部用戶 = 資料庫.讀取<用戶>();
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
     }
