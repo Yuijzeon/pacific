@@ -1,7 +1,6 @@
 ﻿
 #form-container {
     width: 500px;
-    height:auto;
 }
 
 
@@ -15,26 +14,32 @@
     flex-grow:1;
 }
 
-.postform_R {
+#form-container .postform_R {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    height: auto;
 }
 
+.postform_R .preview {
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    background-position: center;
+    margin-bottom:1rem;
+}
 
 .preview .uploadImg {
     display: inline-block;
     width: 100%;
     height: auto;
-    /*background-image: url(../images/post_img_1_s.jpg);*/
     background-size: cover;
     background-position: center;
-    z-index: 0;
 }
 
-.postform_R .preview img{
-    width:100%;
-    height:auto;
+.postform_R .preview img {
+    width: 100%;
+    height: auto;
 }
 
 

@@ -53,13 +53,13 @@
                 <div class="dropdown" id="UserMenu">
                     <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     </button>
-                    @{ 
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
-                        <a class="dropdown-item" href="#">我的行程</a>
-                        <a class="dropdown-item" href="/Member/登出">登出</a>
-                    </div>
-                      }
+                    @{
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
+                            <a class="dropdown-item" href="#">我的行程</a>
+                            <a class="dropdown-item" href="/Member/登出">登出</a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -159,6 +159,8 @@
     <script src="~/Content/js/jquery.animateNumber.min.js"></script>
     <script src="~/Content/js/bootstrap-datepicker.js"></script>
     <script src="~/Content/js/scrollax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="~/Content/js/google-map.js"></script>*@
     <script src="~/Content/js/main.js"></script>
