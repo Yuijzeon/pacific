@@ -15,7 +15,7 @@ namespace 第二組期末專題.Models
 
         public 用戶 Get作者()
         {
-            return new 任務SelectById<用戶>(this["作者用戶_FK"]).Get();
+            return 資料庫.讀取<用戶>(this["作者用戶_FK"]);
         }
         
         public List<文章> Get文章清單()

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using 第二組期末專題.Models;
 using 第二組期末專題.ViewModels;
 
+
 namespace 第二組期末專題.Controllers
 {
     public class ArticleController : Controller
@@ -16,16 +17,16 @@ namespace 第二組期末專題.Controllers
             if (id == null)
                 return Redirect("/Search");
 
-            Post 貼文 = new Post
+            Post 貼文ViewModel = new Post
             {
-                文章 = new 任務SelectById<文章>((int)id).Get()
+                文章 = 資料庫.讀取<文章>(id)
             };
 
             if (pack != null)
-                貼文.旅程包 = new 任務SelectById<旅程包>((int)pack).Get();
+                貼文ViewModel.旅程包 = 資料庫.讀取<旅程包>(pack);
 
 
-            return View(貼文);
+            return View(貼文ViewModel);
         }
     }
 }

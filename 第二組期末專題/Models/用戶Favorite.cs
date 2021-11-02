@@ -13,12 +13,12 @@ namespace 第二組期末專題.Models
 
         public 文章 Get收藏文章()
         {
-            return new 任務SelectById<文章>(this["收藏文章_FK"]).Get();
+            return 資料庫.讀取<文章>(this["收藏文章_FK"]);
         }
 
         public 用戶 Get用戶()
         {
-            return new 任務SelectById<用戶>(this["用戶_FK"]).Get();
+            return 資料庫.讀取<用戶>(this["用戶_FK"]);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace 第二組期末專題.Controllers
         {
             //try
             //{
-                HttpRequestBase post = Request;
+            HttpRequestBase post = Request;
             // 將回傳的東西存進資料庫
             文章 新文章 = new 文章();
             新文章["標題"] = post["pTitle"];
@@ -35,6 +35,7 @@ namespace 第二組期末專題.Controllers
             新文章["地點"] = post["pAddress"];
             新文章["接待人數"] = Convert.ToInt32(post["pplNumber"]);
             新文章["類型"] = post["ptype"];
+
             new 任務InsertInto<文章>(新文章).Set();
             //}
             //catch (Exception e)
@@ -62,9 +63,10 @@ namespace 第二組期末專題.Controllers
                     ["名稱"] = post["名稱"],
                     ["類別"] = post["類別"]
                 };
+
                 new 任務InsertInto<Hashtag>(新Hashtag).Set();
 
-                result = new 資料庫任務("SELECT * FROM [Hashtag] WHERE [名稱]=@NAME").注入參數by(new {NAME = post["名稱"] }).Get();
+                result = 資料庫.讀取<Hashtag>("WHERE [名稱]=@NAME", new { NAME = post["名稱"] });
             }
             catch (Exception e)
             {

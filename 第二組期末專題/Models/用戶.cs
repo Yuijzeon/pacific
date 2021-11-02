@@ -31,8 +31,7 @@ namespace 第二組期末專題.Models
 
         public List<文章> Get創作文章清單()
         {
-            string 查詢字串 = "SELECT * FROM [文章] WHERE 作者用戶_FK=" + this["Id"];
-            return new 任務SelectList<文章>(查詢字串).Get();
+            return 資料庫.讀取<文章>("WHERE [作者用戶_FK]=" + this["Id"]);
         }
 
         public List<文章> Get收藏文章清單()
@@ -43,22 +42,17 @@ namespace 第二組期末專題.Models
 
         public List<旅程包> Get旅程包清單()
         {
-            string 查詢字串 = "SELECT * FROM [旅程包] WHERE 作者用戶_FK=" + this["Id"];
-            return new 任務SelectList<旅程包>(查詢字串).Get();
+            return 資料庫.讀取<旅程包>("WHERE [作者用戶_FK]=" + this["Id"]);
         }
 
         public List<圖片> Get上傳圖片清單()
         {
-            string 查詢字串 = "SELECT * FROM [圖片] WHERE 上傳用戶_FK=" + this["Id"];
-
-            return new 任務SelectList<圖片>(查詢字串).Get();
+            return 資料庫.讀取<圖片>("WHERE [上傳用戶_FK]=" + this["Id"]);
         }
 
         public List<提問> Get提問清單()
         {
-            string 查詢字串 = "SELECT * FROM [提問] WHERE 提問用戶_FK=" + this["Id"];
-
-            return new 任務SelectList<提問>(查詢字串).Get();
+            return 資料庫.讀取<提問>("WHERE [提問用戶_FK]=" + this["Id"]);
         }
     }
 }

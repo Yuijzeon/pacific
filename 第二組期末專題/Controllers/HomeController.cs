@@ -14,19 +14,12 @@ namespace 第二組期末專題.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            var AAA = new 任務SelectById<用戶>(35).Get();
-
-            AAA["註冊日期"] = DateTime.Now;
-
-            new 任務Update<用戶>(AAA).Set();
-
             return View();
         }
 
         public JsonResult GetJourneys()
         {
-            var 全部文章 = new 資料庫任務("SELECT [文章].[Id], [標題], [內容], [日期起始], [日期結束], [路徑]" +
-                " FROM [文章] INNER JOIN [圖片] ON [文章].[圖片_FK]=[圖片].[Id]").Get();
+            var 全部文章 = 資料庫.讀取<文章>("INNER JOIN [圖片] ON [文章].[圖片_FK]=[圖片].[Id]");
             return Json(全部文章, JsonRequestBehavior.AllowGet);
         }
     }
