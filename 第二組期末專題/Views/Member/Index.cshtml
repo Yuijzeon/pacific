@@ -1,4 +1,5 @@
-﻿@model 第二組期末專題.Models.用戶
+﻿@using 第二組期末專題.Models
+@model 用戶
 
 @{
     Layout = null;
@@ -6,7 +7,7 @@
 
 <!DOCTYPE html>
 
-<html style = "height:100%;">
+<html style="height:100%;">
 <head>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -15,16 +16,16 @@
     <title>Index</title>
     <style>
         #mymember {
-            font-size : 40px;
+            font-size: 40px;
         }
 
         .form-group {
-            font-size : 25px;
+            font-size: 25px;
         }
     </style>
 </head>
-<body style = "height:100%;">
-    <div class="content py-5  bg-light" style = "height: 100%;background-image: url('../../Content/images/bg_3.jpg');" >
+<body style="height:100%;">
+    <div class="content py-5  bg-light" style="height: 100%;background-image: url('../../Content/images/bg_3.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -34,32 +35,32 @@
                         <div class="card-header">
                             <h3 class="mb-0" id="mymember"><b>會員資料</b></h3>
                         </div>
-                        
+
                         <div class="card-body">
                             <form class="form" role="form" method="post" action="Index">
                                 <input type="hidden" name="Id" value="@Model["Id"]">
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">帳號</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control form-control-lg" type="email" name="帳號" value="@Model["帳號"]" required/>
+                                        <input class="form-control form-control-lg" type="email" name="帳號" value="@Model["帳號"]" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">密碼</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control form-control-lg" type="password" name="密碼" value="@Model["密碼"]" required/>
+                                        <input class="form-control form-control-lg" type="password" name="密碼" value="@Model["密碼"]" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">姓名</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control form-control-lg" type="text" name="名字" value="@Model["名字"]" required/>
+                                        <input class="form-control form-control-lg" type="text" name="名字" value="@Model["名字"]" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">手機</label>
                                     <div class="col-lg-9">
-                                        <input class="form-control form-control-lg" type="text" name="手機" value="@Model["手機"]" required/>
+                                        <input class="form-control form-control-lg" type="text" name="手機" value="@Model["手機"]" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -72,6 +73,18 @@
                                     <label class="col-lg-3 col-form-label form-control-label">點數</label>
                                     <div class="col-lg-9">
                                         <input class="form-control form-control-lg" type="url" disabled="disabled" value="@Model["點數"]">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">標籤</label>
+                                    <div class="col-lg-9">
+                                        @{
+                                            foreach (var Hashtag in Model.GetHashtag清單())
+                                            {
+                                                @*<a href="/Search/@Hashtag["名稱"]" class="tag-cloud-link">@Hashtag["名稱"]</a>*@
+                                                <button type="button" class="btn btn-outline-primary">@Hashtag["名稱"]</button>
+                                            }
+                                        }
                                     </div>
                                 </div>
                                 <div class="form-group row">

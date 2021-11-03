@@ -18,7 +18,7 @@ namespace 第二組期末專題.Controllers
             用戶 x = (new 用戶CRUD()).queryById((int)id);
             return View(x);
         }
-
+        
         [HttpPost]
         public ActionResult Index(用戶 x)
         {
@@ -30,7 +30,7 @@ namespace 第二組期末專題.Controllers
         }
 
         //登出
-        public ActionResult 登出(用戶 x)
+        public ActionResult 登出()
         {
             Session["ID"] = "";
             Session["Name"] = "";
