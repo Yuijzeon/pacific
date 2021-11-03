@@ -232,9 +232,9 @@
     <Compile Include="Models\用戶.cs" />
     <Compile Include="Models\文章.cs" />
     <Compile Include="Models\舊資料庫\資料庫任務.cs" />
-    <Compile Include="Models\資料庫\讀取任務.cs" />
-    <Compile Include="Models\資料庫\任務.cs" />
-    <Compile Include="Models\資料庫\資料庫.cs" />
+    <Compile Include="Models\資料庫\Sql任務.cs" />
+    <Compile Include="Models\資料庫\資料庫-更新.cs" />
+    <Compile Include="Models\資料庫\資料庫-讀取.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Search.cs" />
     <Compile Include="ViewModels\Post.cs" />
