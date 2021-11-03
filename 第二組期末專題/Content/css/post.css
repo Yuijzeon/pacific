@@ -127,6 +127,11 @@ button.pUpload {
     padding:0 1rem;
 }
 
+.errMsg{
+    color:red;
+    font-size:0.8em;
+    font-weight:bold;
+}
 
 @media screen and (max-width:1182px) {
     

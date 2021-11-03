@@ -35,7 +35,7 @@
                 
                 <div class="postform_L">
                     <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
-                    <input id="pTitle" type="text" name="pTitle" placeholder=" 旅遊行程標題" size="22" />
+                    <input id="pTitle" type="text" name="pTitle" placeholder=" 旅遊行程標題" size="22" autocomplete="off"/>
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
@@ -160,7 +160,7 @@
                 max: 10 , min: 1
             });
 
-            // 上傳照片
+            // 照片更換
             $("#pUpload").change(function () {
                 $("#preview .uploadImg").html("");
                 previewImg(this.files);
@@ -202,6 +202,32 @@
             theme: 'snow'
         });
 
+        //create error msg
+        function createErrMsgElement(input) {
+            var errMsgId = `err-${$(input).attr('id')}`;
+            var errMsg = $(`<div id='${errMsgId}' class="errMsg">不可空白!!</div>`);
+            $(".postform").append(errMsg);
+            errMsg.position({
+                of: input,
+                my: "bottom+40px,right+15px",
+                //at: "top"
+                
+            });
+        }
+
+        $(".postform :text").blur(function () {
+            var errMsgId = `#err-${$(this).attr('id')}`;
+            if ($(this).val() != '') {
+                if ($(errMsgId).length > 0) 
+                    $(errMsgId).remove();
+            }
+            else {
+                if ($(errMsgId).length <= 0) {
+                    createErrMsgElement(this);
+                }
+            }
+
+        });
 
         var form = document.querySelector('form');
 
