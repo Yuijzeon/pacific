@@ -24,6 +24,11 @@ namespace 第二組期末專題.Controllers
         {
             if (x == null)
                 return RedirectToAction("index");
+            x["帳號"] = Request.Form["Email"];
+            x["密碼"] = Request.Form["Password"];
+            x["名字"] = Request.Form["Name"];
+            x["手機"] = Request.Form["Phone"];
+            x["Id"] = Request.Form["Id"];
             (new 用戶CRUD()).更新(x);
             Session["Name"] = x.名字;
             return RedirectToAction("Index", "Home");
