@@ -14,6 +14,19 @@
     flex-grow:1;
 }
 
+
+
+.pFormInput {
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+
+
 #form-container .postform_R {
     display: flex;
     flex-wrap: wrap;
@@ -119,22 +132,30 @@ button.pUpload {
     padding: 0 8px 1px 0;
 }
 
+hr{
+    margin-top:0;
+}
+
 .cbxType{
     color:black;
 }
 
-.pCbx{
-    padding:0 1rem;
+.pFormInputCbx{
+    margin-right:10px;
 }
 
-.errMsg{
-    color:red;
-    font-size:0.8em;
-    font-weight:bold;
+.errMsg {
+    color: red;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.errorMsg1, .errorMsg2, .errorMsg3, .errorMsg4, .errorMsg5 {
+    color: red;
+    font-size: 0.8em;
 }
 
 @media screen and (max-width:1182px) {
-    
 }
 
 @media screen and (max-width:720px) {
@@ -149,5 +170,4 @@ button.pUpload {
         margin:0 0 1.5rem 0;
         align-items:center;
     }
-    
-}
+    

@@ -35,29 +35,35 @@
                 
                 <div class="postform_L">
                     <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
-                    <input id="pTitle" type="text" name="pTitle" placeholder=" 旅遊行程標題" size="22" autocomplete="off"/>
+                    <input id="pTitle" type="text" name="pTitle" class="pFormInput" placeholder=" 旅遊行程標題" size="22" autocomplete="off"/>
+                    <div class="errorMsg1"></div>
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
                     <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="16" />
+                    <div class="errorMsg2"></div>
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pEndDate"><i class="far fa-calendar-minus"></i>請選擇結束日期</label>
                     <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="16" />
+                    <div class="errorMsg3"></div>
                 </div>
                 <div class="postform_L">
                     <label class="postLabelPeo" for="pTimezone"><i class="fas fa-user-check"></i>時段</label>
                     <input id="pTimezone" type="text" name="pTimezone" class="pFormInput" placeholder=" 例如 : 12:00~13:00 " size="22" />
+                    <div class="errorMsg4"></div>
                 </div>
                 <div class="postform_L">
                     <label class="postLabelPeo" for="pplNumber"><i class="fas fa-user-check"></i>接待人數</label>
                     <input id="pplNumber" type="text" name="ppNumber" class="pFormInput" />
+                    <div class="errorMsg5"></div>
                 </div>
-                <div class="postform_L">
-                    <label class="postLabel"><i class="fas fa-user-check"></i>活動類型</label><br />
-                    <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInput" value="room"/> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
-                    <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInput" value="food"/> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
-                    <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInput" value="trip"/> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
+                <div class="postform_L postCbx">
+                    <label class="postLabel"><i class="fas fa-user-check"></i>活動類型</label><hr/>
+                    <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInputCbx" value="room" /> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
+                    <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInputCbx" value="food" /> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
+                    <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInputCbx" value="trip" /> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
+                    <div class="errorMsg6"></div>
                 </div>
             </div>
             <div id="form-container" class="col col-12 col-md-6 col-lg-9 ">
@@ -144,8 +150,7 @@
     <script type="text/javascript">
         $(function () {
 
-            var firstImg = "../Content/images/post_img_1_s.jpg";
-            $(".preview").css("background-image", "url("+firstImg+")");
+            
 
             $("#pStartDate,#pEndDate").datepicker({
                 dateFormat: 'yy/mm/dd',
@@ -159,6 +164,10 @@
             $("input[name=ppNumber]").spinner({
                 max: 10 , min: 1
             });
+
+            // 預設照片
+            var firstImg = "../Content/images/post_img_1_s.jpg";
+            $(".preview").css("background-image", "url(" + firstImg + ")");
 
             // 照片更換
             $("#pUpload").change(function () {
@@ -179,6 +188,79 @@
                 };
                 pic.readAsDataURL(file);
             }
+
+            $(".pFormInput").focus(function () {
+                $(this).css({ "border-color": "#56b4ef", "box-shadow": "0px 0px 3px 1px #c8def0" });
+            });
+            $(".pFormInput").blur(function () {
+                $(this).css({ "border-color": "", "box-shadow": "" });
+            });
+
+            //標題
+            var rule1 = /^.{3,20}$/;
+            $("#pTitle").blur(function () {
+                if (rule1.test($(this).val())) {
+                    $('.errorMsg1').text('');
+                    $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
+                }
+                else {
+                    $('.errorMsg1').text('*請輸入至少3-5字標題*');
+                    $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
+                }
+            });
+
+            //開始日期
+            var rule2 = /^\d|..$/;
+            $("#pStartDate").blur(function () {
+                if (rule2.test($(this).val())) {
+                    $('.errorMsg2').text('');
+                    $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
+                }
+                else {
+                    $('.errorMsg2').text('*請選擇開始日期*');
+                    $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
+                }
+            });
+
+            //結束日期
+            var rule3 = /^\d|..$/;
+            $("#pEndDate").blur(function () {
+                if (rule3.test($(this).val())) {
+                    $('.errorMsg3').text('');
+                    $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
+                }
+                else {
+                    $('.errorMsg3').text('*請選擇結束日期*');
+                    $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
+                }
+            });
+
+            //時段
+            var rule4 = /^\d|..$/;
+            $("#pTimezone").blur(function () {
+                if (rule4.test($(this).val())) {
+                    $('.errorMsg4').text('');
+                    $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
+                }
+                else {
+                    $('.errorMsg4').text('*請輸入完整的時段*');
+                    $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
+                }
+            });
+
+            //接待人數
+            $("input[name=ppNumber]").blur(function () {
+                if ($(this).val() != '') {
+                    $('.errorMsg5').text('');
+                    $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
+                }
+                else {
+                    $('.errorMsg5').text('*請選擇人數上限*');
+                    $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
+                }
+            })
+
+
         });
     </script>
     <script>
@@ -202,33 +284,7 @@
             theme: 'snow'
         });
 
-        //create error msg
-        function createErrMsgElement(input) {
-            var errMsgId = `err-${$(input).attr('id')}`;
-            var errMsg = $(`<div id='${errMsgId}' class="errMsg">不可空白!!</div>`);
-            $(".postform").append(errMsg);
-            errMsg.position({
-                of: input,
-                my: "bottom+40px,right+15px",
-                //at: "top"
-                
-            });
-        }
-
-        $(".postform :text").blur(function () {
-            var errMsgId = `#err-${$(this).attr('id')}`;
-            if ($(this).val() != '') {
-                if ($(errMsgId).length > 0) 
-                    $(errMsgId).remove();
-            }
-            else {
-                if ($(errMsgId).length <= 0) {
-                    createErrMsgElement(this);
-                }
-            }
-
-        });
-
+        
         var form = document.querySelector('form');
 
         $("#postSubmit").click(function () {
@@ -236,46 +292,36 @@
             //var about = document.querySelector('input[name=about]');
             //about.value = JSON.stringify(quill.getContents());
 
+
             var content = JSON.stringify(quill.getContents());
             console.log("contents:", content);
             $("#pContent").val(content);
 
-            
-            console.log("Submitted", $(form).serialize(), $(form).serializeArray());
             
             $.ajax({
                 type: 'Post',
                 url: '../Post/New',
                 data: $(form).serialize(),
                 success: function () {
-                    alert("success!");
+                    Swal.fire({
+                        title: '確定要新增旅程嗎?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: '儲存',
+                        denyButtonText: `再等一下`,
+                            }).then((result) => {
+                                /* Read more about isConfirmed, isDenied below */
+                                if (result.isConfirmed) {
+                                    Swal.fire('新增成功!', '', 'success')
+                                } else if (result.isDenied) {
+                                    Swal.fire('Changes are not saved', '', 'info')
+                                }
+                            })
                 }
-                //data: $(form).serialize()
-            }).done(function (msg) {
-                alert(msg);
+            //}).done(function (msg) {
+            //    alert(msg);
             });
 
-            //Swal.fire({
-            //    title: '確定要新增文章嗎?',
-            //    showDenyButton: true,
-            //    showCancelButton: true,
-            //    confirmButtonText: '儲存',
-            //    denyButtonText: `再等一下`,
-            //}).then((result) => {
-            //    /* Read more about isConfirmed, isDenied below */
-            //    if (result.isConfirmed) {
-            //        Swal.fire('Saved!', '', 'success')
-            //    } else if (result.isDenied) {
-            //        Swal.fire('Changes are not saved', '', 'info')
-            //    }
-            //})
-
-            // No back end to actually submit to!
-            // alert('Open the console to see the submit data!')
-
-            
-
-            //return false;
         });
 
         
