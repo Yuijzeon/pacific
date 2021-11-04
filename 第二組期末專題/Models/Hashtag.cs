@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class Hashtag : Dictionary<string, object>
+    public class Hashtag : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public string 名稱 { get { return (string)this["名稱"]; } set { this["名稱"] = value; } }
@@ -13,18 +13,14 @@ namespace 第二組期末專題.Models
 
         public List<文章> Get文章List()
         {
-            var 文章HashtagList = 資料庫.讀取<文章Hashtag>("WHERE [Hashtag_FK]=" + this["Id"]);
+            List<string> whereList = new List<string>();
 
-            List<string> 文章IdList = new List<string>();
-
-            foreach(var 文章Hashtag in 文章HashtagList)
+            new SQL任務("SELECT * FROM [文章Hashtag] WHERE [Hashtag_FK]=" + this["Id"]).讀取((讀取器) =>
             {
-                文章IdList.Add("[Id]=" + 文章Hashtag["文章_FK"]);
-            }
+                whereList.Add("[Id]=" + 讀取器["文章_FK"]);
+            });
 
-            string where = string.Join(" OR ", 文章IdList);
-
-            return 資料庫.讀取<文章>($"WHERE ({where})");
+            return 資料庫.讀取<文章>($"WHERE ({string.Join(" OR ", whereList)})");
         }
     }
 }

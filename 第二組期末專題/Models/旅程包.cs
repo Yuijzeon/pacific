@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 旅程包 : Dictionary<string, object>
+    public class 旅程包 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public string 標題 { get { return (string)this["標題"]; } set { this["標題"] = value; } }
@@ -20,8 +20,14 @@ namespace 第二組期末專題.Models
         
         public List<文章> Get文章清單()
         {
-            string 查詢字串 = "SELECT * FROM [旅程包_link] WHERE 旅程包_FK=" + this["Id"];
-            return new 任務SelectList<文章>(查詢字串).Get();
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [旅程包_link] WHERE [旅程包_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["文章_FK"]);
+            });
+
+            return 資料庫.讀取<文章>($"WHERE ({string.Join(" OR ", whereList)})");
         }
         
     }

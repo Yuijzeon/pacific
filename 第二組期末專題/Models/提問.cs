@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 提問 : Dictionary<string, object>
+    public class 提問 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public string 問題 { get { return (string)this["問題"]; } set { this["問題"] = value; } }

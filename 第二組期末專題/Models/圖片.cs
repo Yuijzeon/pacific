@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 圖片 : Dictionary<string, object>
+    public class 圖片 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public int 上傳用戶_FK { get { return (int)this["上傳用戶_FK"]; } set { this["上傳用戶_FK"] = value; } }
