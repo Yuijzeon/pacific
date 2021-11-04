@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 文章 : Dictionary<string, object>
+    public class 文章 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public string 標題 { get { return (string)this["標題"]; } set { this["標題"] = value; } }
@@ -28,14 +28,19 @@ namespace 第二組期末專題.Models
 
         public int Get收藏數()
         {
-            string 查詢字串 = "SELECT COUNT(*) FROM [用戶Favorite] WHERE [收藏文章_FK]=" + this["Id"] + ";";
-            return (int)new 資料庫任務(查詢字串).Get資料格();
+            return 資料庫.計數<用戶Favorite>($"WHERE [收藏文章_FK]={this["Id"]}");
         }
 
         public List<用戶> Get收藏用戶清單()
         {
-            string 查詢字串 = "SELECT * FROM [用戶Favorite] WHERE [收藏文章_FK]=" + this["Id"] + ";";
-            return new 任務SelectList<用戶>(查詢字串).GetBy("用戶_FK");
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [用戶Favorite] WHERE [收藏文章_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["文章_FK"]);
+            });
+
+            return 資料庫.讀取<用戶>($"WHERE ({string.Join(" OR ", whereList)})");
         }
 
         public List<評級> Get評級清單()
@@ -45,8 +50,26 @@ namespace 第二組期末專題.Models
 
         public List<Hashtag> GetHashtag清單()
         {
-            string 查詢字串 = "SELECT * FROM [文章Hashtag] WHERE [文章_FK]=" + this["Id"] + ";";
-            return new 任務SelectList<Hashtag>(查詢字串).GetBy("Hashtag_FK");
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [文章Hashtag] WHERE [文章_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["Hashtag_FK"]);
+            });
+
+            return 資料庫.讀取<Hashtag>($"WHERE ({string.Join(" OR ", whereList)})");
+        }
+
+        public List<旅程包> Get旅程包清單()
+        {
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [旅程包_link] WHERE [文章_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["旅程包_FK"]);
+            });
+
+            return 資料庫.讀取<旅程包>($"WHERE ({string.Join(" OR ", whereList)})");
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶 : Dictionary<string, object>
+    public class 用戶 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         
@@ -25,8 +25,14 @@ namespace 第二組期末專題.Models
 
         public List<Hashtag> GetHashtag清單()
         {
-            string 查詢字串 = "SELECT * FROM [用戶Hashtag] WHERE 用戶_FK=" + this["Id"];
-            return new 任務SelectList<Hashtag>(查詢字串).GetBy("Hashtag_FK");
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [用戶Hashtag] WHERE [用戶_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["Hashtag_FK"]);
+            });
+
+            return 資料庫.讀取<Hashtag>($"WHERE ({string.Join(" OR ", whereList)})");
         }
 
         public List<文章> Get創作文章清單()
@@ -36,8 +42,14 @@ namespace 第二組期末專題.Models
 
         public List<文章> Get收藏文章清單()
         {
-            string 查詢字串 = "SELECT * FROM [用戶Favorite] WHERE 用戶_FK=" + this["Id"];
-            return new 任務SelectList<文章>(查詢字串).GetBy("收藏文章_FK");
+            List<string> whereList = new List<string>();
+
+            new SQL任務($"SELECT * FROM [用戶Favorite] WHERE [用戶_FK]={this["Id"]};").讀取((讀取器) =>
+            {
+                whereList.Add("[Id]=" + 讀取器["收藏文章_FK"]);
+            });
+
+            return 資料庫.讀取<文章>($"WHERE ({string.Join(" OR ", whereList)})");
         }
 
         public List<旅程包> Get旅程包清單()

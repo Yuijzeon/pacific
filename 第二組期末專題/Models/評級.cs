@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 評級 : Dictionary<string, object>
+    public class 評級 : 資料表
     {
         public int Id { get { return (int)this["Id"]; } set { this["Id"] = value; } }
         public int 分數 { get { return (int)this["分數"]; } set { this["分數"] = value; } }

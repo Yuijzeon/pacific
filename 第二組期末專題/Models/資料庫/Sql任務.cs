@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
+using 第二組期末專題.Models;
 
 namespace 第二組期末專題
 {
-    public class Sql任務
+    public class SQL任務
     {
         //建構函式 開始
-        public Sql任務(string 查詢字串 = null, object Sql指令參數 = null)
+        public SQL任務(string 查詢字串 = null, object Sql指令參數 = null)
         {
             this.連線字串 = "Server=tcp:datateam2.database.windows.net,1433;" +
                             "Initial Catalog=team2;" +
@@ -100,14 +101,43 @@ namespace 第二組期末專題
             return 指令;
         }
 
-        public Sql任務 加入參數(object 參數鍵值)
+        public SQL任務 加入參數(object 參數鍵值)
         {
             this.Sql指令參數 = 參數鍵值;
 
             return this;
         }
 
-        public object 讀取()
+        public List<Dictionary<string, object>> 讀取()
+        {
+            List<Dictionary<string, object>> 字典清單 = new List<Dictionary<string, object>>();
+
+            this.讀取(delegate (SqlDataReader 資料讀取器)
+            {
+                Dictionary<string, object> 字典 = new Dictionary<string, object>();
+                for (int i = 0; i < 資料讀取器.FieldCount; i++)
+                {
+                    string 欄位標題 = 資料讀取器.GetName(i);
+                    object 儲存格值 = 資料讀取器[i];
+
+                    if (儲存格值.GetType() == typeof(DateTime))
+                    {
+                        儲存格值 = ((DateTime)儲存格值).ToString("yyyy-MM-dd HH:mm:ss");
+                    }
+
+                    try // INNER JOIN 排除相同欄位(通常是ID)
+                    {
+                        字典.Add(欄位標題, 儲存格值);
+                    }
+                    catch { }
+                }
+                字典清單.Add(字典);
+            });
+
+            return 字典清單;
+        }
+
+        public object 讀取1格()
         {
             object 查詢結果 = new object();
 

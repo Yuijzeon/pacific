@@ -141,11 +141,12 @@
         </svg>
     </div>
 
+    @if (Session["ID"] != null) {
     <!--右下角按鈕-->
-    <input type="button" onclick="location.href='#'" class="btn1" title="查看旅程包" value="+">
-    <input type="button" onclick="location.href='#'" class="btn2" title="已收藏旅程" value="🧡">
+    <input type="button" href="/Post"  class="btn1" title="查看旅程包" value="+">
+    <input type="button" href="/Search?Favorite=@Session["ID"]" class="btn2" title="已收藏旅程" value="🧡">
     <!--右下角按鈕end-->
-
+    }
 
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/jquery-migrate-3.0.1.min.js"></script>

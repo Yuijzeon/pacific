@@ -5,7 +5,7 @@ using System.Web;
 
 namespace 第二組期末專題.Models
 {
-    public class 用戶Favorite : Dictionary<string, object>
+    public class 用戶Favorite : 資料表
     {
         public int 收藏文章_FK { get { return (int)this["收藏文章_FK"]; } set { this["收藏文章_FK"] = value; } }
         public int 用戶_FK { get { return (int)this["用戶_FK"]; } set { this["用戶_FK"] = value; } }
