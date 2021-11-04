@@ -124,6 +124,9 @@ input[type="submit"] {
     float: right;
     cursor: pointer;
 }
+
+
+
 .credit {
     position:absolute;
     bottom:10px;

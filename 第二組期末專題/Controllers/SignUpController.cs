@@ -84,10 +84,14 @@ namespace 第二組期末專題.Controllers
                 ViewBag.msg = "帳號密碼錯誤";
                 return View();
             }
-            
+            else
+            {
+                TempData["message"] = "登入成功";
+            }
             Session["ID"] = datas[0].Id;
-            Session["Name"] = datas[0].名字;
+            Session["Name"] = datas[0].名字;   
             return RedirectToAction("Index", "Home");
+           
         }
     }
 }
