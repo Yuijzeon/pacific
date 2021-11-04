@@ -57,11 +57,11 @@ namespace 第二組期末專題.Controllers
         {
             string where = "/Search";
             where += (form["result"] != null) ? $"?result={form["result"]}" : "";
-            where += (form["active"] != null) ? $"?active={form["result"]}" : "";
+            where += (form["active"] != null) ? $"?active={form["active"]}" : "";
             where += (form["starttime"] != null) ? $"?result={form["starttime"]}" : "";
             where += (form["endtime"] != null) ? $"?result={form["endtime"]}" : "";
             where += (form["point"] != null) ? $"?result={form["point"]}" : "";
-            return RedirectPermanent(where);
+            return Redirect(where);
         }
     }
 }
