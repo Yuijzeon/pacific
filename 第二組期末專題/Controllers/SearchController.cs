@@ -52,5 +52,14 @@ namespace 第二組期末專題.Controllers
 
             
         }
+
+        public void By(FormCollection form)
+        {
+            var AAA = form["result"];
+            var BBB = form["active"];
+            var CCC = form["starttime"];
+            var DDD = form["endtime"];
+            var EEE = form["point"];
+        }
     }
 }
