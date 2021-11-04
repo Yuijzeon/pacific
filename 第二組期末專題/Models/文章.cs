@@ -71,5 +71,10 @@ namespace 第二組期末專題.Models
 
             return 資料庫.讀取<旅程包>($"WHERE ({string.Join(" OR ", whereList)})");
         }
+
+        public string Get圖片路徑()
+        {
+            return (string)資料庫.讀取<圖片>(this["圖片_FK"])["路徑"];
+        }
     }
 }
