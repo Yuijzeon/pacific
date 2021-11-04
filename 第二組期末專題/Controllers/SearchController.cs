@@ -53,13 +53,15 @@ namespace 第二組期末專題.Controllers
             
         }
 
-        public void By(FormCollection form)
+        public ActionResult By(FormCollection form)
         {
-            var AAA = form["result"];
-            var BBB = form["active"];
-            var CCC = form["starttime"];
-            var DDD = form["endtime"];
-            var EEE = form["point"];
+            string where = "/Search";
+            where += (form["result"] != null) ? $"?result={form["result"]}" : "";
+            where += (form["active"] != null) ? $"?active={form["result"]}" : "";
+            where += (form["starttime"] != null) ? $"?result={form["starttime"]}" : "";
+            where += (form["endtime"] != null) ? $"?result={form["endtime"]}" : "";
+            where += (form["point"] != null) ? $"?result={form["point"]}" : "";
+            return RedirectPermanent(where);
         }
     }
 }
