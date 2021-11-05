@@ -66,7 +66,7 @@
                             var Hashtag清單 = Model.文章.GetHashtag清單();
                             for (int i = 0; i < Hashtag清單.Count; i++)
                             {
-                                <a href="/Search/@Hashtag清單[i]["名稱"]" class="tag-cloud-link">@Hashtag清單[i]["名稱"]</a>
+                                <a href="/Search?hashtag=@Hashtag清單[i]["名稱"]" class="tag-cloud-link">@Hashtag清單[i]["名稱"]</a>
                             }
                         }
 
