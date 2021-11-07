@@ -19,59 +19,66 @@ namespace 第二組期末專題.Controllers
             List<文章> 全部文章 = 資料庫.讀取<文章>();
 
             if (name["user"] != null)
-                全部文章.ForEach(文章 => {
-                    if (name["user"] != 文章["用戶_FK"] as string) 全部文章.Remove(文章);
+                全部文章.RemoveAll(文章 => {
+                    return 文章["作者用戶_FK"].ToString() != name["user"];
                 });
 
             if (name["hashtag"] != null)
-                全部文章.ForEach(文章 => {
+                全部文章.RemoveAll(文章 => {
                     List<Hashtag> Hashtag清單 = 文章.GetHashtag清單();
-                    if (!Hashtag清單.Exists(Hashtag => name["hashtag"] == Hashtag.Id.ToString())) 全部文章.Remove(文章);
+                    return !Hashtag清單.Exists(Hashtag => Hashtag["Id"].ToString() == name["hashtag"]);
                 });
 
             if (name["favorite"] != null)
-                全部文章.ForEach(文章 => {
+                全部文章.RemoveAll(文章 => {
                     List<用戶> 收藏用戶清單 = 文章.Get收藏用戶清單();
-                    if (!收藏用戶清單.Exists(收藏用戶 => name["favorite"] == 收藏用戶.Id.ToString())) 全部文章.Remove(文章);
+                    return !收藏用戶清單.Exists(收藏用戶 => 收藏用戶["Id"].ToString() == name["favorite"]);
                 });
 
+
             if (name["result"] != null)
-                全部文章.ForEach(文章 => {
-                    if (!(文章["內容"] as string).Contains(name["result"])) 全部文章.Remove(文章);
+                全部文章.RemoveAll(文章 => {
+                    bool 關鍵字符合 = false;
+                    關鍵字符合 = 文章["標題"].ToString().Contains(name["result"])
+                              || 文章["內容"].ToString().Contains(name["result"]);
+                    return !關鍵字符合;
+                });
+
+            if (name["active"] != null)
+                全部文章.RemoveAll(文章 => {
+                    var AAA = 文章["類型"];
+                    return !文章["類型"].ToString().Contains(name["active"]);
                 });
 
             if (name["starttime"] != null)
-                全部文章.ForEach(文章 => {
-                    if (!(文章["日期起始"] as DateTime? < DateTime.Parse(name["starttime"]))) 全部文章.Remove(文章);
+                全部文章.RemoveAll(文章 => {
+                    return !(DateTime.Parse(文章["日期起始"].ToString()) > DateTime.Parse(name["starttime"].ToString()));
                 });
 
             if (name["endtime"] != null)
-                全部文章.ForEach(文章 => {
-                    if (!(文章["日期起始"] as DateTime? < DateTime.Parse(name["starttime"]))) 全部文章.Remove(文章);
+                全部文章.RemoveAll(文章 => {
+                    return !(DateTime.Parse(文章["日期結束"].ToString()) < DateTime.Parse(name["endtime"].ToString()));
                 });
 
-            //var 用戶Id = name["user"];
-            //var HashtagId = name["hashtag"];
-            //var 用戶收藏文章Id = name["favorite"];
-            //var 用戶Id = name["starttime"];
-            //var 用戶Id = name["user"];
-            //var 用戶Id = name["user"];
+            if (name["point"] != null)
+                全部文章.RemoveAll(文章 => {
+                    return !(Convert.ToInt32(文章["點數"]) < Convert.ToInt32(name["point"]));
+                });
 
-            return View(new Search() {
-                搜尋結果 = 資料庫.讀取<文章>()
+            return View(new Search()
+            {
+                搜尋結果 = 全部文章
             });
-
-            
         }
 
         public ActionResult By(FormCollection form)
         {
-            string where = "/Search";
-            where += (form["result"] != null) ? $"?result={form["result"]}" : "";
-            where += (form["active"] != null) ? $"?active={form["active"]}" : "";
-            where += (form["starttime"] != null) ? $"?starttime={form["starttime"]}" : "";
-            where += (form["endtime"] != null) ? $"?endtime={form["endtime"]}" : "";
-            where += (form["point"] != null) ? $"?point={form["point"]}" : "";
+            string where = "/Search?";
+            where += (form["result"] != "") ? $"&result={form["result"]}" : "";
+            where += (form["active"] != "") ? $"&active={form["active"]}" : "";
+            where += (form["starttime"] != "") ? $"&starttime={form["starttime"]}" : "";
+            where += (form["endtime"] != "") ? $"&endtime={form["endtime"]}" : "";
+            where += (form["point"] != "") ? $"&point={form["point"]}" : "";
             return Redirect(where);
         }
     }
