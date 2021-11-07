@@ -175,7 +175,6 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\google-map.js" />
     <Content Include="Content\js\Hashtag群組.js" />
-    <Content Include="Content\js\home.js" />
     <Content Include="Content\js\jquery-3.2.1.min.js" />
     <Content Include="Content\js\jquery-3.6.0.min.js" />
     <Content Include="Content\js\jquery-migrate-3.0.1.min.js" />
@@ -355,6 +354,12 @@
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Pack\Index.cshtml" />
     <Content Include="Views\Search\SearchBox.cshtml" />
+    <Content Include="Views\Home\精選旅程.cshtml" />
+    <Content Include="Views\Home\首頁抬頭.cshtml" />
+    <Content Include="Views\Home\首頁搜尋.cshtml" />
+    <Content Include="Views\Home\網站介紹.cshtml" />
+    <Content Include="Views\Home\關於我們.cshtml" />
+    <Content Include="Views\Shared\登入了嗎.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
