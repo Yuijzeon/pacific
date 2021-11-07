@@ -65,10 +65,18 @@ namespace 第二組期末專題.Controllers
                     return !(Convert.ToInt32(文章["點數"]) < Convert.ToInt32(name["point"]));
                 });
 
-            return View(new Search()
+            List<文章> 暫時的輪播用文章列表 = new List<文章>();
+            暫時的輪播用文章列表.Add(資料庫.讀取<文章>(1));
+            暫時的輪播用文章列表.Add(資料庫.讀取<文章>(6));
+            暫時的輪播用文章列表.Add(資料庫.讀取<文章>(7));
+
+            Search 要傳的ViewModel = new Search()
             {
+                輪播文章 = 暫時的輪播用文章列表,
                 搜尋結果 = 全部文章
-            });
+            };
+
+            return View(要傳的ViewModel);
         }
 
         public ActionResult By(FormCollection form)
