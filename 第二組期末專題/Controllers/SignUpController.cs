@@ -87,11 +87,13 @@ namespace 第二組期末專題.Controllers
             else
             {
                 TempData["message"] = "登入成功";
-            }
-            Session["ID"] = datas[0].Id;
-            Session["Name"] = datas[0].名字;   
-            return RedirectToAction("Index", "Home");
-           
+                TempData["account_text"] = x.帳號;
+                TempData["password_text"] = x.密碼;
+                Session["ID"] = datas[0].Id;
+                Session["Name"] = datas[0].名字;
+                return View();
+            }           
         }
+       
     }
 }
