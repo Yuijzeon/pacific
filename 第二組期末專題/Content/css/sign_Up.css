@@ -1,5 +1,8 @@
    
 @import url('https://fonts.googleapis.com/css?family=Mukta');
+html {
+    overflow: auto;
+}
 body{
   font-family: 'Mukta', sans-serif;
 	height:100vh;

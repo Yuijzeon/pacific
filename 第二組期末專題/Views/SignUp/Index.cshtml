@@ -1,11 +1,11 @@
 ﻿@{
     Layout = null;
 }
-<html>
+<html lang="zh-tw">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1 user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -40,6 +40,59 @@
             border: 1px solid #b5b5b5;
             outline: none;
         }
+
+        @@media (max-width: 600px) {
+            body {
+                height:800px;
+                overflow: auto;
+                background-size:inherit;
+                margin-bottom:0px;
+            }
+            html{
+                height:100%;
+                margin-bottom:0px;
+            }
+            div {
+                font-size: 12px;
+            }
+            input{
+                width:90%;
+                margin:0px;
+                padding:0px;
+            }
+            .login-show, .register-show {
+                margin: 0px;
+                padding: 50px 20px;
+            }
+            .white-panel {
+                width: 100%;
+                position: unset;
+            }
+            .login-reg-panel{
+                height:100%;
+                margin:25% auto;
+            }
+            .login-info-box {
+                margin: 0 auto;
+                margin-top: 400px;
+                width: 100%;
+                text-align:center;
+            }
+            .register-info-box {
+                margin: 0px auto;
+                width: 100%;
+                text-align: center;
+                padding: unset;
+                position: unset;
+            }
+            #label-login{
+                margin:0 auto;
+                margin-bottom:0.5em;
+            }
+            #label-register{
+                margin: 10% auto;
+            }
+        }
     </style>
 
 </head>
@@ -53,14 +106,12 @@
             <label id="label-register" for="log-reg-show">登入</label>
             <input type="radio" name="active-log-panel" id="log-reg-show" checked="checked">
         </div>
-
         <div class="register-info-box">
             <h2>Don't have an account?</h2>
             <p>Lorem ipsum dolor sit amet</p>
             <label id="label-login" for="log-login-show">註冊</label>
             <input type="radio" name="active-log-panel" id="log-login-show">
         </div>
-
         <div class="white-panel">
             <form method="post" action="~/SignUp/index">
                 <div class="login-show">
