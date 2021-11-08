@@ -1,0 +1,17 @@
+﻿@using 第二組期末專題.Models
+@model 文章
+
+<div id="文章內容"></div>
+<div class="tag-widget post-tag-container mb-5 mt-5">
+    <div class="tagcloud">
+
+        @{
+            var Hashtag清單 = Model.GetHashtag清單();
+            for (int i = 0; i < Hashtag清單.Count; i++)
+            {
+                <a href="/Search?hashtag=@Hashtag清單[i]["名稱"]" class="tag-cloud-link">@Hashtag清單[i]["名稱"]</a>
+            }
+        }
+
+    </div>
+</div>

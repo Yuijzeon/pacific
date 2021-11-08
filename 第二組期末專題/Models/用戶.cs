@@ -66,5 +66,13 @@ namespace 第二組期末專題.Models
         {
             return 資料庫.讀取<提問>("WHERE [提問用戶_FK]=" + this["Id"]);
         }
+
+        public string Get大頭貼()
+        {
+            if (this["大頭貼"] is DBNull)
+                return "person_2.jpg";
+
+            return this["大頭貼"] as string;
+        }
     }
 }
