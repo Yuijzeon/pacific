@@ -13,40 +13,34 @@
         <!-- 以下是 slider 中的影像圖片區 -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="../../Content/images/bg_1.jpg" class="img-fluid" alt="pancake1">
+                <img src="../../Content/images/image_11.jpg" class="img-fluid" alt="pancake1">
                 <!-- 下方 div 是標題說明區 -->
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>南洋度假風</h3>
-                    <p>Constant Escapement L.M.</p>
-                    <p>
-                        Constancy (in the sense of constant force) is a permanent quest for watchmakers. At Girard-Perregaux, this
-                        horological ‘holy grail’ has become a reality. Presented in 2008, the Constant Escapement revolutionised the
-                        very foundations of chronometry.
-                    </p>
-                    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalone">
-                        查看更多
-                    </button>
-                </div>
+				<div class="carousel-caption d-none d-md-block">
+					<h3 class="white">@Model[1]["標題"]</h3>
+					<p class="location"><span class="fa fa-map-marker"></span> @Model[1]["地點"]</p>
+					<p>
+						@Model[1]["內容"]
+					</p>
+					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalone">
+						查看更多
+					</button>
+				</div>
             </div>
             <!-- Modal -->
             <div class="modal fade" id="myModalone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">南洋度假風</h4>
+							<h4 class="modal-title">@Model[1]["標題"]</h4>
                         </div>
-                        <div class="modal-body">
-                            <img src="../../Content/images/bg_1.jpg" class="img-fluid">
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
+						<div class="modal-body">
+							<img src="../../Content/images/image_11.jpg" class="img-fluid">
+							<p class="location"><span class="fa fa-map-marker"></span> @Model[1]["地點"]</p>
+							@Model[1]["內容"]
 
-                            <div> Hashtags (暫存)</div>
+							<!--<div>Hashtags</div>-->
 
-                        </div>
+						</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                             <button type="button" class="btn btn-primary">加入收藏</button>
@@ -56,16 +50,14 @@
             </div>
 
             <div class="carousel-item">
-                <img src="../../Content/images/bg_2.jpg" class="img-fluid" alt="pancake1">
+                <img src="../../Content/images/image_7.jpeg" class="img-fluid" alt="pancake1">
                 <!-- 下方 div 是標題說明區 -->
                 <div class="carousel-caption d-none d-md-block">
-                    <h3>水上活動</h3>
-                    <p>La Esmeralda Tourbillon</p>
-                    <p>
-                        As the successor to the 27 Tourbillons with Three Bridges registered by Girard-Perregaux from 1865 to 1911,
-                        the Esmeralda Tourbillon tells the story of a passion for aesthetics and accuracy. The heiress to the
-                        pocket-watch La Esmeralda was granted the prize of the Tourbillon during the ceremony of the GPHG 2016.
-                    </p>
+					<h3>@Model[0]["標題"]</h3>
+					<p class="location"><span class="fa fa-map-marker"></span> @Model[0]["地點"]</p>
+					<p>
+						@Model[0]["內容"]
+					</p>
                     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModaltwo">
                         查看更多
                     </button>
@@ -76,20 +68,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">水上活動</h4>
+							<h4 class="modal-title">@Model[0]["標題"]</h4>
                         </div>
-                        <div class="modal-body">
-                            <img src="../../Content/images/bg_2.jpg" class="img-fluid">
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
+						<div class="modal-body">
+							<p class="location"><span class="fa fa-map-marker"></span> @Model[0]["地點"]</p>
+							<img src="../../Content/images/image_7.jpeg" class="img-fluid">
+							@Model[0]["內容"]
 
-                            <div> Hashtags (暫存)</div>
+							<!--<div>Hashtags</div>-->
 
-                        </div>
+						</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                             <button type="button" class="btn btn-primary">加入收藏</button>
@@ -98,17 +86,15 @@
                 </div><!-- /.modal -->
             </div>
             <div class="carousel-item">
-                <img src="../../Content/images/bg_5.jpg" class="img-fluid">
+                <img src="../../Content/images/image_12.jpg" class="img-fluid">
                 <!-- 下方 div 是標題說明區 -->
                 <div class="carousel-caption d-none d-md-block">
 
-                    <h3>登山健行</h3>
-                    <p>The Cat's Eye Tourbillon with Gold Bridge</p>
-                    <p>
-                        The Cat’s Eye Tourbillon with Gold Bridge is a perfect fusion of expertise in both watchmaking and
-                        jewellery. « It is an honor to be rewarded with two prizes distinguishing our know-how in Haute Horlogerie
-                        in both categories Ladies High Mech and Tourbillon.» stated Antonio Calce, CEO of Girard-Perregaux.
-                    </p>
+					<h3>@Model[2]["標題"]</h3>
+					<p class="location"><span class="fa fa-map-marker"></span> @Model[2]["地點"]</p>
+					<p>
+						@Model[2]["內容"]
+					</p>
                     <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalthree">
                         查看更多
                     </button>
@@ -119,20 +105,15 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">登山健行</h4>
+							<h4 class="modal-title">@Model[2]["標題"]</h4>
                         </div>
-                        <div class="modal-body">
-                            <img src="../../Content/images/bg_5.jpg" class="img-fluid">
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
-                            旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介旅程簡介
+						<div class="modal-body">
+							<p class="location"><span class="fa fa-map-marker"></span> @Model[2]["地點"]</p>
+							<img src="../../Content/images/image_12.jpg" class="img-fluid">
+							@Model[2]["內容"]
+							<!--<div>Hashtags</div>-->
 
-                            <div> Hashtags (暫存)</div>
-
-                        </div>
+						</div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                             <button type="button" class="btn btn-primary">加入收藏</button>
