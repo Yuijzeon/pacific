@@ -1,4 +1,4 @@
-﻿<section class="ftco-section">
+﻿<section class="ftco-section" onload="initialize()" onunload="GUnload()">
     <div class="container">
         <form class="row p_row" id="postform">
             <div class="postform col col-12 col-md-6 col-lg-3 my-3">
@@ -33,6 +33,23 @@
                     <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInputCbx" value="room" /> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
                     <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInputCbx" value="food" /> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
                     <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInputCbx" value="trip" /> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
+                </div>
+                <div class="postform_L">
+                    <label class="postLabel" for="pPoint"><i class="fas fa-user-check"></i>點數</label>
+                    <select id="pPoint" name="pPoint" class="pFormInput pPoint" >
+                        <option value="" disabled>--請選擇點數--</option>
+                        <option name="pPoint" value="0">$0</option>
+                        <option name="pPoint" value="500">$500</option>
+                        <option name="pPoint" value="1000">$1000</option>
+                        <option name="pPoint" value="1500">$1500</option>
+                        <option name="pPoint" value="2000">$2000</option>
+                        <option name="pPoint" value="2500">$2500</option>
+                        <option name="pPoint" value="3000">$3000</option>
+                        <option name="pPoint" value="3500">$3500</option>
+                        <option name="pPoint" value="4000">$4000</option>
+                        <option name="pPoint" value="4500">$4500</option>
+                        <option name="pPoint" value="5000">$5000</option>
+                    </select>
                     <div class="errorMsg6"></div>
                 </div>
             </div>
@@ -52,10 +69,13 @@
                         </div>
                     </div>
                     <div class="col-xs-8">
+                        
                         <div class="form-group">
                             <div class="postIntro">▋ 詳細地址</div>
-                            <input class="form-control" name="pAddress" type="text" placeholder=" 請輸入詳細地址">
+                            <input id="pac-input" class="form-control controls" name="pAddress" type="text" placeholder=" 請輸入詳細地址">
+                            <div class="pMaps" id="map"></div>
                         </div>
+
                         <div id="Hashtag選擇區" class="form-group">
                             <div class="postIntro">Hashtags</div>
 

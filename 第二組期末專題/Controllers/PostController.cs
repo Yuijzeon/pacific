@@ -35,6 +35,7 @@ namespace 第二組期末專題.Controllers
                 新文章["地點"] = post["pAddress"];
                 新文章["接待人數"] = Convert.ToInt32(post["pplNumber"]);
                 新文章["類型"] = post["ptype"];
+                新文章["點數"] = Convert.ToInt32(post["pPoint"]);
 
                 new 任務InsertInto<文章>(新文章).Set();
             }
