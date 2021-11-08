@@ -52,6 +52,13 @@ namespace 第二組期末專題.Models
             return queryBySql("SELECT *  FROM 用戶 WHERE 帳號 LIKE"+" '"+帳號 +"' " +"AND 密碼  LIKE"+" '"+密碼+"'");
         }
 
+        //利用註冊時名字搜尋ID
+        public List<用戶> 取ID(string name)
+        {
+            string sql = "SELECT * FROM 用戶 WHERE 名字 = N" + "'" + name + "'";
+            return queryBySql(sql);
+        }
+
         //登入中會員資料抓取
         public 用戶 queryById(int fid)
         {

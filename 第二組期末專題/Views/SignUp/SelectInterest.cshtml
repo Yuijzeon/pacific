@@ -52,7 +52,16 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="~/Content/js/google-map.js"></script>
     <script src="~/Content/js/main.js"></script>
-
+    <script>
+        function test(hashtagid) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("AddUserHashtag","SignUp")',
+                data: { id: hashtagid }
+            });
+            $("#" + hashtagid).css("background-color", "red");
+        }
+    </script>
 </head>
 
 <body style="background-image: url('../../Content/images/bg_5.jpg');">
@@ -74,7 +83,9 @@
                                 {
                                     if (t.類別 == "愛好")
                                     {
-                                        @Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否新增標籤?')", style = "margin:5px" })
+                                        @*@Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否新增標籤?')", style = "margin:5px" })*@
+                                        <a onclick="test('@t.Id')" class="btn btn-dark" id="@t.Id" style="margin:3px">@t.名稱</a>
+                                        <button style="border: none;background-color: transparent;">&#x274c;</button>
                                     }
                                 }
                             }
@@ -88,11 +99,13 @@
                                 {
                                     if (t.類別 == "地區")
                                     {
-                                        @Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })
+                                        @*@Html.ActionLink((string)t["名稱"], "AddUserHashtag", "SignUp", new { id = t.Id }, new { @class = "btn btn-outline-danger", onclick = "return confirm('是否要新增標籤?')", style = "margin:5px" })*@
+                                        <a onclick="test('@t.Id')" class="btn btn-dark" id="@t.Id" style="margin:3px">@t.名稱</a>
+                                        <button style="border: none;background-color: transparent;">&#x274c;</button>
                                     }
                                 }
                             }
-                           <hr>
+                            <hr>
                             <p class="mb-2" style="width: 100%;">
                                 <a class="btn btn-outline-danger" href="~/Member/Index/@Session["ID"]">完成</a>
                             </p>

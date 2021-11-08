@@ -32,11 +32,12 @@ namespace 第二組期末專題.Controllers
             x["帳號"] = Request.Form["Email"];
             x["密碼"] = Request.Form["Password"];
             x["名字"] = Request.Form["Name"];
+            Session["test"] = Request.Form["Name"];
             x["手機"] = Request.Form["Phone"];
             x["註冊日期"] = DateTime.Now.ToString("yyyy -MM-dd HH:mm");
             x["點數"] = 1;
             (new 用戶CRUD()).註冊(x);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("SelectInterest");
         }
 
         //新增用戶標籤
@@ -45,7 +46,10 @@ namespace 第二組期末專題.Controllers
             if (id != null)
             {
                 用戶Hashtag x = new 用戶Hashtag();
-                x["用戶_FK"] = Session["ID"];
+                string name = (string)Session["test"];
+                List<用戶> data = new 用戶CRUD().取ID(name);
+                //x["用戶_FK"] = Session["ID"];
+                x["用戶_FK"] = data[0].Id;
                 x["Hashtag_FK"] = (int)id;
                 (new 用戶HashtagCRUD()).Create(x);
             }
