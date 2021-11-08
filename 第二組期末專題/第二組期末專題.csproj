@@ -358,13 +358,21 @@
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Member\Index.cshtml" />
     <Content Include="Views\Pack\Index.cshtml" />
-    <Content Include="Views\Search\SearchBox.cshtml" />
+    <Content Include="Views\Search\搜尋欄位.cshtml" />
     <Content Include="Views\Home\精選旅程.cshtml" />
     <Content Include="Views\Home\首頁抬頭.cshtml" />
     <Content Include="Views\Home\首頁搜尋.cshtml" />
     <Content Include="Views\Home\網站介紹.cshtml" />
     <Content Include="Views\Home\關於我們.cshtml" />
     <Content Include="Views\Shared\登入了嗎.cshtml" />
+    <Content Include="Views\Search\搜尋抬頭.cshtml" />
+    <Content Include="Views\Search\搜尋結果.cshtml" />
+    <Content Include="Views\Post\編輯區域.cshtml" />
+    <Content Include="Views\Post\貼文抬頭.cshtml" />
+    <Content Include="Views\Shared\_navbar.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_loader.cshtml" />
+    <Content Include="Views\Shared\右下角按鈕.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
