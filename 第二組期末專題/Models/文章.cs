@@ -37,7 +37,7 @@ namespace 第二組期末專題.Models
 
             new SQL任務($"SELECT * FROM [用戶Favorite] WHERE [收藏文章_FK]={this["Id"]};").讀取((讀取器) =>
             {
-                whereList.Add("[Id]=" + 讀取器["文章_FK"]);
+                whereList.Add("[Id]=" + 讀取器["收藏文章_FK"]);
             });
 
             return 資料庫.讀取<用戶>($"WHERE ({string.Join(" OR ", whereList)})");
