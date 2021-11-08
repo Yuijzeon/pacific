@@ -154,6 +154,7 @@
     <Content Include="Content\images\image_4.jpg" />
     <Content Include="Content\images\image_5.jpg" />
     <Content Include="Content\images\image_6.jpg" />
+    <Content Include="Content\images\image_7.jpeg" />
     <Content Include="Content\images\loc.png" />
     <Content Include="Content\images\person_1.jpg" />
     <Content Include="Content\images\person_2.jpg" />
@@ -242,6 +243,7 @@
     <Compile Include="Models\資料庫\資料庫-更新.cs" />
     <Compile Include="Models\資料庫\資料庫-讀取.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Article.cs" />
     <Compile Include="ViewModels\Search.cs" />
     <Compile Include="ViewModels\Post.cs" />
     <Compile Include="ViewModels\註冊頁面.cs" />
@@ -373,6 +375,16 @@
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_loader.cshtml" />
     <Content Include="Views\Shared\右下角按鈕.cshtml" />
+    <Content Include="Views\Article\Paragraph.cshtml" />
+    <Content Include="Views\Article\TagCloud.cshtml" />
+    <Content Include="Views\Article\作者訊息.cshtml" />
+    <Content Include="Views\Article\分類.cshtml" />
+    <Content Include="Views\Article\搜尋欄.cshtml" />
+    <Content Include="Views\Article\文章內容.cshtml" />
+    <Content Include="Views\Article\文章抬頭.cshtml" />
+    <Content Include="Views\Article\新增評論.cshtml" />
+    <Content Include="Views\Article\最近文章.cshtml" />
+    <Content Include="Views\Article\評論列表.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
