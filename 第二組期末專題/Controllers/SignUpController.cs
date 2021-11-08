@@ -45,7 +45,7 @@ namespace 第二組期末專題.Controllers
             if (id != null)
             {
                 用戶Hashtag x = new 用戶Hashtag();
-                x["用戶_FK"] = 1;
+                x["用戶_FK"] = Session["ID"];
                 x["Hashtag_FK"] = (int)id;
                 (new 用戶HashtagCRUD()).Create(x);
             }
@@ -67,7 +67,7 @@ namespace 第二組期末專題.Controllers
         //返回主頁
         public ActionResult back()
         {
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Member");
         }
 
         //登入
