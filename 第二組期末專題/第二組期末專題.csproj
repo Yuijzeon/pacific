@@ -108,6 +108,7 @@
     <Content Include="Content\css\flaticon.css" />
     <Content Include="Content\css\jquery.timepicker.css" />
     <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\mypost.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
     <Content Include="Content\css\post.css" />
@@ -210,6 +211,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\MyPostController.cs" />
     <Compile Include="Controllers\PackController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -385,6 +387,7 @@
     <Content Include="Views\Article\新增評論.cshtml" />
     <Content Include="Views\Article\最近文章.cshtml" />
     <Content Include="Views\Article\評論列表.cshtml" />
+    <Content Include="Views\MyPost\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

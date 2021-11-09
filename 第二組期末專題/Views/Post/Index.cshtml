@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "article";
+    ViewBag.Title = "發表旅程";
 }
 
 @section HtmlHeadEnd{
@@ -187,18 +187,36 @@
                 url: '../Post/New',
                 data: $(form).serialize(),
                 success: function () {
+                    //Swal.fire({
+                    //    title: '確定要新增旅程嗎?',
+                    //    showDenyButton: true,
+                    //    showCancelButton: true,
+                    //    confirmButtonText: '儲存',
+                    //    cancelButtonText: `再等一下`,
+                    //}).then((result) => {
+                    //    /* Read more about isConfirmed, isDenied below */
+                    //    if (result.isConfirmed) {
+                    //        Swal.fire('新增成功!', '', 'success')
+                    //    } else if (result.isDenied) {
+                    //        Swal.fire('Changes are not saved', '', 'info')
+                    //    }
+                    //})
                     Swal.fire({
                         title: '確定要新增旅程嗎?',
-                        showDenyButton: true,
+                        icon: 'warning',
                         showCancelButton: true,
-                        confirmButtonText: '儲存',
-                        denyButtonText: `再等一下`,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '儲存文章',
+                        cancelButtonText: '再等一下',
                     }).then((result) => {
-                        /* Read more about isConfirmed, isDenied below */
                         if (result.isConfirmed) {
-                            Swal.fire('新增成功!', '', 'success')
-                        } else if (result.isDenied) {
-                            Swal.fire('Changes are not saved', '', 'info')
+                            Swal.fire({
+                                title: '<strong>文章新增成功!</strong>',
+                                html: '<a href="https://localhost:44367/MyPost/Index#">檢視文章列表</a> ',
+                                showCloseButton: true,
+                                showCancelButton: false,
+                            })
                         }
                     })
                 }
