@@ -10,19 +10,17 @@
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
-                    <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="16" />
+                    <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="16" /><br />
+                    <input id="pStartTime" type="time" name="startTime" class="pFormInput" size="22" />
                     <div class="errorMsg2"></div>
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pEndDate"><i class="far fa-calendar-minus"></i>請選擇結束日期</label>
-                    <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="16" />
+                    <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="16" /><br />
+                    <input id="pStartTime" type="time" name="endTime" class="pFormInput" size="16" />
                     <div class="errorMsg3"></div>
                 </div>
-                <div class="postform_L">
-                    <label class="postLabelPeo" for="pTimezone"><i class="fas fa-user-check"></i>時段</label>
-                    <input id="pTimezone" type="text" name="pTimezone" class="pFormInput" placeholder=" 例如 : 12:00~13:00 " size="22" />
-                    <div class="errorMsg4"></div>
-                </div>
+
                 <div class="postform_L">
                     <label class="postLabelPeo" for="pplNumber"><i class="fas fa-user-check"></i>接待人數</label>
                     <input id="pplNumber" type="text" name="ppNumber" class="pFormInput" />
@@ -36,7 +34,7 @@
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pPoint"><i class="fas fa-user-check"></i>點數</label>
-                    <select id="pPoint" name="pPoint" class="pFormInput pPoint" >
+                    <select id="pPoint" name="pPoint" class="pFormInput pPoint">
                         <option value="" disabled>--請選擇點數--</option>
                         <option name="pPoint" value="0">$0</option>
                         <option name="pPoint" value="500">$500</option>
@@ -51,6 +49,10 @@
                         <option name="pPoint" value="5000">$5000</option>
                     </select>
                     <div class="errorMsg6"></div>
+                </div>
+                <div class="postform_L">
+                    <input id="pDate" type="hidden" name="pDate" class="pFormInput" size="22" vale=""  disabled />
+                    <div class="errorMsg4"></div>
                 </div>
             </div>
             <div id="form-container" class="col col-12 col-md-6 col-lg-9 ">

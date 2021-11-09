@@ -93,27 +93,25 @@
             });
 
             //開始日期
-            var rule2 = /^\d|..$/;
-            $("#pStartDate").blur(function () {
-                if (rule2.test($(this).val())) {
+            $("input[name=startDate]").blur(function () {
+                if ($(this).val()!='') {
                     $('.errorMsg2').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
                 }
                 else {
-                    $('.errorMsg2').text('*請選擇開始日期*');
+                    $('.errorMsg2').text('*請選擇開始日期及時間*');
                     $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
                 }
             });
 
             //結束日期
-            var rule3 = /^\d|..$/;
-            $("#pEndDate").blur(function () {
+            $("input[name=pEndDate]").blur(function () {
                 if (rule3.test($(this).val())) {
                     $('.errorMsg3').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
                 }
                 else {
-                    $('.errorMsg3').text('*請選擇結束日期*');
+                    $('.errorMsg3').text('*請選擇結束日期及時間*');
                     $(this).css({ "border-color": "#FA8072", "box-shadow": "0px 0px 3px 1px #c8def0" })
                 }
             });

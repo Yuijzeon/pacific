@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 第二組期末專題.Models;
 
 namespace 第二組期末專題.Controllers
 {
@@ -11,7 +12,10 @@ namespace 第二組期末專題.Controllers
         // GET: MyPost
         public ActionResult Index()
         {
-            return View();
+            
+            List<文章> 我的文章 = 資料庫.讀取<用戶>(Session["ID"]).Get創作文章清單();
+
+            return View(我的文章);
         }
     }
 }
