@@ -17,5 +17,12 @@ namespace 第二組期末專題.Models
 
             new 資料庫任務(sql).Set();
         }
+
+        //刪除用戶標籤
+        public void del(用戶Hashtag a)
+        {
+            string sql = "DELETE FROM 用戶Hashtag WHERE 用戶_FK="+ a["用戶_FK"] + "and Hashtag_FK="+ a["Hashtag_FK"];
+            new 資料庫任務(sql).Set();
+        }
     }
 }

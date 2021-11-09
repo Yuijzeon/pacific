@@ -57,14 +57,30 @@ namespace 第二組期末專題.Controllers
             return RedirectToAction("SelectInterest");
         }
 
-        //測試標籤新增
-        public string Testinsert()
+        //刪除用戶標籤
+        public ActionResult 刪除用戶標籤(int? id)
         {
-            Hashtag x = new Hashtag();
-            x["名稱"] = "書籍";
-            x["類別"] = "愛好";
+            if (id != null)
+            {
+                用戶Hashtag x = new 用戶Hashtag();
+                string name = (string)Session["test"];
+                List<用戶> data = new 用戶CRUD().取ID(name);
+                //x["用戶_FK"] = Session["ID"];
+                x["用戶_FK"] = data[0].Id;
+                x["Hashtag_FK"] = (int)id;
+                (new 用戶HashtagCRUD()).del(x);
+            }
+            return View();
+        }
 
-            (new HashtagCRUD()).Create(x);
+        //測試標籤新增
+        public string testdel()
+        {
+            用戶Hashtag x = new 用戶Hashtag();
+            x["用戶_FK"] = 57;
+            x["Hashtag_FK"] = 16; 
+
+            (new 用戶HashtagCRUD()).del(x);
             return "新增標籤成功";
         }
 
