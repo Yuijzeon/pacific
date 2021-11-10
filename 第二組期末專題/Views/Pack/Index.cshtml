@@ -3,6 +3,16 @@
 	ViewBag.Title = "新增旅程包";
 }
 
+@section HtmlHeadEnd{
+	<style>
+		.img-owl {
+			height: 150px !important;
+			width: auto !important;
+			
+		}
+	</style>
+}
+
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
@@ -15,42 +25,56 @@
 	</div>
 </section>
 
-<h5>我的所有旅程</h5>
 <div class="col-md-12">
-	<div class="carousel-testimony owl-carousel">
-		<div class="col-3">
-			<span class="tel">
-				<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid" draggable="true" ondragstart="Drag(event)">
-			</span>
+	<div class="row justify-content-center pb-1">
+		<div class="col-md-7 text-center heading-section ftco-animate">
+			<span class="subheading">Journeys</span>
+			<h3 class="mb-1">我的所有旅程</h3>
 		</div>
-		<div class="col-3">
-			<div class="card card-block">
+	</div>
+	<div id="carousel" class="carousel-testimony owl-carousel">
+		<div>
+			<div class="">
 				<span class="tour">
-					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid img-owl" draggable="true">
 				</span>
 			</div>
 		</div>
-		<div class="col-3">
-			<div class="card card-block">
+		<div>
+			<div class="">
 				<span class="tour">
-					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid img-owl" draggable="true">
 				</span>
 			</div>
 		</div>
-		<div class="col-3">
-			<div class="card card-block">
+		<div>
+			<div class="">
 				<span class="tour">
-					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid img-owl" draggable="true">
 				</span>
 			</div>
 		</div>
-		<div class="col-3">
+		<div>
 			<div class="card card-block">
 				<span class="tour">
-					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+					<img src="../../Content/images/person_1.jpg " alt="Image placeholder" class="img-fluid img-owl" draggable="true">
 				</span>
 			</div>
-		</div>		
+		</div>
+		<div>
+			<div class="card card-block">
+				<span class="tour">
+					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid img-owl" draggable="true">
+				</span>
+			</div>
+		</div>
+		<div>
+			<div class="card card-block">
+				<span class="tour">
+					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid img-owl" draggable="true">
+				</span>
+			</div>
+		</div>
 	</div>
 </div>
 <div class="row">
@@ -58,14 +82,15 @@
 		<h5>我的旅程包</h5>
 		<div style="border: 1px solid; height: 600px; overflow: auto; ">
 			<div>
-				<div>
+				<div id="tour">
 					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="col-sm-6 img-fluid">
 					<div style="float: right;" class="col-sm-6">
 						<h3>旅程A</h3>
 						<h5>時段</h5>
+						<input class="btn btn-primary btn-md " name="removeBtn" style="float: left;" type="button" value="刪除" onclick="DeleteFunc(1)" />
 					</div>
 				</div>
-				<div>
+				<div id="tour">
 					<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="col-sm-6 img-fluid">
 					<div style="float: right;" class="col-sm-6">
 						<h3>旅程A</h3>
@@ -97,30 +122,69 @@
 			</div>
 		</div>
 		<br />
-		<input style="float: left; " type="button" value="前日" />
-		<input style="float: right; " type="button" value="次日" />
+		<input class="btn btn-primary btn-md" style="float: left; " type="button" value="前日" />
+		<input class="btn btn-primary btn-md" style="float: right; " type="button" value="次日" />
 
 		<!--<input style="float: left;" type="submit" value="前日" class="align-self-stretch form-control btn btn-primary">-->
 
 	</div>
-	
-	
 
-	
 	<div class="col-sm-6">
 		<h5>旅程包簡介</h5>
 		<div>
-			<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid">
+			<img src="../../Content/images/person_1.jpg" alt="Image placeholder" class="img-fluid uploadImg">
+			<div class="uploadImg"></div>
 			<br />
-			<textarea rows="5" class="form-control" name="selfintro"></textarea>
-			<input style="float: right; " type="button" value="發表旅程" />
+			<textarea rows="5" class="form-control" name="selfintro" placeholder="旅程簡介"></textarea>
+
+			<input class="btn btn-primary btn-md" style="float: right; " type="button" value="發表旅程" />
 		</div>
 	</div>
 </div>
 
-<script type="text/javascript">
-	$(function () {
-		$(".tour").draggable({ helper: 'clone', opacity: 0.5 });
-</script>
+
+@section HtmlBodyEnd{
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".owl-carousel").draggable({
+				helper: 'clone',
+				opacity: 0.5
+			});
+
+			$(".owl-carousel").owlCarousel({
+				loop: true, // 循環播放
+				margin: 10, // 外距 10px
+				nav: true, // 顯示點點
+				responsive: {
+					0: {
+						items: 1 // 螢幕大小為 0~600 顯示 1 個項目
+					},
+					600: {
+						items: 3 // 螢幕大小為 600~1000 顯示 3 個項目
+					},
+					1000: {
+						items: 5 // 螢幕大小為 1000 以上 顯示 5 個項目
+					}
+				}
+			});
+
+			$(".owl-carousel").owlCarousel({
+				autoplay: true,
+				items: 1,
+				loop: true,
+				navigation: true,
+				slideSpeed: 300,
+				paginationSpeed: 400,
+				singleItem: true
+			})
+
+			$(".removeBtn").click(function (e) {
+				e.preventDefault();
+				$("#tour").remove();
+			});
 
 
+		})
+
+	</script>
+}
