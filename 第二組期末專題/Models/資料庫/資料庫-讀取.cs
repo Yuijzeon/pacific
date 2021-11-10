@@ -82,5 +82,11 @@ namespace 第二組期末專題
 
             return (int)new SQL任務(查詢字串, 注入鍵值).讀取1格();
         }
+
+
+        public static List<T> 讀取<T>(this SQL任務 任務) where T : Dictionary<string, object>, new()
+        {
+            return 讀取表<T>(任務.查詢字串);
+        }
     }
 }

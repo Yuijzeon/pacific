@@ -9,13 +9,13 @@
             {
                 <div class="col-md-4 ftco-animate">
                     <div class="project-wrap">
-                        <a href="#" class="img" style="background-image:
+                        <a href="/Article?id=@文章["Id"]" class="img" style="background-image:
                                 url(../../Content/images/@文章.Get圖片路徑());">
                             <span class="price">@文章["點數"] P</span>
                         </a>
                         <div class="text p-4">
                             <span class="days">@文章["日期起始"]</span>
-                            <h3><a href="#">@文章["標題"]</a></h3>
+                            <h3><a href="/Article?id=@文章["Id"]">@文章["標題"]</a></h3>
                             <p class="location"><span class="fa fa-map-marker"></span> @文章["地點"]</p>
                             <div class="tagcloud">
                                 @{

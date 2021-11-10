@@ -74,5 +74,12 @@ namespace 第二組期末專題.Models
 
             return this["大頭貼"] as string;
         }
+
+        public List<文章> Get最新三筆文章()
+        {
+            return new SQL任務(
+                "SELECT TOP 3 [文章].* FROM [文章] WHERE [作者用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
+                ).讀取<文章>();
+        }
     }
 }

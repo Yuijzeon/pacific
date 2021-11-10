@@ -21,7 +21,17 @@
     </style>
 }
 
-@Html.Partial("文章抬頭", Model.文章)
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/@Model.文章.Get圖片路徑()');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                @Html.Partial("文章路徑", Model.文章.Get作者())
+                <h1 class="mb-0 bread">@Model.文章["標題"]</h1>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="ftco-section ftco-no-pt ftco-no-pb">
     <div class="container">
@@ -37,7 +47,7 @@
             <div class="col-lg-4 sidebar ftco-animate bg-light py-md-5">
                 @Html.Partial("搜尋欄")
                 @Html.Partial("分類")
-                @Html.Partial("最近文章")
+                @Html.Partial("最近文章", Model.文章.Get作者().Get最新三筆文章())
                 @Html.Partial("TagCloud")
                 @Html.Partial("Paragraph")
             </div>
