@@ -81,18 +81,17 @@ namespace 第二組期末專題.Controllers
 
         public ActionResult By(FormCollection form)
         {
-            bool 是空(string input)
+            bool 是空嗎(string input)
             {
-                var AAA = input;
-                return string.IsNullOrEmpty(input) && (input != "null");
+                return string.IsNullOrEmpty(input) || (input == "null");
             };
 
             string where = "/Search?";
-            where += 是空(form["result"]) ? "" : $"result={ form["result"]}&";
-            where += 是空(form["active"]) ? "" : $"active={form["active"]}&";
-            where += 是空(form["starttime"]) ? "" : $"starttime={form["starttime"]}&";
-            where += 是空(form["endtime"]) ? "" : $"endtime={form["endtime"]}&";
-            where += 是空(form["point"]) ? "" : $"point={form["point"]}&";
+            where += 是空嗎(form["result"]) ? "" : $"result={ form["result"]}&";
+            where += 是空嗎(form["active"]) ? "" : $"active={form["active"]}&";
+            where += 是空嗎(form["starttime"]) ? "" : $"starttime={form["starttime"]}&";
+            where += 是空嗎(form["endtime"]) ? "" : $"endtime={form["endtime"]}&";
+            where += 是空嗎(form["point"]) ? "" : $"point={form["point"]}&";
             return Redirect(where.TrimEnd('&'));
         }
     }
