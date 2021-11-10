@@ -3,44 +3,47 @@
 
 <section class="ftco-section">
     <div class="container">
-        <div class="row">
-            @foreach (var 文章 in Model)
-            {
-                <div class="col-md-4 ftco-animate">
-                    <div class="project-wrap">
-                        <a href="/Article?id=@文章["Id"]" class="img" style="background-image:
-                                url(../../Content/images/@文章.Get圖片路徑());">
-                            <span class="price">@文章["點數"] P</span>
-                        </a>
-                        <div class="text p-4">
-                            <span class="days">@文章["日期起始"]</span>
-                            <h3><a href="/Article?id=@文章["Id"]">@文章["標題"]</a></h3>
-                            <p class="location"><span class="fa fa-map-marker"></span> @文章["地點"]</p>
-                            <div class="tagcloud">
-                                @{
-                                    foreach (var Hashtag in 文章.GetHashtag清單())
-                                    {
-                                        <a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
-                                    }
-                                }
-                            </div>
-                            <ul>
-                                <li><span class="flaticon-shower"></span>2</li>
-                                <li><span class="flaticon-king-size"></span>3</li>
-                                <li><span class="flaticon-tour-guide"></span>@文章.Get作者()["名字"]</li>
+		<div class="row">
+			
+			@foreach (var 文章 in Model)
+			{
+			<div class="col-md-4 ftco-animate">
+				
+				<div class="project-wrap">
 
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            }
-            @if (Model.Count == 0)
-            {
-                <div class="col-md-4 ftco-animate">
-                    <h3>抱歉，沒有相符的結果<br>要不換個關鍵字試試？</h3>
-                </div>
-            }
-        </div>
+					<a href="/Article?id=@文章["Id"]" class="img" style="background-image:
+                                url(../../Content/images/@文章.Get圖片路徑());">
+						<span class="price">@文章["點數"] P</span>
+					</a>
+					<div class="text p-4">
+						<span class="days">@文章["日期起始"] 至 <br /></span>
+						<span class="days">@文章["日期結束"]</span>
+						<h3><a href="/Article?id=@文章["Id"]">@文章["標題"]</a></h3>
+						<p class="location"><span class="fa fa-map-marker"></span> @文章["地點"]</p>
+						<div class="tagcloud">
+							@{
+								foreach (var Hashtag in 文章.GetHashtag清單())
+								{
+									<a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
+								}
+							}
+						</div>
+						<ul>
+							<li>接待人數 @文章["接待人數"]</li>
+							<li><span class="flaticon-tour-guide"></span>@文章.Get作者()["名字"]</li>
+						</ul>
+						<input class="collection" type=button value=🧡 onclick="" />
+					</div>
+				</div>
+			</div>
+			}
+			@if (Model.Count == 0)
+			{
+				<div class="col-md-4 ftco-animate">
+					<h3>抱歉，沒有相符的結果<br>要不換個關鍵字試試？</h3>
+				</div>
+			}
+		</div>
 
         @*<div class="row mt-5">
                 <div class="col text-center">
