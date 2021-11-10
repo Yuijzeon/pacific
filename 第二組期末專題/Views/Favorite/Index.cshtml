@@ -1,0 +1,76 @@
+﻿@using 第二組期末專題.Models
+@model List<文章>
+@{
+    ViewBag.Title = "我的旅程文章";
+    ViewBag.isScroll = "true";
+}
+@section HtmlHeadEnd{
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/css/mypost.css" />
+}
+<head>
+    <title>
+        Bootstrap
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">會員<i class="fa fa-chevron-right"></i></a></span></p>
+                    <h1 class="mb-0 bread">我的收藏</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <table class="table table-bordered border-primary"  style="border:8px groove;" cellpadding="10" border='0'>
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">圖片</th>
+                <th scope="col">行程</th>
+                <th scope="col">地點</th>
+                <th scope="col">活動日期</th>
+                <th scope="col">結束日期</th>
+                <th rowspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int y = 1;
+                foreach (var 文章 in Model)
+                {
+                    <tr>
+                        <th>@y</th>
+                        <td>測試</td>
+                        <td>@文章["標題"]</td>
+                        <td>@文章["地點"]</td>
+                        <td>@文章["日期起始"]</td>
+                        <td>@文章["日期結束"]</td>
+                        <td><button class="btn btn-outline-primary">詳細內容</button></td>
+                        <td><button class="btn btn-outline-primary">取消參加</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+    <script type="text/javascript">
+
+    </script>
+</body>
