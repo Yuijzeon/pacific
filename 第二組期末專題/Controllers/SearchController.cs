@@ -94,5 +94,15 @@ namespace 第二組期末專題.Controllers
                 return string.IsNullOrEmpty(input) || (input == "null");
             };
         }
+
+        //用戶新增收藏
+        public ActionResult 加入收藏(int? id)
+        {
+            用戶Favorite x = new 用戶Favorite();
+            x["收藏文章_FK"] = (int)id;
+            x["用戶_FK"] = Session["ID"];
+            new 用戶收藏CRUD().新增收藏(x);
+            return RedirectToAction("Index");
+        }
     }
 }

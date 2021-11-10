@@ -23,6 +23,21 @@
 
          //$("#btn").click(function () {
          //    console.log("Submitted", form.serialize(), form.serializeArray());
-         //});
+        //});
+        var Login = '@Session["Name"]';
+        $(function () {
+            $(".collection").hide();
+            if (Login != "")
+                $(".collection").show();
+        })
+
+        function add(id) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("加入收藏","Search")',
+                data: { id: id },
+                success: alert("收藏成功"),
+            });
+        }
     </script>
 }

@@ -223,6 +223,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\用戶收藏CRUD.cs" />
     <Compile Include="Models\提問.cs" />
     <Compile Include="Models\圖片.cs" />
     <Compile Include="Models\資料表.cs" />
