@@ -197,6 +197,7 @@
     <Content Include="Content\js\scrollax.min.js" />
     <Content Include="Content\js\test.js" />
     <Content Include="Content\main.html" />
+    <Content Include="Content\popular.html" />
     <Content Include="Content\readme.txt" />
     <Content Include="Content\SignUp.html" />
     <Content Include="Content\主題旅遊.html" />
