@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/css/mypost.css" />
 }
+<head>
+    <title>
+        Bootstrap
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+</head>
 <body>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../Content/images/bg_1.jpg');">
@@ -19,14 +30,12 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
                 <div class="col-md-9 ftco-animate pb-5 text-center">
-                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">旅程<i class="fa fa-chevron-right"></i></a></span></p>
-                    <h1 class="mb-0 bread">我的旅程文章</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="/">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="index.html">會員<i class="fa fa-chevron-right"></i></a></span></p>
+                    <h1 class="mb-0 bread">我的收藏</h1>
                 </div>
             </div>
         </div>
     </section>
-
-   
     <div class="container">
         <div class="row flex-lg-nowrap">
             <div class="col">
@@ -37,117 +46,124 @@
                         <li class="nav-item"><a class="nav-link active" href="#">分享旅程</a></li>
                     </ul>
                 </div>
-            
-            <div class="row flex-lg-nowrap">
-                <div class="col mb-3">
-                    <div class="e-panel card">
-                        <div class="card-body">
-                            <div class="card-title">
-                                <h6 class="mr-2"><span></span><small class="px-1"></small></h6>
-                            </div>
 
-                            <div class="e-table">
-                                <div class="table-responsive table-lg mt-3">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th class="sortable">標題</th>
-                                              <th class="max-width">| 旅程新增時間</th>
-                                              <th>編輯</th>
-                                              <th>刪除</th>
-                                            </tr>
-                                        </thead>
-                                    <tbody>
-                                        @foreach (var 文章 in Model)
-                                        {
-                                            <tr>
-                                                <td class="text-nowrap align-middle">@文章["標題"]</td>
-                                                <td class="text-nowrap align-middle">@文章["文章註冊時間"]</td>
-                                                <td class="text-center align-middle">
-                                                    <div class="btn-group align-top">
-                                                        <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
-                                                        </div>
-                                                </td>
-                                                <td class="text-center align-middle">
-                                                    <div class="btn-group align-top">
-                                                        <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash"></i></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        }
-                                        </tbody>
-                                    </table>
+                <div class="row flex-lg-nowrap">
+                    <div class="col mb-3">
+                        <div class="e-panel card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h6 class="mr-2"><span></span><small class="px-1"></small></h6>
                                 </div>
-                                
-                                <div class="d-flex justify-content-center">
-                                    <ul class="pagination mt-3 mb-0">
-                                        <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
-                                        <li class="active page-item"><a href="#" class="page-link">1</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">›</a></li>
-                                        <li class="page-item"><a href="#" class="page-link">»</a></li>
+
+                                <div class="e-table">
+                                    <div class="table-responsive table-lg mt-3">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Photo</th>
+                                                    <th class="sortable">Date</th>
+                                                    <th class="max-width">Title</th>
+                                                    <th>Place</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var 文章 in Model)
+                                                {
+                                                <tr>
+
+                                                    <td class="align-middle text-center">
+                                                        <div class="bg-light d-inline-flex justify-content-center align-items-center align-top" style="width: 35px; height: 35px; border-radius: 3px;"><a href="#" class="img" style="background-image:url(../../Content/images/@文章.Get圖片路徑());"></a></div>
+                                                    </td>
+                                                    <td class="text-nowrap align-middle">@文章["日期起始"]</td>
+                                                    <td class="text-nowrap align-middle">@文章["標題"]</td>
+                                                    <td class="text-nowrap align-middle">@文章["地點"]</td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <div class="btn-group align-top">
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash"></i></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <ul class="pagination mt-3 mb-0">
+                                            <li class="disabled page-item"><a href="#" class="page-link">‹</a></li>
+                                            <li class="active page-item"><a href="#" class="page-link">1</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">›</a></li>
+                                            <li class="page-item"><a href="#" class="page-link">»</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center px-xl-3">
+                                    <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">New User</button>
+                                </div>
+                                <hr class="my-3">
+                                <div class="e-navlist e-navlist--active-bold">
+                                    <ul class="nav">
+                                        <li class="nav-item active"><a href="" class="nav-link"><span>All</span>&nbsp;<small>/&nbsp;32</small></a></li>
+                                        <li class="nav-item"><a href="" class="nav-link"><span>Active</span>&nbsp;<small>/&nbsp;16</small></a></li>
+                                        <li class="nav-item"><a href="" class="nav-link"><span>Selected</span>&nbsp;<small>/&nbsp;0</small></a></li>
                                     </ul>
                                 </div>
-                            </div>
+                                <hr class="my-3">
+                                <div>
+                                    <div class="form-group">
+                                        <label>Date from - to:</label>
+                                        <div>
+                                            <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Search by Name:</label>
+                                        <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
+                                    </div>
+                                </div>
+                                <hr class="my-3">
+                                <div class="">
+                                    <label>Status:</label>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                                            <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                                            <label class="custom-control-label" for="users-status-active">Active</label>
+                                        </div>
+                                    </div>
+                                    <div class="px-2">
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked="">
+                                            <label class="custom-control-label" for="users-status-any">Any</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-3 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-center px-xl-3">
-                                <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">New User</button>
-                            </div>
-                            <hr class="my-3">
-                            <div class="e-navlist e-navlist--active-bold">
-                                <ul class="nav">
-                                    <li class="nav-item active"><a href="" class="nav-link"><span>All</span>&nbsp;<small>/&nbsp;32</small></a></li>
-                                    <li class="nav-item"><a href="" class="nav-link"><span>Active</span>&nbsp;<small>/&nbsp;16</small></a></li>
-                                    <li class="nav-item"><a href="" class="nav-link"><span>Selected</span>&nbsp;<small>/&nbsp;0</small></a></li>
-                                </ul>
-                            </div>
-                            <hr class="my-3">
-                            <div>
-                                <div class="form-group">
-                                    <label>Date from - to:</label>
-                                    <div>
-                                        <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>Search by Name:</label>
-                                    <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
-                                </div>
-                            </div>
-                            <hr class="my-3">
-                            <div class="">
-                                <label>Status:</label>
-                                <div class="px-2">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
-                                        <label class="custom-control-label" for="users-status-disabled">Disabled</label>
-                                    </div>
-                                </div>
-                                <div class="px-2">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
-                                        <label class="custom-control-label" for="users-status-active">Active</label>
-                                    </div>
-                                </div>
-                                <div class="px-2">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked="">
-                                        <label class="custom-control-label" for="users-status-any">Any</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
                 <!-- User Form Modal -->
                 <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
@@ -261,7 +277,6 @@
         </div>
     </div>
 
-    <script type="text/javascript">
 
-    </script>
+    <script type="text/javascript"></script>
 </body>

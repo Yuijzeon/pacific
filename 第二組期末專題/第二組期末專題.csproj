@@ -209,6 +209,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\FavoriteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
     <Compile Include="Controllers\MyPostController.cs" />
@@ -388,6 +389,7 @@
     <Content Include="Views\Article\最近文章.cshtml" />
     <Content Include="Views\Article\評論列表.cshtml" />
     <Content Include="Views\MyPost\Index.cshtml" />
+    <Content Include="Views\Favorite\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

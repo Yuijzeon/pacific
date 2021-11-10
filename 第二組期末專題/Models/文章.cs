@@ -31,6 +31,11 @@ namespace 第二組期末專題.Models
             return 資料庫.計數<用戶Favorite>($"WHERE [收藏文章_FK]={this["Id"]}");
         }
 
+        public int Get評論數()
+        {
+            return 資料庫.計數<評級>($"WHERE [文章_FK]={this["Id"]}");
+        }
+
         public List<用戶> Get收藏用戶清單()
         {
             List<string> whereList = new List<string>();

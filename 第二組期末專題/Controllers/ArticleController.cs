@@ -28,26 +28,22 @@ namespace 第二組期末專題.Controllers
             return View(貼文ViewModel);
         }
 
-        public string NewComment(FormCollection form)
+        public ActionResult NewComment(FormCollection form)
         {
             try
             {
-                HttpRequestBase post = Request;
                 // 將回傳的東西存進資料庫
                 評級 新評級 = new 評級();
-                新評級["分數"] = post["分數"];
+                新評級["分數"] = form["分數"];
                 新評級["評分用戶_FK"] = Session["ID"];
-                新評級["文章_FK"] = post["文章_FK"];
-                新評級["評論"] = post["評論"];
+                新評級["文章_FK"] = form["文章_FK"];
+                新評級["評論"] = form["評論"];
 
                 資料庫.新增(新評級);
             }
-            catch (Exception e)
-            {
-                return e.ToString();
-            }
+            catch {}
 
-            return "";
+            return Redirect("/Article?id=" + form["文章_FK"]);
         }
     }
 }

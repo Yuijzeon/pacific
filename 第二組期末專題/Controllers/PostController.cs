@@ -20,8 +20,8 @@ namespace 第二組期末專題.Controllers
 
         public string New()
         {
-            //try
-            //{
+            try
+            {
                 HttpRequestBase post = Request;
                 // 將回傳的東西存進資料庫
                 文章 新文章 = new 文章();
@@ -38,13 +38,13 @@ namespace 第二組期末專題.Controllers
                 新文章["文章註冊時間"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
                 資料庫.新增<文章>(新文章);
-            //}
-            //catch (Exception e)
-            //{
-            //    return e.ToString();
-            //}
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
 
-            return "";
+            return null;
         }
 
         public JsonResult GetHashtags()

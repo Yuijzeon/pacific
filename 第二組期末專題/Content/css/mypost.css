@@ -5,3 +5,10 @@
 .container {
     padding-top: 30px;
 }
+
+thead {
+    background-color: #fd7e14;
+    text-align:center;
+    color:white;
+    letter-spacing:0.5px;
+}

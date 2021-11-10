@@ -4,7 +4,6 @@
 <section class="ftco-section">
     <div class="container">
         <div class="row">
-
             @foreach (var 文章 in Model)
             {
                 <div class="col-md-4 ftco-animate">
@@ -21,7 +20,7 @@
                                 @{
                                     foreach (var Hashtag in 文章.GetHashtag清單())
                                     {
-                                        <a href="/Search/@Hashtag["名稱"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
+                                        <a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
                                     }
                                 }
                             </div>
@@ -35,12 +34,9 @@
                     </div>
                 </div>
             }
-
-
-
         </div>
 
-        <div class="row mt-5">
+        @*<div class="row mt-5">
             <div class="col text-center">
                 <div class="block-27">
                     <ul>
@@ -54,6 +50,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
+        </div>*@
     </div>
 </section>
