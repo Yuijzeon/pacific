@@ -193,6 +193,7 @@
     <Content Include="Content\js\main.js" />
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\post.js" />
     <Content Include="Content\js\range.js" />
     <Content Include="Content\js\scrollax.min.js" />
     <Content Include="Content\js\test.js" />
