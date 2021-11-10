@@ -87,7 +87,7 @@ namespace 第二組期末專題.Controllers
             where += 是空嗎(form["starttime"]) ? "" : $"starttime={form["starttime"]}&";
             where += 是空嗎(form["endtime"]) ? "" : $"endtime={form["endtime"]}&";
             where += 是空嗎(form["point"]) ? "" : $"point={form["point"]}&";
-            return Redirect(where.TrimEnd('&'));
+            return Redirect(where.TrimEnd('&') + "#搜尋");
 
             bool 是空嗎(string input)
             {
