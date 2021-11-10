@@ -20,11 +20,12 @@
                 <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </button>
                 @{
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
-                        <a class="dropdown-item" href="#">我的行程</a>
-                        <a class="dropdown-item" href="/Member/登出">登出</a>
-                    </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
+                            <a class="dropdown-item" href="~/MyPost/Index">我的文章</a>
+                            <a class="dropdown-item" href="#">我的收藏</a>
+                            <a class="dropdown-item" href="/Member/登出">登出</a>
+                         </div>
                 }
             </div>
         </div>
