@@ -383,7 +383,7 @@
     <Content Include="Views\Article\分類.cshtml" />
     <Content Include="Views\Article\搜尋欄.cshtml" />
     <Content Include="Views\Article\文章內容.cshtml" />
-    <Content Include="Views\Article\文章抬頭.cshtml" />
+    <Content Include="Views\Article\文章路徑.cshtml" />
     <Content Include="Views\Article\新增評論.cshtml" />
     <Content Include="Views\Article\最近文章.cshtml" />
     <Content Include="Views\Article\評論列表.cshtml" />
