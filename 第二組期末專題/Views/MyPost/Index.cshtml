@@ -49,25 +49,20 @@
                             <div class="e-table">
                                 <div class="table-responsive table-lg mt-3">
                                     <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                              <th>Photo</th>
-                                              <th class="sortable">Date</th>
-                                              <th class="max-width">Title</th>
-                                              <th>Edit</th>
-                                              <th>Delete</th>
+                                        <thead>
+                                            <tr>
+                                                <th class="sortable">標題</th>
+                                              <th class="max-width">| 旅程新增時間</th>
+                                              <th>編輯</th>
+                                              <th>刪除</th>
                                             </tr>
                                         </thead>
                                     <tbody>
                                         @foreach (var 文章 in Model)
                                         {
                                             <tr>
-
-                                                <td class="align-middle text-center">
-                                                    <div class="bg-light d-inline-flex justify-content-center align-items-center align-top" style="width: 35px; height: 35px; border-radius: 3px;"><a href="#" class="img" style="background-image:url(../../Content/images/@文章.Get圖片路徑());"></a></div>
-                                                </td>
-                                                <td class="text-nowrap align-middle">@文章["日期起始"]</td>
                                                 <td class="text-nowrap align-middle">@文章["標題"]</td>
+                                                <td class="text-nowrap align-middle">@文章["文章註冊時間"]</td>
                                                 <td class="text-center align-middle">
                                                     <div class="btn-group align-top">
                                                         <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
