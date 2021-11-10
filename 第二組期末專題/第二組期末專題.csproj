@@ -111,6 +111,7 @@
     <Content Include="Content\css\mypost.css" />
     <Content Include="Content\css\owl.carousel.min.css" />
     <Content Include="Content\css\owl.theme.default.min.css" />
+    <Content Include="Content\css\popular.css" />
     <Content Include="Content\css\post.css" />
     <Content Include="Content\css\search.css" />
     <Content Include="Content\css\sign_Up.css" />
