@@ -21,7 +21,7 @@
                                 @{
                                     foreach (var Hashtag in 文章.GetHashtag清單())
                                     {
-                                        <a href="/Search/@Hashtag["名稱"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
+                                        <a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
                                     }
                                 }
                             </div>

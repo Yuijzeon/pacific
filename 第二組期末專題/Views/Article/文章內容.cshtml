@@ -7,9 +7,9 @@
     <div class="tagcloud">
         @{
             var Hashtag清單 = Model.GetHashtag清單();
-            for (int i = 0; i < Hashtag清單.Count; i++)
+            foreach (var Hashtag in Hashtag清單)
             {
-                <a href="/Search?hashtag=@Hashtag清單[i]["名稱"]" class="tag-cloud-link">@Hashtag清單[i]["名稱"]</a>
+                <a href="/Search?hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
             }
         }
     </div>

@@ -3,10 +3,11 @@
 
 <div class="about-author d-flex p-4 bg-light">
     <div class="bio mr-5">
-        <img src="../../Content/images/@Model.Get大頭貼()" alt="Image placeholder" class="img-fluid mb-4" style="max-height: 150px;">
+        <img src="../../Content/images/@Model.Get大頭貼()" alt="Image placeholder" class="img-fluid mb-4" style="max-height: 115px;">
     </div>
     <div class="desc">
         <h3>@Model["名字"]</h3>
-        <p>註冊日期: @Model["註冊日期"]</p>
+        <p>他關注的 Hashtags:</p>
+        @Html.Partial("TagCloud", Model)
     </div>
 </div>

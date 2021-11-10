@@ -69,7 +69,7 @@ namespace 第二組期末專題.Models
 
         public string Get大頭貼()
         {
-            if (this["大頭貼"] is DBNull)
+            if (this["大頭貼"] is DBNull || string.IsNullOrEmpty((string)this["大頭貼"]))
                 return "person_2.jpg";
 
             return this["大頭貼"] as string;
