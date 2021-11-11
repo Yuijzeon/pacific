@@ -35,7 +35,11 @@ namespace 第二組期末專題.Controllers
 
             foreach (string postId in postIds)
             {
-                //資料庫.新增<旅程包Link>
+                資料庫.新增(new 旅程包_link()
+                {
+                    ["旅程包_FK"] = pack["Id"],
+                    ["文章_FK"] = postId
+                });
             }
 
             return Redirect("/Search?pack=" + pack["Id"]);
