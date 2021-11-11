@@ -14,12 +14,31 @@ namespace 第二組期末專題.Controllers
         // GET: Post
         public ActionResult Index()
         {
-            return View();
+            文章 新文章 = new 文章();
+            新文章["標題"] = "";
+            新文章["內容"] = "";
+            新文章["日期起始"] = DateTime.Now;
+            新文章["日期結束"] = DateTime.Now;
+            新文章["圖片_FK"] = 1;
+            新文章["地點"] = "";
+            新文章["接待人數"] = 1;
+            新文章["類型"] = "";
+            新文章["點數"] = 0;
+
+            return View(新文章);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var post = 資料庫.讀取<文章>(id);
+
+            return View("Index", post);
         }
 
 
         public string New()
         {
+
             try
             {
                 HttpRequestBase post = Request;
@@ -28,8 +47,8 @@ namespace 第二組期末專題.Controllers
                 新文章["標題"] = post["pTitle"];
                 新文章["作者用戶_FK"] = 1;
                 新文章["內容"] = post["pContent"];
-                新文章["日期起始"] = Convert.ToDateTime(post["startDate"] + " " + post["startTime"]);
-                新文章["日期結束"] = Convert.ToDateTime(post["endDate"] + " " + post["endTime"]);
+                新文章["日期起始"] = Convert.ToDateTime(post["pStartDate"]);
+                新文章["日期結束"] = Convert.ToDateTime(post["pEndDate"]);
                 新文章["圖片_FK"] = 1;
                 新文章["地點"] = post["pAddress"];
                 新文章["接待人數"] = Convert.ToInt32(post["pplNumber"]);
@@ -74,6 +93,14 @@ namespace 第二組期末專題.Controllers
                 return Json(e, JsonRequestBehavior.AllowGet);
             }
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeletePost(int id)
+        {
+            new 資料庫任務("DELETE FROM [用戶] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
+
+            var 全部用戶 = 資料庫.讀取<用戶>();
+            return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
     }
 }
