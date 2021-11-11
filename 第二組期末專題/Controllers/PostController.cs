@@ -56,6 +56,19 @@ namespace 第二組期末專題.Controllers
                 新文章["文章註冊時間"] = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
 
                 資料庫.新增<文章>(新文章);
+
+                var article = 資料庫.讀取<用戶>(Session["ID"]).Get最新文章();
+
+                string[] hashtagIds = post["hashtags"].Split(',');
+
+                foreach (string hashtagId in hashtagIds)
+                {
+                    資料庫.新增(new 文章Hashtag()
+                    {
+                        ["文章_FK"] = article["Id"],
+                        ["Hashtag_FK"] = hashtagId
+                    });
+                }
             }
             catch (Exception e)
             {
