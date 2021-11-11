@@ -89,6 +89,10 @@ namespace 第二組期末專題.Models
             {
                 sql += "手機='" + x["手機"] + "',";
             }
+            if (!string.IsNullOrEmpty((string)x["大頭貼"]))
+            {
+                sql += "大頭貼='" + x["大頭貼"] + "',";
+            }
             if (sql.Trim().Substring(sql.Trim().Length - 1, 1) == ",")
                 sql = sql.Trim().Substring(0,sql.Trim().Length-1);
             sql += " WHERE Id=" + x["Id"];

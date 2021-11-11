@@ -3,6 +3,11 @@
 
 @{
     Layout = null;
+    string photoName = "初始照片.jpg";
+    if (ViewBag.kk != "")
+    {
+        photoName = ViewBag.kk.ToString();
+    }
 }
 
 <!DOCTYPE html>
@@ -35,10 +40,16 @@
                         <div class="card-header">
                             <h3 class="mb-0" id="mymember"><b>會員資料</b></h3>
                         </div>
-
+                        <img src="~/Content/images/@photoName" style="width:300PX;height:300PX;margin:auto;border:solid;" id="myphoto" />
                         <div class="card-body">
-                            <form class="form" role="form" method="post" action="Index">
+                            <form class="form" role="form" method="post" action="Index" enctype="multipart/form-data">
                                 <input type="hidden" name="Id" value="@Model["Id"]">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">上傳大頭照</label>
+                                    <div class="col-lg-9">
+                                        <input type="file" name="myfile" id="photo">
+                                    </div>
+                                </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">帳號</label>
                                     <div class="col-lg-9">
@@ -107,6 +118,21 @@
     <script>
         function revise() {
             alert("資料修改成功");
+        }
+
+        $("#photo").change(function () {
+            //當檔案改變後，做一些事 
+            readURL(this);   // this代表<input id="photo">
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#myphoto").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
         }
     </script>
 </body>
