@@ -79,7 +79,12 @@ namespace 第二組期末專題.Models
 
         public string Get圖片路徑()
         {
-            return (string)資料庫.讀取<圖片>(this["圖片_FK"])["路徑"];
+            var 圖片 = 資料庫.讀取<圖片>(this["圖片_FK"]);
+
+            if (圖片 != null)
+                return (string)圖片["路徑"];
+
+            return "bg_3.jpg";
         }
     }
 }

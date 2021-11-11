@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using 第二組期末專題.Models;
 
 namespace 第二組期末專題.Controllers
 {
@@ -11,7 +12,31 @@ namespace 第二組期末專題.Controllers
         // GET: Pack
         public ActionResult Index()
         {
-            return View();
+            if (!(Session["ID"] is int))
+                return Redirect("/SignUp");
+
+            return View(資料庫.讀取<用戶>(Session["ID"]));
+        }
+
+        public string New()
+        {
+            try
+            {
+                HttpRequestBase post = Request;
+                // 將回傳的東西存進資料庫
+                旅程包 新旅程包 = new 旅程包();
+                新旅程包["標題"] = post["pTitle"];
+                新旅程包["作者用戶_FK"] = 1;
+                新旅程包["描述"] = post["pContent"];
+
+                資料庫.新增<旅程包>(新旅程包);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            return null;
         }
     }
 }

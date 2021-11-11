@@ -2,22 +2,32 @@
     <div class="container">
         <div class="row d-flex">
             <div class="col-md-6 order-md-last heading-section pl-md-5 ftco-animate d-flex align-items-center">
-                <div class="w-100">
-                    <span class="subheading">Welcome to Pacific</span>
-                    <h2 class="mb-4">It's time to start your adventure</h2>
-                    <p>
-                        A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                        It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
-                    </p>
-                    <p>
-                        Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
-                        Semantics, a large language ocean.
-                        A small river named Duden flows by their place and supplies it with the necessary
-                        regelialia.
-                    </p>
-                    <p><a href="/Search" class="btn btn-primary py-3 px-4">Search Destination</a></p>
-                </div>
+				<div class="w-100">
+					<span class="subheading">Welcome to Short Stay, Be Friends</span>
+					<h2 class="mb-4">開始你的旅程</h2>
+					@if (Session["Id"] == null)
+					{
+						<p>
+							身為旅人<br /><br />
+							是否曾經從網路上、ig上事先搜尋好景點、美食，到了當地發現景點人滿為患，美食店家大排長龍？
+							<br />
+							是否旅遊經驗Po上網分享卻被吐槽只吃觀光客美食、逛觀光景點？
+							<br />
+							是否不想被當做只會走觀光行程的旅客？<br />
+						</p><hr />
+						<p>
+							身為分享家<br /><br />
+							是否家裡有空閒房間？<br />
+							是否私藏私人景點、在地美食卻無人可分享<br />
+						</p>
+						<p>Join us！</p>
+						<a href="/SignUp" class="btn btn-primary">加入我們</a>
+					}
+					else
+					{
+						<a href="/Search" class="btn btn-primary">Go</a>
+					}
+				</div>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -25,12 +35,12 @@
                         <div class="services services-1 color-1 d-block img"
                              style="background-image: url(../../Content/images/services-1.jpg);">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="flaticon-paragliding"></span>
+                                <span class="flaticon-tour-guide"></span>
                             </div>
                             <div class="media-body">
-                                <h3 class="heading mb-3">Activities</h3>
+                                <h3 class="heading mb-3">旅人Traveler</h3>
                                 <p>
-                                    A small river named Duden flows by their place and supplies it with the necessary
+                                     Enhance Your Travel Experience!
                                 </p>
                             </div>
                         </div>
@@ -39,44 +49,16 @@
                         <div class="services services-1 color-2 d-block img"
                              style="background-image: url(../../Content/images/services-2.jpg);">
                             <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="flaticon-route"></span>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="heading mb-3">Travel Arrangements</h3>
-                                <p>
-                                    A small river named Duden flows by their place and supplies it with the necessary
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                        <div class="services services-1 color-3 d-block img"
-                             style="background-image: url(../../Content/images/services-3.jpg);">
-                            <div class="icon d-flex align-items-center justify-content-center">
                                 <span class="flaticon-tour-guide"></span>
                             </div>
                             <div class="media-body">
-                                <h3 class="heading mb-3">Private Guide</h3>
-                                <p>
-                                    A small river named Duden flows by their place and supplies it with the necessary
-                                </p>
+                                <h3 class="heading mb-3">分享家Sharer</h3>
+								<p>
+									The More You Give the More You Get！
+								</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
-                        <div class="services services-1 color-4 d-block img"
-                             style="background-image: url(../../Content/images/services-4.jpg);">
-                            <div class="icon d-flex align-items-center justify-content-center">
-                                <span class="flaticon-map"></span>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="heading mb-3">Location Manager</h3>
-                                <p>
-                                    A small river named Duden flows by their place and supplies it with the necessary
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
         </div>

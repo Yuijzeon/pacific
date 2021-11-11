@@ -35,7 +35,6 @@ namespace 第二組期末專題.Controllers
             return View("Index", post);
         }
 
-
         public string New()
         {
 
@@ -45,7 +44,7 @@ namespace 第二組期末專題.Controllers
                 // 將回傳的東西存進資料庫
                 文章 新文章 = new 文章();
                 新文章["標題"] = post["pTitle"];
-                新文章["作者用戶_FK"] = 1;
+                新文章["作者用戶_FK"] = Session["ID"];
                 新文章["內容"] = post["pContent"];
                 新文章["日期起始"] = Convert.ToDateTime(post["pStartDate"]);
                 新文章["日期結束"] = Convert.ToDateTime(post["pEndDate"]);
