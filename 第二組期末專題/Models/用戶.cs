@@ -81,5 +81,19 @@ namespace 第二組期末專題.Models
                 "SELECT TOP 3 [文章].* FROM [文章] WHERE [作者用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
                 ).讀取<文章>();
         }
+
+        public 文章 Get最新文章()
+        {
+            return new SQL任務(
+                "SELECT TOP 1 [文章].* FROM [文章] WHERE [作者用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
+                ).讀取<文章>().FirstOrDefault();
+        }
+
+        public 旅程包 Get最新旅程包()
+        {
+            return new SQL任務(
+                "SELECT TOP 1 [旅程包].* FROM [旅程包] WHERE [作者用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
+                ).讀取<旅程包>().FirstOrDefault();
+        }
     }
 }
