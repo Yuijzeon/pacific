@@ -48,6 +48,7 @@ namespace 第二組期末專題.Controllers
                 用戶Hashtag x = new 用戶Hashtag();
                 string name = (string)Session["test"];
                 List<用戶> data = new 用戶CRUD().取ID(name);
+                TempData["msg"] = "帳號創立成功";
                 //x["用戶_FK"] = Session["ID"];
                 x["用戶_FK"] = data[0].Id;
                 x["Hashtag_FK"] = (int)id;

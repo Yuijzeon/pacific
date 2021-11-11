@@ -29,10 +29,14 @@ namespace 第二組期末專題.Controllers
 
         public JsonResult DeleteUser(int id)
         {
+            new 資料庫任務("DELETE FROM [圖片] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
+            new 資料庫任務("DELETE FROM [提問] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
             new 資料庫任務("DELETE FROM [用戶] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
 
             var 全部用戶 = 資料庫.讀取<用戶>();
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
+
+        
     }
 }
