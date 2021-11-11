@@ -396,6 +396,10 @@
     <Content Include="Views\Article\評論列表.cshtml" />
     <Content Include="Views\MyPost\Index.cshtml" />
     <Content Include="Views\Favorite\Index.cshtml" />
+    <Content Include="Views\Pack\旅程包抬頭.cshtml" />
+    <Content Include="Views\Pack\我的所有旅程.cshtml" />
+    <Content Include="Views\Pack\我的旅程包.cshtml" />
+    <Content Include="Views\Pack\旅程包簡介.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

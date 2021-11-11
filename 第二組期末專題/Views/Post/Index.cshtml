@@ -1,4 +1,6 @@
-﻿
+﻿@using 第二組期末專題.ViewModels
+@model Search
+
 @{
     ViewBag.Title = "發表旅程";
 }
@@ -210,8 +212,8 @@
                         error: function (xhr, ajaxOptions, thrownError) {
                             swal("Error!", "It was succesfully deleted!", "success");
                         }
-                    //}).done(function () {
-                    //    Swal.fire('Save Success')
+                        //}).done(function () {
+                        //    Swal.fire('Save Success')
                     });
                 }
             })
