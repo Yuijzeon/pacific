@@ -13,7 +13,7 @@
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
-                    <input id="pStartDate" type="datetime-local" name="pStartDate" class="pFormDateInput" value="@Model["日期起始"]"/><br />
+                    <input id="pStartDate" type="datetime-local" name="pStartDate" class="pFormDateInput" value="@Model["日期起始"]" /><br />
                     <div class="errorMsg2"></div>
                 </div>
                 <div class="postform_L">
@@ -29,9 +29,13 @@
                 </div>
                 <div class="postform_L postCbx">
                     <label class="postLabel"><i class="fas fa-user-check"></i>活動類型</label><hr />
-                    <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInputCbx" value="room" /> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
-                    <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInputCbx" value="food" /> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
-                    <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInputCbx" value="trip" /> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
+                    @{
+                        string[] type = @Model["類型"].ToString().Split(',');
+
+                        <div class="pCbx"><input id="typeRoom" type="checkbox" name="ptype" class="pFormInputCbx" value="room" @if (type.Contains("room")){ Html.Raw("checked"); }/> <label class="cbxType" for="typeRoom"> 出租房間</label> <br /></div>
+                        <div class="pCbx"><input id="typeFood" type="checkbox" name="ptype" class="pFormInputCbx" value="food" @if (type.Contains("food")){ Html.Raw("checked"); }/> <label class="cbxType" for="typeFood"> 共享美食</label><br /></div>
+                        <div class="pCbx"><input id="typeTrip" type="checkbox" name="ptype" class="pFormInputCbx" value="trip" @if (type.Contains("trip")){ Html.Raw("checked"); }/> <label class="cbxType" for="typeTrip"> 分享旅程</label> <br /></div>
+                    }
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pPoint"><i class="fas fa-user-check"></i>點數</label>
