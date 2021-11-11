@@ -14,7 +14,7 @@
 
 @Html.Partial("貼文抬頭")
 
-@Html.Partial("編輯區域")
+@Html.Partial("編輯區域", Model)
 
 @section HtmlBodyEnd{
     <script src="https://kit.fontawesome.com/af1cff1fa5.js" crossorigin="anonymous"></script>
@@ -34,14 +34,14 @@
     <script type="text/javascript">
         $(function () {
 
-            $("#pStartDate,#pEndDate").datepicker({
-                dateFormat: 'yy/mm/dd',
-                showOn: "both",
-                buttonImage: "../Content/images/calendar.png",
-                buttonText: "請挑選日期",
-                changeYear: true,
-                changeMonth: true
-            });
+            //$("#pStartDate,#pEndDate").datepicker({
+            //    dateFormat: 'yy/mm/dd',
+            //    showOn: "both",
+            //    buttonImage: "../Content/images/calendar.png",
+            //    buttonText: "請挑選日期",
+            //    changeYear: true,
+            //    changeMonth: true
+            //});
 
             $("input[name=ppNumber]").spinner({
                 max: 10, min: 1
@@ -94,7 +94,7 @@
             });
 
             //開始日期
-            $("input[name=startDate]").blur(function () {
+            $("input[name=pStartDate]").blur(function () {
                 if ($(this).val() != '') {
                     $('.errorMsg2').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
@@ -106,7 +106,7 @@
             });
 
             //結束日期
-            $("input[name=endDate]").blur(function () {
+            $("input[name=pEndDate]").blur(function () {
                 if ($(this).val() != '') {
                     $('.errorMsg3').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
