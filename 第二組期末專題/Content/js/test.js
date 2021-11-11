@@ -21,21 +21,25 @@ function 生成用戶列表 (資料s) {
 
     for (var 資料 of 資料s) {
         var 資料列 = $('<tr>').attr('data-id', 資料['Id']);
-        for (var 欄位名稱 in 資料) {
-            資料列.append(
-                $('<td>').text(資料[欄位名稱])
-            );
-        }
+        if (資料['帳號'] != "0") {
+            for (var 欄位名稱 in 資料) {
 
-        資料列.append(
-            $('<td>').append(
-                $('<button>').attr({
-                    type: "button",
-                    class: "btn btn-danger"
-                }).text('🗑️').on('click', 刪除資料列)
-            )
-        );
-        資料表.append(資料列);
+                資料列.append(
+                    $('<td>').text(資料[欄位名稱])
+                );
+
+            }
+
+            資料列.append(
+                $('<td>').append(
+                    $('<button>').attr({
+                        type: "button",
+                        class: "btn btn-danger"
+                    }).text('🗑️').on('click', 刪除資料列)
+                )
+            );
+            資料表.append(資料列);
+        }
     }
     var 標題列 = $('<tr>');
     for (var 欄位名稱 in 資料s[0]) {
@@ -63,12 +67,20 @@ function 生成用戶列表 (資料s) {
 }
 
 function 刪除資料列() {
-    var 資料列 = $(this).closest('tr');
-    $.ajax({
-        type: 'GET',
-        url: '../Test/DeleteUser?id=' + 資料列.attr('data-id')
-    }).done(function (新資料s) {
-        $('#showAllUserData').html('');
-        生成用戶列表(新資料s)
-    });
+    var yes = confirm("確定刪除此筆資料?")
+    if (yes) {
+        var 資料列 = $(this).closest('tr');
+        $.ajax({
+            type: 'POST',
+            url: '../Test/DeleteUser',
+            //?id=' + 資料列.attr('data- id')
+            data: 'id=' + 資料列.attr('data-id'),
+        }).done(function (新資料s) {
+            $('#showAllUserData').html('');
+            生成用戶列表(新資料s);
+
+            alert("資料刪除成功!!");
+            document.location.href = "/Test";
+        });
+    }
 }
