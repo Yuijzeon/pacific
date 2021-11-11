@@ -33,13 +33,16 @@ namespace 第二組期末專題.Controllers
 
             string[] postIds = post["packPosts"].Split(',');
 
+            int count = 1;
             foreach (string postId in postIds)
             {
                 資料庫.新增(new 旅程包_link()
                 {
                     ["旅程包_FK"] = pack["Id"],
-                    ["文章_FK"] = postId
+                    ["文章_FK"] = postId,
+                    ["索引"] = count
                 });
+                count++;
             }
 
             return Redirect("/Search?pack=" + pack["Id"]);
