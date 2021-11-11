@@ -1,29 +1,30 @@
-﻿<section class="ftco-section" onload="initialize()" onunload="GUnload()">
+﻿@using 第二組期末專題.Models
+@model 文章
+
+<section class="ftco-section" onload="initialize()" onunload="GUnload()">
     <div class="container">
         <form class="row p_row" id="postform">
             <div class="postform col col-12 col-md-6 col-lg-3 my-3">
 
                 <div class="postform_L">
                     <label class="postLabel" for="pTitle"><i class="fas fa-suitcase-rolling"></i>請輸入旅程標題</label>
-                    <input id="pTitle" type="text" name="pTitle" class="pFormInput" placeholder=" 旅遊行程標題" size="22" autocomplete="off" />
+                    <input id="pTitle" type="text" name="pTitle" class="pFormInput" placeholder=" 旅遊行程標題" size="22" autocomplete="off" value="@Model["標題"]"/>
                     <div class="errorMsg1"></div>
                 </div>
                 <div class="postform_L">
                     <label style="display: inline" class="postLabel" for="pStartDate"><i class="far fa-calendar-check"></i>請選擇開始日期</label>
-                    <input id="pStartDate" type="text" name="startDate" class="pFormInput" size="16" /><br />
-                    <input id="pStartTime" type="time" name="startTime" class="pFormInput" size="22" />
+                    <input id="pStartDate" type="datetime-local" name="pStartDate" class="pFormDateInput" value="@Model["日期起始"]"/><br />
                     <div class="errorMsg2"></div>
                 </div>
                 <div class="postform_L">
                     <label class="postLabel" for="pEndDate"><i class="far fa-calendar-minus"></i>請選擇結束日期</label>
-                    <input id="pEndDate" type="text" name="endDate" class="pFormInput" size="16" /><br />
-                    <input id="pStartTime" type="time" name="endTime" class="pFormInput" size="16" />
+                    <input id="pEndDate" type="datetime-local" name="pEndDate" class="pFormDateInput" value="@Model["日期結束"]" />
                     <div class="errorMsg3"></div>
                 </div>
 
                 <div class="postform_L">
                     <label class="postLabelPeo" for="pplNumber"><i class="fas fa-user-check"></i>接待人數</label>
-                    <input id="pplNumber" type="text" name="ppNumber" class="pFormInput" />
+                    <input id="pplNumber" type="text" name="ppNumber" class="pFormInput" value="@Model["接待人數"]" />
                     <div class="errorMsg5"></div>
                 </div>
                 <div class="postform_L postCbx">
@@ -51,7 +52,7 @@
                     <div class="errorMsg6"></div>
                 </div>
                 <div class="postform_L">
-                    <input id="pDate" type="hidden" name="pDate" class="pFormInput" size="22" vale=""  disabled />
+                    <input id="pDate" type="hidden" name="pDate" class="pFormInput" size="22" vale="" disabled />
                     <div class="errorMsg4"></div>
                 </div>
             </div>
@@ -65,16 +66,16 @@
                     <div class="form-group">
                         <label for="about" type="hidden"></label>
                         <div class="postIntro">▋ 旅程簡介</div>
-                        <input id="pContent" name="pContent" type="hidden">
-                        <div id="editor-container">
+                        <input id="pContent" name="pContent" type="hidden" value="@Model["內容"]">
+                        <div id="editor-container" >
 
                         </div>
                     </div>
                     <div class="col-xs-8">
-                        
+
                         <div class="form-group">
                             <div class="postIntro">▋ 詳細地址</div>
-                            <input id="pac-input" class="form-control controls" name="pAddress" type="text" placeholder=" 請輸入詳細地址">
+                            <input id="pac-input" class="form-control controls" name="pAddress" type="text" placeholder=" 請輸入詳細地址" value="@Model["地點"]">
                             <div class="pMaps" id="map"></div>
                         </div>
 
@@ -86,7 +87,8 @@
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div id="submitBtn">
+                        <button id="ViewMyPost" class="btn btn-outline-info" type="button" onclick="window.location.href='/MyPost'">查看旅程</button>
                         <button id="postSubmit" class="btn btn-primary" type="button">分享旅程</button>
                     </div>
                 </div>
