@@ -200,7 +200,9 @@
                     $.ajax({
                         type: 'Post',
                         url: '../Post/New',
-                        data: $(form).serialize(),
+                        data: new FormData(form),
+                        contentType: false,
+                        processData: false,
                         success: function (e) {
                             console.log(e);
                             if (e == null || e == '')

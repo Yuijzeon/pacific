@@ -95,5 +95,12 @@ namespace 第二組期末專題.Models
                 "SELECT TOP 1 [旅程包].* FROM [旅程包] WHERE [作者用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
                 ).讀取<旅程包>().FirstOrDefault();
         }
+
+        public 圖片 Get最新圖片()
+        {
+            return new SQL任務(
+                "SELECT TOP 1 [圖片].* FROM [圖片] WHERE [上傳用戶_FK]=" + this["Id"] + " ORDER BY [Id] DESC"
+                ).讀取<圖片>().FirstOrDefault();
+        }
     }
 }
