@@ -14,7 +14,7 @@
 @Html.Partial("搜尋結果", Model.搜尋結果)
 
 @section HtmlBodyEnd{
-    <script>
+	<script>
          //var searchbtn = $("#btn");
          //var form = $('form');
          //$('form').submit(function (e) {
@@ -39,5 +39,11 @@
                 success: alert("收藏成功"),
             });
         }
-    </script>
+
+		$(function () {
+			$(".heart").on("click", function () {
+                $(this).toggleClass("is-active");
+			});
+		});
+	</script>
 }
