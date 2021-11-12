@@ -225,6 +225,7 @@
 
 
     </script>
+
     <script src="~/Content/js/Hashtag群組.js"></script>
     <script>
         $(document).ready(function () {
@@ -233,9 +234,18 @@
                 url: '/Post/GetHashtags'
             }).done(function (hashtags) {
                 new Hashtag群組(hashtags, { 編輯模式: true }).at('#Hashtag選擇區');
+
+                var hashtagInput = $('input[list="hashtags"]');
+                @foreach (var AAA in Model.GetHashtag清單())
+                {
+                    @Html.Raw($"hashtagInput.val('{AAA["名稱"]}').change();");
+                }
+
+                hashtagInput.val("");
             });
         });
     </script>
+
     <script>
         function initAutocomplete() {
             const map = new google.maps.Map(document.getElementById("map"), {
