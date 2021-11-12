@@ -27,11 +27,15 @@ namespace 第二組期末專題.Controllers
         {
             if (x == null)
                 return RedirectToAction("index");
+            HttpPostedFileBase f = Request.Files["myfile"];
+            FileName = f.FileName;
             if (Request.Files.Count > 0)
             {
-                HttpPostedFileBase f = Request.Files["myfile"];
-                FileName = f.FileName;
-                f.SaveAs(Server.MapPath("../../Content/images/" + FileName));
+                 try
+                {
+                    f.SaveAs(Server.MapPath("../../Content/images/" + FileName));
+                }
+                catch { };
             }
             x["帳號"] = Request.Form["Email"];
             x["密碼"] = Request.Form["Password"];
@@ -41,7 +45,6 @@ namespace 第二組期末專題.Controllers
             x["大頭貼"] = FileName;
             (new 用戶CRUD()).更新(x);
             Session["Name"] = x.名字;
-
             return RedirectToAction("Index", "Home");
         }
 
