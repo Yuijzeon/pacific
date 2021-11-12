@@ -61,7 +61,7 @@ namespace GoGoShare.Controllers
 
             if (name["point"] != null)
                 全部文章.RemoveAll(文章 => {
-                    return !(文章.點數 < Convert.ToInt32(name["point"]));
+                    return !(文章.點數 <= Convert.ToInt32(name["point"]));
                 });
 
             List<文章> 暫時的輪播用文章列表 = new SQL任務().文章.Where(x => x.Id == 1 || x.Id == 6 || x.Id == 7).ToList();
