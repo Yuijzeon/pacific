@@ -164,7 +164,15 @@
             placeholder: '開始分享您的旅程..',
             theme: 'snow'
         });
-        quill.setContents(@Html.Raw(@Model["內容"]));
+
+        @if (@Model["內容"].ToString().StartsWith("{"))
+        {
+            @Html.Raw($"quill.setContents({@Html.Raw(@Model["內容"])});")
+        }
+        else
+        {
+            @Html.Raw($"quill.setText('{@Html.Raw(@Model["內容"])}');")
+        }
 
 
         var form = document.querySelector('form');
