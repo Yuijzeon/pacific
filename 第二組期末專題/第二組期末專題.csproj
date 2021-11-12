@@ -157,7 +157,7 @@
     <Content Include="Content\images\image_4.jpg" />
     <Content Include="Content\images\image_5.jpg" />
     <Content Include="Content\images\image_6.jpg" />
-    <Content Include="Content\images\image_7.jpeg" />
+    <Content Include="Content\images\image_7.jpg" />
     <Content Include="Content\images\loc.png" />
     <Content Include="Content\images\person_1.jpg" />
     <Content Include="Content\images\person_2.jpg" />
@@ -174,6 +174,7 @@
     <Content Include="Content\images\services-2.jpg" />
     <Content Include="Content\images\services-3.jpg" />
     <Content Include="Content\images\services-4.jpg" />
+    <Content Include="Content\images\初始照片.jpg" />
     <Content Include="Content\index.html" />
     <Content Include="Content\js\bootstrap-datepicker.js" />
     <Content Include="Content\js\bootstrap.min.js" />
@@ -226,6 +227,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\旅程包_link.cs" />
     <Compile Include="Models\用戶收藏CRUD.cs" />
     <Compile Include="Models\提問.cs" />
     <Compile Include="Models\圖片.cs" />
@@ -409,6 +411,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\uploads\" />
     <Folder Include="Views\Login\" />
   </ItemGroup>
   <PropertyGroup>
