@@ -1,5 +1,5 @@
-﻿@using 第二組期末專題.ViewModels
-@model Search
+﻿@using 第二組期末專題.Models
+@model 文章
 
 @{
     ViewBag.Title = "發表旅程";
@@ -12,9 +12,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 }
 
-@Html.Partial("貼文抬頭")
+@Html.Partial("貼文抬頭", Model)
 
-@Html.Partial("編輯區域")
+@Html.Partial("編輯區域", Model)
 
 @section HtmlBodyEnd{
     <script src="https://kit.fontawesome.com/af1cff1fa5.js" crossorigin="anonymous"></script>
@@ -31,24 +31,24 @@
     <script src="~/Content/js/jquery.ui.datepicker-zh-TW.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8q-CRnbCjT2rSYG3AWNMsrRAtKRxd9N0&callback=initAutocomplete&libraries=places&v=weekly" async></script>
 
-    <script type="text/javascript">
+    <script>
         $(function () {
 
-            $("#pStartDate,#pEndDate").datepicker({
-                dateFormat: 'yy/mm/dd',
-                showOn: "both",
-                buttonImage: "../Content/images/calendar.png",
-                buttonText: "請挑選日期",
-                changeYear: true,
-                changeMonth: true
-            });
+            //$("#pStartDate,#pEndDate").datepicker({
+            //    dateFormat: 'yy/mm/dd',
+            //    showOn: "both",
+            //    buttonImage: "../Content/images/calendar.png",
+            //    buttonText: "請挑選日期",
+            //    changeYear: true,
+            //    changeMonth: true
+            //});
 
             $("input[name=ppNumber]").spinner({
                 max: 10, min: 1
             });
 
             // 預設照片
-            var firstImg = "../Content/images/post_img_1_s.jpg";
+            var firstImg = "../Content/images/@Html.Raw(string.IsNullOrEmpty(Model.Get圖片路徑()) ? "post_img_1_s.jpg" : Model.Get圖片路徑())";
             $(".preview").css("background-image", "url(" + firstImg + ")");
 
             // 照片更換
@@ -94,7 +94,7 @@
             });
 
             //開始日期
-            $("input[name=startDate]").blur(function () {
+            $("input[name=pStartDate]").blur(function () {
                 if ($(this).val() != '') {
                     $('.errorMsg2').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
@@ -106,7 +106,7 @@
             });
 
             //結束日期
-            $("input[name=endDate]").blur(function () {
+            $("input[name=pEndDate]").blur(function () {
                 if ($(this).val() != '') {
                     $('.errorMsg3').text('');
                     $(this).css({ "border-color": "#40E0D0", "box-shadow": "0px 0px 3px 1px #c8def0" });
@@ -164,18 +164,7 @@
             placeholder: '開始分享您的旅程..',
             theme: 'snow'
         });
-<<<<<<< HEAD
-
-        @if (@Model["內容"].ToString().StartsWith("{"))
-        {
-            @Html.Raw($"quill.setContents({@Html.Raw(@Model["內容"])});")
-        }
-        else
-        {
-            @Html.Raw($"quill.setText('{@Html.Raw(@Model["內容"])}');")
-        }
-=======
->>>>>>> parent of 44f667a (1)
+        quill.setContents(@Html.Raw(@Model["內容"]));
 
 
         var form = document.querySelector('form');
@@ -212,7 +201,9 @@
                     $.ajax({
                         type: 'Post',
                         url: '../Post/New',
-                        data: $(form).serialize(),
+                        data: new FormData(form),
+                        contentType: false,
+                        processData: false,
                         success: function (e) {
                             console.log(e);
                             if (e == null || e == '')

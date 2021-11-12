@@ -19,7 +19,9 @@ namespace 第二組期末專題.Controllers
 
         public JsonResult GetJourneys()
         {
-            var 全部文章 = 資料庫.讀取<文章>("INNER JOIN [圖片] ON [文章].[圖片_FK]=[圖片].[Id]");
+            var 全部文章 = new SQL任務(
+                "SELECT TOP 7 * FROM [文章] INNER JOIN [圖片] ON [文章].[圖片_FK]=[圖片].[Id] ORDER BY [文章].[Id] DESC"
+                ).讀取();
             return Json(全部文章, JsonRequestBehavior.AllowGet);
         }
     }

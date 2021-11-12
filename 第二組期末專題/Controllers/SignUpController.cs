@@ -48,11 +48,18 @@ namespace 第二組期末專題.Controllers
                 用戶Hashtag x = new 用戶Hashtag();
                 string name = (string)Session["test"];
                 List<用戶> data = new 用戶CRUD().取ID(name);
-                TempData["msg"] = "帳號創立成功";
                 //x["用戶_FK"] = Session["ID"];
-                x["用戶_FK"] = data[0].Id;
-                x["Hashtag_FK"] = (int)id;
-                (new 用戶HashtagCRUD()).Create(x);
+                if (Session["test"] != null)
+                {
+                    x["用戶_FK"] = data[0].Id;
+                    x["Hashtag_FK"] = (int)id;
+                    (new 用戶HashtagCRUD()).Create(x);
+                }
+                else {
+                    x["用戶_FK"] = Session["ID"];
+                    x["Hashtag_FK"] = (int)id;
+                    (new 用戶HashtagCRUD()).Create(x);
+                }
             }
 
             return RedirectToAction("SelectInterest");
@@ -67,9 +74,18 @@ namespace 第二組期末專題.Controllers
                 string name = (string)Session["test"];
                 List<用戶> data = new 用戶CRUD().取ID(name);
                 //x["用戶_FK"] = Session["ID"];
-                x["用戶_FK"] = data[0].Id;
-                x["Hashtag_FK"] = (int)id;
-                (new 用戶HashtagCRUD()).del(x);
+                if (Session["test"] != null)
+                {
+                    x["用戶_FK"] = data[0].Id;
+                    x["Hashtag_FK"] = (int)id;
+                    (new 用戶HashtagCRUD()).del(x);
+                }
+                else
+                {
+                    x["用戶_FK"] = Session["ID"];
+                    x["Hashtag_FK"] = (int)id;
+                    (new 用戶HashtagCRUD()).del(x);
+                }
             }
             return View();
         }

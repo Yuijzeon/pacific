@@ -1,6 +1,6 @@
 ﻿<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="/Home">第二組期末專題<span>Short Stay, be friends</span></a>
+        <a class="navbar-brand" href="/Home"><img src="~/Content/images/gogoshare_logo_nobg-04.png" style="width:150px;"/><span>Short Stay, be friends</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -21,8 +21,8 @@
                 </button>
                 @{
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員資料</a>
-                            <a class="dropdown-item" href="~/MyPost/Index">我的文章</a>
+                            <a class="dropdown-item" href="~/Member/Index/@Session["ID"]">會員中心</a>
+                            <a class="dropdown-item" href="~/MyPost/Index">我的旅程</a>
                             <a class="dropdown-item" href="/Favorite/Index/@Session["ID"]">我的收藏</a>
                             <a class="dropdown-item" href="/Member/登出">登出</a>
                          </div>

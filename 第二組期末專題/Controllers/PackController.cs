@@ -18,25 +18,34 @@ namespace 第二組期末專題.Controllers
             return View(資料庫.讀取<用戶>(Session["ID"]));
         }
 
-        public string New()
+        public ActionResult New()
         {
-            try
-            {
-                HttpRequestBase post = Request;
-                // 將回傳的東西存進資料庫
-                旅程包 新旅程包 = new 旅程包();
-                新旅程包["標題"] = post["pTitle"];
-                新旅程包["作者用戶_FK"] = 1;
-                新旅程包["描述"] = post["pContent"];
+            HttpRequestBase post = Request;
+            // 將回傳的東西存進資料庫
+            旅程包 新旅程包 = new 旅程包();
+            新旅程包["標題"] = post["pTitle"];
+            新旅程包["作者用戶_FK"] = Session["ID"];
+            新旅程包["描述"] = post["pContent"];
 
-                資料庫.新增<旅程包>(新旅程包);
-            }
-            catch (Exception e)
+            資料庫.新增<旅程包>(新旅程包);
+
+            var pack = 資料庫.讀取<用戶>(Session["ID"]).Get最新旅程包();
+
+            string[] postIds = post["packPosts"].Split(',');
+
+            int count = 1;
+            foreach (string postId in postIds)
             {
-                return e.Message;
+                資料庫.新增(new 旅程包_link()
+                {
+                    ["旅程包_FK"] = pack["Id"],
+                    ["文章_FK"] = postId,
+                    ["索引"] = count
+                });
+                count++;
             }
 
-            return null;
+            return Redirect("/Search?pack=" + pack["Id"]);
         }
     }
 }

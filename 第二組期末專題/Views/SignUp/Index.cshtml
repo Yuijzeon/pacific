@@ -187,10 +187,11 @@
     @if (TempData["msg"] != null)
     {
         <script type="text/javascript">
+        document.getElementById("test").value = @Html.Raw(Json.Encode(TempData["test"]));
         window.onload = function () {
         var msg = @Html.Raw(Json.Encode(TempData["msg"]));
         alert(msg);
-        document.location.href = "../Selectlnterest.cshtml"
+        document.location.href = "../Selectlnterest"
      }
 </script>
      }
