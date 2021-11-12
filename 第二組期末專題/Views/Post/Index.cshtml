@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 }
 
-@Html.Partial("貼文抬頭")
+@Html.Partial("貼文抬頭", Model)
 
 @Html.Partial("編輯區域", Model)
 
@@ -48,7 +48,7 @@
             });
 
             // 預設照片
-            var firstImg = "../Content/images/post_img_1_s.jpg";
+            var firstImg = "../Content/images/@Html.Raw(string.IsNullOrEmpty(Model.Get圖片路徑()) ? "post_img_1_s.jpg" : Model.Get圖片路徑())";
             $(".preview").css("background-image", "url(" + firstImg + ")");
 
             // 照片更換
@@ -164,6 +164,7 @@
             placeholder: '開始分享您的旅程..',
             theme: 'snow'
         });
+        quill.setContents(@Html.Raw(@Model["內容"]));
 
 
         var form = document.querySelector('form');
