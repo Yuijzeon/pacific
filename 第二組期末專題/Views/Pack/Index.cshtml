@@ -67,7 +67,7 @@
                 var 目標卡片 = $(e.target).closest('.item');
 
                 var 新ROW = $.parseHTML(`
-                    <tr article-id="${$(e.target).attr('article-id')}">
+                    <tr>
                         <td class="text-nowrap align-middle">${目標卡片.find('h5').text()}</td>
                         <td class="text-center align-middle">
                             <div class="btn-group align-top">
@@ -77,30 +77,12 @@
                     </tr>
                 `);
 
-                $(新ROW).find('button').click(function (e) {
+                新ROW.find('button').click(function (e) {
                     $(e.target).closest('tr').remove();
-
-                    packPostsOnchange();
                 })
 
                 $('#我的旅程包').append(新ROW);
-
-                packPostsOnchange();
             });
-
-            function packPostsOnchange() {
-                var 旅程包文章s = $('#我的旅程包').find('tr[article-id]');
-                var 隱形框 = $('input[name="packPosts"]');
-                var arr = [];
-
-                for (var x of 旅程包文章s) {
-                    arr.push($(x).attr('article-id'));
-                }
-
-                console.log(arr);
-                隱形框.val(arr.join(','));
-            }
-
         })
 
     </script>

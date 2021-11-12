@@ -16,32 +16,21 @@ namespace 第二組期末專題.Controllers
             if (id == null) 
                 return RedirectToAction("Index", "Home");
             用戶 x = (new 用戶CRUD()).queryById((int)id);
-            ViewBag.kk = x.大頭貼;
             return View(x);
         }
-
-        public string FileName;
-
+        
         [HttpPost]
         public ActionResult Index(用戶 x)
         {
             if (x == null)
                 return RedirectToAction("index");
-            if (Request.Files.Count > 0)
-            {
-                HttpPostedFileBase f = Request.Files["myfile"];
-                FileName = f.FileName;
-                f.SaveAs(Server.MapPath("../../Content/images/" + FileName));
-            }
             x["帳號"] = Request.Form["Email"];
             x["密碼"] = Request.Form["Password"];
             x["名字"] = Request.Form["Name"];
             x["手機"] = Request.Form["Phone"];
             x["Id"] = Request.Form["Id"];
-            x["大頭貼"] = FileName;
             (new 用戶CRUD()).更新(x);
             Session["Name"] = x.名字;
-
             return RedirectToAction("Index", "Home");
         }
 
