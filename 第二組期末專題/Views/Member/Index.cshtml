@@ -27,6 +27,11 @@
         .form-group {
             font-size: 25px;
         }
+        .square {
+            width: 100px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,0,0,1.00);
+        }
     </style>
 </head>
 <body style="height:100%;">
@@ -38,9 +43,10 @@
                     <!-- form user info -->
                     <div class="card card-outline-secondary">
                         <div class="card-header">
-                            <h3 class="mb-0" id="mymember"><b>會員資料</b></h3>
+                            <h3 class="mb-0" id="mymember"><b>會員中心</b></h3>
                         </div>
-                        <img src="~/Content/images/@photoName" style="width:300PX;height:300PX;margin:auto;border:solid;" id="myphoto" />
+                        <br>
+                        <img src="~/Content/images/@photoName" style="width:200PX;height:200PX;margin:auto;border:solid;" id="myphoto" class="square"/>
                         <div class="card-body">
                             <form class="form" role="form" method="post" action="Index" enctype="multipart/form-data">
                                 <input type="hidden" name="Id" value="@Model["Id"]">
