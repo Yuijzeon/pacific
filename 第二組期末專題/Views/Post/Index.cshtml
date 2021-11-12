@@ -164,7 +164,15 @@
             placeholder: '開始分享您的旅程..',
             theme: 'snow'
         });
-        quill.setContents(@Html.Raw(@Model["內容"]));
+
+        @if (@Model["內容"].ToString().StartsWith("{"))
+        {
+            @Html.Raw($"quill.setContents({@Html.Raw(@Model["內容"])});")
+        }
+        else
+        {
+            @Html.Raw($"quill.setText('{@Html.Raw(@Model["內容"])}');")
+        }
 
 
         var form = document.querySelector('form');
@@ -233,6 +241,13 @@
                 url: '/Post/GetHashtags'
             }).done(function (hashtags) {
                 new Hashtag群組(hashtags, { 編輯模式: true }).at('#Hashtag選擇區');
+
+                var hashtagInput = $('input[list="hashtags"]');
+                @foreach (var AAA in Model.GetHashtag清單())
+                {
+                    @Html.Raw($"hashtagInput.val('{AAA["名稱"]}').change();");
+                }
+                hashtagInput.val("");
             });
         });
     </script>
