@@ -36,13 +36,8 @@
                 type: 'POST',
                 url: '@Url.Action("加入收藏","Search")',
                 data: { id: id },
+                success: alert("收藏成功"),
             });
         }
-
-		$(function () {
-			$(".heart").on("click", function () {
-                $(this).toggleClass("is-active");
-			});
-		});
     </script>
 }

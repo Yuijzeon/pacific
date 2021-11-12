@@ -15,25 +15,25 @@
                                 url(../../Content/images/@文章.Get圖片路徑());">
                             <span class="price">@文章["點數"] P</span>
                         </a>
-						<div class="text p-4">
-							<span class="days">@文章["日期起始"] 至 <br /></span>
-							<span class="days">@文章["日期結束"]</span>
-							<h3><a href="/Article?id=@文章["Id"]">@文章["標題"]</a></h3>
-							<p class="location"><span class="fa fa-map-marker"></span> @文章["地點"]</p>
-							<div class="tagcloud">
-								@{
-									foreach (var Hashtag in 文章.GetHashtag清單())
-									{
-										<a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
-									}
-								}
-							</div>
-							<ul>
-								<li>接待人數 @文章["接待人數"]</li>
-								<li><span class="flaticon-tour-guide"></span>@文章.Get作者()["名字"]</li>
-							</ul>					
-                            <div class="collection"><div class="heart" onclick="add(@文章["Id"])"></div></div>	@*點讚愛心*@		
-						</div>
+                        <div class="text p-4">
+                            <span class="days">@文章["日期起始"] 至 <br /></span>
+                            <span class="days">@文章["日期結束"]</span>
+                            <h3><a href="/Article?id=@文章["Id"]">@文章["標題"]</a></h3>
+                            <p class="location"><span class="fa fa-map-marker"></span> @文章["地點"]</p>
+                            <div class="tagcloud">
+                                @{
+                                    foreach (var Hashtag in 文章.GetHashtag清單())
+                                    {
+                                        <a href="/Search/hashtag=@Hashtag["Id"]" class="tag-cloud-link">@Hashtag["名稱"]</a>
+                                    }
+                                }
+                            </div>
+                            <ul>
+                                <li>接待人數 @文章["接待人數"]</li>
+                                <li><span class="flaticon-tour-guide"></span>@文章.Get作者()["名字"]</li>
+                            </ul>
+                            <input class="collection" type="button" value=🧡 onclick="add('@文章["Id"]')">
+                        </div>
                     </div>
                 </div>
             }

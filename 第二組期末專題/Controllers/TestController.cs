@@ -27,28 +27,13 @@ namespace 第二組期末專題.Controllers
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult DeleteUser(string id)
+        public JsonResult DeleteUser(int id)
         {
-<<<<<<< HEAD
             new 資料庫任務("DELETE FROM [圖片] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
             new 資料庫任務("DELETE FROM [提問] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
             new 資料庫任務("DELETE FROM [用戶] WHERE [Id]=@ID").注入參數by(new { ID = id }).Set();
 
-=======
->>>>>>> e38556df65701c8b47a16bf68fd21a5471fd8f11
             var 全部用戶 = 資料庫.讀取<用戶>();
-            用戶 指定用戶 = new 用戶();
-            if (id == null)
-            {
-                return Json(全部用戶, JsonRequestBehavior.AllowGet);
-            }
-            指定用戶["Id"] = id;
-            指定用戶["帳號"] = "0";
-            指定用戶["密碼"] = "0";
-            指定用戶["名字"] = "0";
-            指定用戶["手機"] = "0";
-            (new 用戶CRUD()).更新(指定用戶);
             return Json(全部用戶, JsonRequestBehavior.AllowGet);
         }
 

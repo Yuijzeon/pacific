@@ -102,7 +102,7 @@ namespace 第二組期末專題.Controllers
             x["收藏文章_FK"] = (int)id;
             x["用戶_FK"] = Session["ID"];
             new 用戶收藏CRUD().新增收藏(x);
-            return View("");
+            return RedirectToAction("Index");
         }
     }
 }

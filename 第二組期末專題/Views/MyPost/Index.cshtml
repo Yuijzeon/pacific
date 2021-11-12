@@ -29,29 +29,29 @@
 <div class="container">
     <div class="row flex-lg-nowrap">
         <div class="col">
-            @*<div class="e-tabs mb-3 px-3">
+            <div class="e-tabs mb-3 px-3">
                 <ul class="nav nav-tabs">
                     <li class="nav-item"><a class="nav-link active" href="#">出租房間</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#">共享美食</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#">分享旅程</a></li>
                 </ul>
-            </div>*@
+            </div>
 
             <div class="row flex-lg-nowrap">
                 <div class="col mb-3">
                     <div class="e-panel card">
                         <div class="card-body">
-                            @*<div class="card-title">
+                            <div class="card-title">
                                 <h6 class="mr-2"><span></span><small class="px-1"></small></h6>
-                            </div>*@
+                            </div>
 
                             <div class="e-table">
                                 <div class="table-responsive table-lg mt-3">
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>標題</th>
-                                                <th class="max-width">旅程新增時間</th>
+                                                <th class="sortable">標題</th>
+                                                <th class="max-width">| 旅程新增時間</th>
                                                 <th>編輯</th>
                                                 <th>刪除</th>
                                             </tr>
@@ -60,16 +60,16 @@
                                             @foreach (var 文章 in Model)
                                             {
                                                 <tr>
-                                                    <td class="text-nowrap align-middle titleTxt">@文章["標題"]</td>
-                                                    <td class="text-nowrap align-middle dateTxt">@文章["文章註冊時間"]</td>
+                                                    <td class="text-nowrap align-middle">@文章["標題"]</td>
+                                                    <td class="text-nowrap align-middle">@文章["文章註冊時間"]</td>
                                                     <td class="text-center align-middle">
                                                         <div class="btn-group align-top">
-                                                            <button onclick="window.location.href='/Post/Edit?id=@文章["Id"]#editor'" class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal">Edit</button>
                                                         </div>
                                                     </td>
                                                     <td class="text-center align-middle">
                                                         <div class="btn-group align-top">
-                                                            <button class="btn btn-sm btn-outline-danger badge" type="button"><i class="fa fa-trash"></i></button>
+                                                            <button class="btn btn-sm btn-outline-secondary badge" type="button"><i class="fa fa-trash"></i></button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -97,14 +97,15 @@
                 <div class="col-12 col-lg-3 mb-3">
                     <div class="card">
                         <div class="card-body">
-
+                            <div class="text-center px-xl-3">
+                                <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">New User</button>
+                            </div>
                             <hr class="my-3">
                             <div class="e-navlist e-navlist--active-bold">
                                 <ul class="nav">
-                                    <li class="nav-item active"><a href="" class="nav-link"><span>所有文章</span>&nbsp;<small>/&nbsp;32</small></a></li>
-                                    <li class="nav-item"><a href="" class="nav-link"><span>出租房間</span>&nbsp;<small>/&nbsp;16</small></a></li>
-                                    <li class="nav-item"><a href="" class="nav-link"><span>共享美食</span>&nbsp;<small>/&nbsp;0</small></a></li>
-                                    <li class="nav-item"><a href="" class="nav-link"><span>分享旅程</span>&nbsp;<small>/&nbsp;0</small></a></li>
+                                    <li class="nav-item active"><a href="" class="nav-link"><span>All</span>&nbsp;<small>/&nbsp;32</small></a></li>
+                                    <li class="nav-item"><a href="" class="nav-link"><span>Active</span>&nbsp;<small>/&nbsp;16</small></a></li>
+                                    <li class="nav-item"><a href="" class="nav-link"><span>Selected</span>&nbsp;<small>/&nbsp;0</small></a></li>
                                 </ul>
                             </div>
                             <hr class="my-3">
@@ -112,20 +113,35 @@
                                 <div class="form-group">
                                     <label>Date from - to:</label>
                                     <div>
-                                        <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="date">
+                                        <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>依標題搜尋:</label>
-                                    <div><input class="form-control w-100" type="text" placeholder="Title" value=""></div>
-                                </div>
-                                <div class="text-center px-xl-3">
-                                    <button class="btn btn-info btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">搜尋</button>
+                                    <label>Search by Name:</label>
+                                    <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
                                 </div>
                             </div>
                             <hr class="my-3">
-                            <div class="text-center px-xl-3">
-                                <button class="btn btn-outline-secondary btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">新增旅程文章</button>
+                            <div class="">
+                                <label>Status:</label>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                                        <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                                        <label class="custom-control-label" for="users-status-active">Active</label>
+                                    </div>
+                                </div>
+                                <div class="px-2">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked="">
+                                        <label class="custom-control-label" for="users-status-any">Any</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -133,11 +149,11 @@
             </div>
 
             <!-- User Form Modal -->
-            <!--<div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+            <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">新增文章</h5>
+                            <h5 class="modal-title">Create User</h5>
                             <button type="button" class="close" data-dismiss="modal">
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -239,7 +255,7 @@
                         </div>
                     </div>
                 </div>
-            </div>-->
+            </div>
         </div>
     </div>
 </div>
