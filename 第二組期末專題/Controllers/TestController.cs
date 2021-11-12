@@ -42,6 +42,7 @@ namespace 第二組期末專題.Controllers
             指定用戶["名字"] = "0";
             指定用戶["手機"] = "0";
             指定用戶["大頭貼"] = "0";
+            指定用戶["點數"] = 0;
 
             (new 用戶CRUD()).更新(指定用戶);
             return Json(全部用戶, JsonRequestBehavior.AllowGet);

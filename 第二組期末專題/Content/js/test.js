@@ -53,15 +53,7 @@ function 生成用戶列表 (資料s) {
             )
         );
     }
-    標題列.append(
-        $('<td>').append(
-            $('<button>').attr({
-                type: "button",
-                class: "btn btn-success"
-            }).text('✍️').on('click', function () {})
-        )
-    );
-    資料表.append(標題列);
+
 
     $('#showAllUserData').append(資料表);
 }
