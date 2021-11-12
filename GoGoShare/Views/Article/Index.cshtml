@@ -1,0 +1,88 @@
+﻿@using GoGoShare.Models
+@model Article
+
+@{
+    ViewBag.Title = @Model.文章.標題;
+}
+
+@section HtmlHeadEnd{
+    <link rel="stylesheet" href="~/Content/post.css" />
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" />
+    <style>
+        .ql-container {
+            font-size: 16px !important;
+            height: auto !important;
+        }
+
+        .ql-snow {
+            border: none !important;
+        }
+    </style>
+}
+
+@{
+    var 作者 = Model.文章.Get作者();
+
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('../../images/@Model.文章.Get圖片路徑()');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+                <div class="col-md-9 ftco-animate pb-5 text-center">
+                    @Html.Partial("文章路徑", 作者)
+                    <h1 class="mb-0 bread">@Model.文章.標題</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 ftco-animate py-md-5 mt-md-5">
+                    @Html.Partial("文章內容", Model.文章)
+                    @Html.Partial("作者訊息", 作者)
+                    <div class="pt-5 mt-5">
+                        <h3 class="mb-5" style="font-size: 20px; font-weight: bold;">共 @Model.文章.Get評論數() 則評論</h3>
+                        @Html.Partial("評論列表", Model.文章.Get評級清單())
+                        @Html.Partial("新增評論", Model.文章.Id)
+                    </div>
+                </div>  @*.col-md-8*@
+            <div class="col-lg-4 sidebar ftco-animate bg-light py-md-5">
+                @Html.Partial("搜尋欄")
+                @Html.Partial("分類")
+                <div class="sidebar-box ftco-animate">
+                    <h3>@作者.名字 的 Recent Blog</h3>
+                    @Html.Partial("最近文章", 作者.Get最新三筆文章())
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <h3>@作者.名字 關注的 Hashtag</h3>
+                    @Html.Partial("TagCloud", 作者)
+                </div>
+                    @Html.Partial("Paragraph")
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- .section -->
+}
+
+@section HtmlBodyEnd{
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#文章內容', {
+            "modules": {
+                "toolbar": false
+            },
+            readOnly: true,
+            theme: 'snow'
+        });
+        quill.setContents(@Html.Raw(@Model.文章.內容));
+
+        @*@if (ViewBag.旅程包 != null)
+        {
+            ViewBag.旅程包標題 = ViewBag.旅程包["標題"];
+        }
+
+        console.log('@ViewBag.旅程包標題');*@
+    </script>
+}

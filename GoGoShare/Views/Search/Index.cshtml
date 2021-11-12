@@ -1,0 +1,48 @@
+﻿@using GoGoShare.Models
+@model Search
+
+@{
+    ViewBag.Title = "主題旅遊";
+}
+
+@*@section HtmlHeadEnd{ 需要用的話請取消註解 }*@
+
+@Html.Partial("搜尋抬頭", Model.輪播文章)
+
+@Html.Partial("搜尋欄位")
+
+@Html.Partial("搜尋結果", Model.搜尋結果)
+
+@section HtmlBodyEnd{
+    <script>
+         //var searchbtn = $("#btn");
+         //var form = $('form');
+         //$('form').submit(function (e) {
+         //    e.preventDefault();
+         //});
+
+         //$("#btn").click(function () {
+         //    console.log("Submitted", form.serialize(), form.serializeArray());
+        //});
+        var Login = '@Session["Name"]';
+        $(function () {
+            $(".collection").hide();
+            if (Login != "")
+                $(".collection").show();
+        })
+
+        function add(id) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("加入收藏","Search")',
+                data: { id: id },
+            });
+        }
+
+		$(function () {
+			$(".heart").on("click", function () {
+                $(this).toggleClass("is-active");
+			});
+		});
+    </script>
+}
