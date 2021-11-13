@@ -21,5 +21,10 @@ namespace GoGoShare
         {
             return new SQL任務().文章.Where(post => post.作者用戶_FK == this.Id).OrderByDescending(x => x.Id).Take(3).ToList();
         }
+
+        public 圖片 Get最新圖片()
+        {
+            return new SQL任務().圖片.Where(img => img.上傳用戶_FK == this.Id).OrderByDescending(x => x.Id).Take(1).SingleOrDefault();
+        }
     }
 }

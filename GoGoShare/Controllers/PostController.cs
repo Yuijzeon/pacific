@@ -17,7 +17,6 @@ namespace GoGoShare.Controllers
             新文章.內容 = "";
             新文章.日期起始 = DateTime.Now;
             新文章.日期結束 = DateTime.Now;
-            新文章.圖片_FK = 1;
             新文章.地點 = "";
             新文章.接待人數 = 1;
             新文章.類型 = "";
@@ -35,33 +34,32 @@ namespace GoGoShare.Controllers
 
         public string New()
         {
-            var 作者 = new SQL任務().用戶.Find(Session["ID"]);
-            圖片 image = new 圖片() { Id = 1 };
-
-            for (int i = 0; i < Request.Files.Count; i++)
-            {
-                var file = Request.Files[i];
-                var 副檔名點索引 = file.FileName.LastIndexOf('.');
-                if (副檔名點索引 == -1) continue;
-                var 檔名 = DateTime.Now.ToString("yyyyMMddhhmmss") + file.FileName.Substring(副檔名點索引);
-
-                file.SaveAs(Server.MapPath("~/images/uploads/") + 檔名);
-
-                SQL任務 新增圖片任務 = new SQL任務();
-                新增圖片任務.圖片.Add(new 圖片()
-                {
-                    上傳用戶_FK = Convert.ToInt32(Session["ID"]),
-                    路徑 = "uploads/" + 檔名
-                });
-                新增圖片任務.SaveChanges();
-
-                image = new SQL任務().圖片.Where(x => x.上傳用戶_FK == (int)Session["ID"]).LastOrDefault();
-            }
-
-
-            SQL任務 新增文章任務 = new SQL任務();
             try
             {
+                var 作者 = new SQL任務().用戶.Find(Session["ID"]);
+                圖片 image = new 圖片();
+
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    var file = Request.Files[i];
+                    var 副檔名點索引 = file.FileName.LastIndexOf('.');
+                    if (副檔名點索引 == -1) continue;
+                    var 檔名 = DateTime.Now.ToString("yyyyMMddhhmmss") + file.FileName.Substring(副檔名點索引);
+
+                    file.SaveAs(Server.MapPath("~/images/uploads/") + 檔名);
+
+                    SQL任務 新增圖片任務 = new SQL任務();
+                    新增圖片任務.圖片.Add(new 圖片()
+                    {
+                        上傳用戶_FK = Convert.ToInt32(Session["ID"]),
+                        路徑 = "uploads/" + 檔名
+                    });
+                    新增圖片任務.SaveChanges();
+
+                    image = 作者.Get最新圖片();
+                }
+
+                SQL任務 新增文章任務 = new SQL任務();
                 HttpRequestBase post = Request;
                 // 將回傳的東西存進資料庫
                 文章 新文章 = new 文章();

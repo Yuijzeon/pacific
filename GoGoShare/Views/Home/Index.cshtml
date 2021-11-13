@@ -30,6 +30,19 @@
 @Html.Partial("_精選旅程", Model)
 
 @section HtmlBodyEnd{
+    <script>
+        @foreach (var 文章 in Model)
+        {
+            @Html.Raw($"ShowCard({@文章.Id}, unescape('{@文章.內容}'));");
+        }
+
+        function ShowCard(id, htmlString) {
+            var 完整html = $.parseHTML(htmlString);
+            $(完整html).text().substring(0, 30)
+            $(`p[owl-article="${id}"]`).text($(完整html).text().substring(0, 30) + ' ...');
+        }
+    </script>
+
     @*<script>
             document.write('<script src="~/Scripts/QuillDeltaToHtmlConverter.bundle.js"></script>');
 
