@@ -370,6 +370,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\List\MyPost.cshtml" />
     <Content Include="Views\List\Favorite.cshtml" />
+    <Content Include="Views\List\_我的文章.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

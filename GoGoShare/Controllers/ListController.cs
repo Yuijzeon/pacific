@@ -31,5 +31,35 @@ namespace GoGoShare.Controllers
             List<文章> model = new SQL任務().用戶.Find((int)Session["ID"]).文章.OrderByDescending(p => p.Id).ToList();
             return View(model);
         }
+
+        public string DeletePost(int id)
+        {
+            try
+            {
+                SQL任務 刪除任務 = new SQL任務();
+                文章 文章 = 刪除任務.文章.Find(id);
+
+                文章.Hashtag.Clear();
+                文章.旅程包_link.Clear();
+                文章.用戶.Clear();
+                文章.評級.Clear();
+
+                刪除任務.文章.Remove(刪除任務.文章.Find(id));
+                刪除任務.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            return null;
+        }
+
+        public JsonResult MyAllPosts()
+        {
+            var result = new SQL任務($"SELECT * FROM [文章] WHERE [作者用戶_FK]={Session["ID"]}").讀取();
+            
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
     }
 }

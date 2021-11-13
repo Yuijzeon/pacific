@@ -124,14 +124,5 @@ namespace GoGoShare.Controllers
             }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult DeletePost(int id)
-        {
-            SQL任務 刪除任務 = new SQL任務();
-            刪除任務.文章.Remove(刪除任務.文章.Find(id));
-            刪除任務.SaveChanges();
-
-            return Json(new SQL任務().文章.ToList(), JsonRequestBehavior.AllowGet);
-        }
     }
 }
