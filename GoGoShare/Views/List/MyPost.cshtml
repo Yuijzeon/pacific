@@ -60,7 +60,7 @@
                                             @foreach (var 文章 in Model)
                                             {
                                                 <tr>
-                                                    <td class="text-nowrap align-middle titleTxt">@文章.標題</td>
+                                                    <td class="text-nowrap align-middle titleTxt"><a href="~/Article?id=@文章.Id#抬頭">@文章.標題</a></td>
                                                     <td class="text-nowrap align-middle dateTxt">@文章.文章註冊時間</td>
                                                     <td class="text-center align-middle">
                                                         <div class="btn-group align-top">
