@@ -69,8 +69,9 @@ namespace GoGoShare.Controllers
             Search 要傳的ViewModel = new Search()
             {
                 輪播文章 = 暫時的輪播用文章列表,
-                搜尋結果 = 全部文章
-            };
+                搜尋結果 = 全部文章,
+                收藏文章 = (Session["ID"] is int) ? new SQL任務().用戶.Find(Session["ID"]).文章.ToList() : new List<文章>()
+        };
 
             return View(要傳的ViewModel);
         }
@@ -92,11 +93,28 @@ namespace GoGoShare.Controllers
         }
 
         //用戶新增收藏
-        public ActionResult 加入收藏(int? id)
+        public string 加入收藏(int? id)
         {
-            文章 用戶Favorite = new SQL任務().文章.Find(id);
-            new SQL任務().用戶.Find(Session["ID"]).文章.Add(用戶Favorite);
-            return View("");
+            try
+            {
+                SQL任務 加入收藏任務 = new SQL任務();
+                文章 用戶Favorite = 加入收藏任務.文章.Find(id);
+                用戶 用戶 = 加入收藏任務.用戶.Find(Session["ID"]);
+                if (用戶.文章.Contains(用戶Favorite))
+                {
+                    用戶.文章.Remove(用戶Favorite);
+                }
+                else
+                {
+                    用戶.文章.Add(用戶Favorite);
+                }
+                加入收藏任務.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            return null;
         }
     }
 }

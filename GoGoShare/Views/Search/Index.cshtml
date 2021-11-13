@@ -31,18 +31,23 @@
                 $(".collection").show();
         })
 
-        function add(id) {
-            $.ajax({
-                type: 'POST',
-                url: '@Url.Action("加入收藏","Search")',
-                data: { id: id },
-            });
-        }
-
-		$(function () {
-			$(".heart").on("click", function () {
+        $(document).ready(function () {
+            $(".heart").on("click", function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("加入收藏","Search")',
+                    data: { id: $(e.target).attr('article-id') },
+                });
                 $(this).toggleClass("is-active");
-			});
-		});
+            })
+
+            @foreach (var 文章 in Model.搜尋結果)
+            {
+                if (Model.收藏文章.Find(p => p.Id == 文章.Id) != null)
+                {
+                    @Html.Raw($"$('.heart[article-id=\"{文章.Id}\"').toggleClass('is-active');");
+                }
+            }
+        });
     </script>
 }
