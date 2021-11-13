@@ -45,6 +45,7 @@
             $("input[name=ppNumber]").spinner({
                 max: 10, min: 1
             });
+            $('span.ui-spinner').css('width', '100%');
 
             // 預設照片
             var firstImg = "../images/@Html.Raw(string.IsNullOrEmpty(Model.Get圖片路徑()) ? "post_img_1_s.jpg" : Model.Get圖片路徑())";
