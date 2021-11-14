@@ -41,6 +41,10 @@
             $(完整html).text().substring(0, 30)
             $(`p[owl-article="${id}"]`).text($(完整html).text().substring(0, 30) + ' ...');
         }
+
+        $('div[article-id]').find('button.btn-outline-secondary').click(function () {
+            $(this).closest('div[article-id]').remove();
+        });
     </script>
 
     @*<script>

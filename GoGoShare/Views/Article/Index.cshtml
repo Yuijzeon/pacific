@@ -76,7 +76,7 @@
             readOnly: true,
             theme: 'snow'
         });
-        quill.setContents(@Html.Raw(@Model.文章.內容));
+        quill.setContents('@Html.Raw(@Model.文章.內容)');
 
         @*@if (ViewBag.旅程包 != null)
         {

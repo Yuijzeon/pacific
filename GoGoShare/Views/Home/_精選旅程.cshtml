@@ -14,7 +14,7 @@
                 <div id="精選旅程" class="carousel-testimony owl-carousel">
                     @foreach (var 文章 in Model)
                     {
-                        <div class="item">
+                        <div class="item" article-id="@文章.Id">
                             <div class="blog-entry justify-content-end">
                                 <a href="../Article?id=@文章.Id" class="block-20"
                                    style="background-image: url('../../images/@文章.Get圖片路徑()');">
@@ -34,7 +34,7 @@
                                     <p class="mb-4" owl-article="@文章.Id"></p>
                                     <div class="btn-group" role="group" style="width: 100%;">
                                         <button type="button" class="btn btn-outline-secondary">不感興趣</button>
-                                        <button type="button" class="btn btn-info">了解更多</button>
+                                        <button type="button" class="btn btn-info" onclick="window.location.href='/Article?id=@文章.Id'">了解更多</button>
                                     </div>
                                 </div>
                             </div>

@@ -373,6 +373,7 @@
     <Content Include="Views\List\Favorite.cshtml" />
     <Content Include="Views\List\_文章列表.cshtml" />
     <Content Include="Views\List\Test.cshtml" />
+    <Content Include="Views\List\_用戶列表.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
