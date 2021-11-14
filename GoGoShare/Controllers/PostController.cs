@@ -10,33 +10,32 @@ namespace GoGoShare.Controllers
     public class PostController : Controller
     {
         // GET: Post
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            文章 新文章 = new 文章();
-            新文章.標題 = "";
-            新文章.內容 = "";
-            新文章.日期起始 = DateTime.Now;
-            新文章.日期結束 = DateTime.Now;
-            新文章.地點 = "";
-            新文章.接待人數 = 1;
-            新文章.類型 = "";
-            新文章.點數 = 0;
+            if (id == null)
+            {
+                文章 新文章 = new 文章();
+                新文章.標題 = "";
+                新文章.內容 = "";
+                新文章.日期起始 = DateTime.Now;
+                新文章.日期結束 = DateTime.Now;
+                新文章.地點 = "";
+                新文章.接待人數 = 1;
+                新文章.類型 = "";
+                新文章.點數 = 0;
 
-            return View(新文章);
-        }
+                return View(新文章);
+            }
 
-        public ActionResult Edit(int id)
-        {
             var post = new SQL任務().文章.Find(id);
 
-            return View("Index", post);
+            return View(post);
         }
 
         public string New()
         {
             try
             {
-                var 作者 = new SQL任務().用戶.Find(Session["ID"]);
                 圖片 image = new 圖片();
 
                 for (int i = 0; i < Request.Files.Count; i++)
@@ -56,7 +55,7 @@ namespace GoGoShare.Controllers
                     });
                     新增圖片任務.SaveChanges();
 
-                    image = 作者.Get最新圖片();
+                    image = 新增圖片任務.用戶.Find(Session["ID"]).Get最新圖片();
                 }
 
                 SQL任務 新增文章任務 = new SQL任務();
@@ -83,6 +82,10 @@ namespace GoGoShare.Controllers
                     新文章.Hashtag.Add(新增文章任務.Hashtag.Find(Convert.ToInt32(hashtagId)));
                 }
                 新增文章任務.SaveChanges();
+
+                var 新增點數任務 = new SQL任務();
+                新增點數任務.用戶.Find(Session["ID"]).點數 += 1000;
+                新增點數任務.SaveChanges();
             }
             catch (Exception e)
             {
