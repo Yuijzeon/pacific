@@ -48,18 +48,20 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
-                                <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                                <div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
                                     <div class="e-table">
                                         <div class="table-responsive table-lg mt-3">
                                             @Html.Partial("_用戶列表", Model.所有用戶)
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
-                                @*@Html.Partial("_文章列表")*@
+                                <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                    <div class="e-table">
+                                        <div class="table-responsive table-lg mt-3">
+                                            @Html.Partial("_圖片列表", Model.所有圖片)
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -77,22 +79,22 @@
 
                 if (row.attr('atricle-id')) {
                     var id = row.attr('atricle-id');
-                    刪除('文章', id, '/List/DeletePost');
+                    刪除('文章', id, '/List/DeletePost', row);
                 }
 
                 if (row.attr('user-id')) {
                     var id = row.attr('user-id');
-                    刪除('用戶', id, '/List/DeleteUser');
+                    刪除('用戶', id, '/List/DeleteUser', row);
                 }
 
                 if (row.attr('image-id')) {
                     var id = row.attr('image-id');
-                    刪除('用戶', id, '/List/DeleteImage');
+                    刪除('圖片', id, '/List/DeleteImage', row);
                 }
             });
         });
 
-        function 刪除(表格, id, action) {
+        function 刪除(表格, id, action, row) {
             Swal.fire({
                 title: `確定要刪除${表格}嗎?`,
                 icon: 'warning',
@@ -108,8 +110,8 @@
                         url: action,
                         data: { id },
                         success: function (e) {
-                            console.log(e.Message);
-                            if (e.Message) {
+                            console.log(e);
+                            if (e) {
                                 Swal.fire(`${表格}刪除失敗`);
                             }
                             else {
@@ -124,5 +126,7 @@
                 }
             })
         }
+
+        $('.collapse').collapse('show');
     </script>
 }

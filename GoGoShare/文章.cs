@@ -29,7 +29,7 @@ namespace GoGoShare
         public string 內容 { get; set; }
         public System.DateTime 日期起始 { get; set; }
         public System.DateTime 日期結束 { get; set; }
-        public int 圖片_FK { get; set; }
+        public Nullable<int> 圖片_FK { get; set; }
         public string 地點 { get; set; }
         public int 接待人數 { get; set; }
         public string 類型 { get; set; }

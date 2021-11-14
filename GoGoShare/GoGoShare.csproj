@@ -244,7 +244,6 @@
     <Content Include="Scripts\post.js" />
     <Content Include="Scripts\range.js" />
     <Content Include="Scripts\scrollax.min.js" />
-    <Content Include="Scripts\test.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\_Paragraph.cshtml" />
@@ -282,7 +281,6 @@
     <Content Include="Views\Shared\_登入了嗎.cshtml" />
     <Content Include="Views\SignUp\Index.cshtml" />
     <Content Include="Views\SignUp\SelectInterest.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -374,6 +372,7 @@
     <Content Include="Views\List\_文章列表.cshtml" />
     <Content Include="Views\List\Test.cshtml" />
     <Content Include="Views\List\_用戶列表.cshtml" />
+    <Content Include="Views\List\_圖片列表.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

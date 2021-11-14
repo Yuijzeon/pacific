@@ -19,8 +19,9 @@ namespace GoGoShare
 
         public string Get圖片路徑()
         {
-            if (this.圖片_FK == 0)
+            if (this.圖片_FK == 0 || this.圖片_FK == null)
                 return "bg_3.jpg";
+
             return new SQL任務().圖片.Find(this.圖片_FK).路徑;
         }
 

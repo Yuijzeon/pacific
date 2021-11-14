@@ -84,6 +84,32 @@ namespace GoGoShare.Controllers
             return null;
         }
 
+        public string DeleteImage(int id)
+        {
+            try
+            {
+                SQL任務 刪除任務 = new SQL任務();
+                圖片 圖片 = 刪除任務.圖片.Find(id);
+
+                foreach (var 文章 in 刪除任務.文章)
+                {
+                    if (文章.圖片_FK == id)
+                        文章.圖片_FK = null;
+                }
+
+                System.IO.File.Delete(Server.MapPath("/images/" + 圖片.路徑));
+
+                刪除任務.圖片.Remove(圖片);
+                刪除任務.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            return null;
+        }
+
         //public JsonResult MyAllPosts()
         //{
         //    var result = new SQL任務($"SELECT * FROM [文章] WHERE [作者用戶_FK]={Session["ID"]}").讀取();
