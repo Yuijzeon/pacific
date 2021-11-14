@@ -317,6 +317,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\ControlPanelPage.cs" />
     <Compile Include="Models\SelectInterest.cs" />
     <Compile Include="Models\資料庫\SQL任務.cs" />
     <Compile Include="Models\資料庫\用戶.cs" />
@@ -370,7 +371,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\List\MyPost.cshtml" />
     <Content Include="Views\List\Favorite.cshtml" />
-    <Content Include="Views\List\_我的文章.cshtml" />
+    <Content Include="Views\List\_文章列表.cshtml" />
+    <Content Include="Views\List\Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

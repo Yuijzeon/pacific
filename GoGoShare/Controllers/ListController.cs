@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoGoShare.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -30,6 +31,11 @@ namespace GoGoShare.Controllers
 
             List<文章> model = new SQL任務().用戶.Find((int)Session["ID"]).文章.OrderByDescending(p => p.Id).ToList();
             return View(model);
+        }
+
+        public ActionResult Test()
+        {
+            return View(new ControlPanelPage());
         }
 
         public string DeletePost(int id)
