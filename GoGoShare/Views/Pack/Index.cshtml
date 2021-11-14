@@ -3,6 +3,7 @@
 
 @{
     ViewBag.Title = "新增旅程包";
+    ViewBag.isScroll = "true";
 }
 
 @section HtmlHeadEnd{
@@ -52,12 +53,9 @@
             });
 
             $(".owl-carousel").owlCarousel({
-                autoplay: true,
                 items: 1,
                 loop: true,
                 navigation: true,
-                slideSpeed: 300,
-                paginationSpeed: 400,
                 singleItem: true
             })
 

@@ -110,6 +110,45 @@ namespace GoGoShare.Controllers
             return null;
         }
 
+        public ActionResult SearchMyArticle()
+        {
+            var name = Request.Params;
+
+            try
+            {
+                var 用戶創作文章 = new SQL任務().用戶.Find((int)Session["ID"]).Get創作文章清單();
+
+                if (!string.IsNullOrEmpty(name["result"]))
+                {
+                    用戶創作文章 = 用戶創作文章.Where(x => x.標題.Contains(name["result"])).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(name["starttime"]))
+                {
+                    用戶創作文章 = 用戶創作文章.Where(x => x.日期起始 > Convert.ToDateTime(name["starttime"])).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(name["endtime"]))
+                {
+                    用戶創作文章 = 用戶創作文章.Where(x => Convert.ToDateTime(name["endtime"]) < x.日期結束).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(name["active"]))
+                {
+                    用戶創作文章 = 用戶創作文章.Where(x => x.類型.Contains(name["active"])).ToList();
+                }
+
+                return PartialView("_文章列表", 用戶創作文章);
+            }
+            catch (Exception e)
+            {
+                //return e.Message;
+            }
+
+            return null;
+        }
+        
+
         //public JsonResult MyAllPosts()
         //{
         //    var result = new SQL任務($"SELECT * FROM [文章] WHERE [作者用戶_FK]={Session["ID"]}").讀取();

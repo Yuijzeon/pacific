@@ -47,18 +47,18 @@
                         @Html.Partial("_新增評論", Model.文章.Id)
                     </div>
                 </div>  @*.col-md-8*@
-            <div class="col-lg-4 sidebar ftco-animate bg-light py-md-5">
-                @Html.Partial("_搜尋欄")
-                @Html.Partial("_分類")
-                <div class="sidebar-box ftco-animate">
-                    <h3>@作者.名字 的 Recent Blog</h3>
-                    @Html.Partial("_最近文章", 作者.Get最新三筆文章())
-                </div>
-                <div class="sidebar-box ftco-animate">
-                    <h3>@作者.名字 關注的 Hashtag</h3>
-                    @Html.Partial("_TagCloud", 作者)
-                </div>
-                    @Html.Partial("_Paragraph")
+                <div class="col-lg-4 sidebar ftco-animate bg-light py-md-5">
+                    @Html.Partial("_搜尋欄")
+                    @Html.Partial("_活動時間", Model.文章)
+                    <div class="sidebar-box ftco-animate">
+                        <h3>@作者.名字 的 Recent Blog</h3>
+                        @Html.Partial("_最近文章", 作者.Get最新三筆文章())
+                    </div>
+                    <div class="sidebar-box ftco-animate">
+                        <h3>@作者.名字 關注的 Hashtag</h3>
+                        @Html.Partial("_TagCloud", 作者)
+                    </div>
+                    @Html.Partial("_分類")
                 </div>
             </div>
         </div>

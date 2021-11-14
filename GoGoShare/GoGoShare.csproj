@@ -246,7 +246,7 @@
     <Content Include="Scripts\scrollax.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Article\Index.cshtml" />
-    <Content Include="Views\Article\_Paragraph.cshtml" />
+    <Content Include="Views\Article\_活動時間.cshtml" />
     <Content Include="Views\Article\_TagCloud.cshtml" />
     <Content Include="Views\Article\_作者訊息.cshtml" />
     <Content Include="Views\Article\_分類.cshtml" />
@@ -372,6 +372,8 @@
     <Content Include="Views\List\Test.cshtml" />
     <Content Include="Views\List\_用戶列表.cshtml" />
     <Content Include="Views\List\_圖片列表.cshtml" />
+    <Content Include="Views\List\_側邊欄.cshtml" />
+    <Content Include="Views\List\_Script.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
