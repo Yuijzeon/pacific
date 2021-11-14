@@ -172,7 +172,7 @@
         else if (@Model.內容 == "") {}
         else
         {
-            @Html.Raw($"quill.setText(unescape({@Html.Raw(@Model.內容)}));")
+            @Html.Raw($"quill.clipboard.dangerouslyPasteHTML(unescape('{@Html.Raw(@Model.內容)}'));")
         }
 
 
