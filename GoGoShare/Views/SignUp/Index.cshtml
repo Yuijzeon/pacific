@@ -127,7 +127,7 @@
                     <h2>登入</h2>
                     <input id="account_text" type="email" placeholder="電子郵件" name="帳號" required />
                     <input id="password_text" type="password" placeholder="密碼" name="密碼" required />
-                    <input type="submit" value="登入">
+                    <input type="submit" value="登入" onclick="systemUser()">
                     <h5 style="color:red;">@ViewBag.msg</h5>
                 </div>
             </form>
@@ -168,6 +168,15 @@
                 $('.register-show').removeClass('show-log-panel');
             }
         });
+        function systemUser() {
+            var 帳號 = document.getElementById("account_text")
+            var 密碼 = document.getElementById("password_text")
+            if (帳號.value == "systemUser1118@gmail.com") {
+                
+                document.location.href = "../Test";
+                alert("系統管理員登入成功");
+            }
+        }
 
     </script>
 

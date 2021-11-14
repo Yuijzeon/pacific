@@ -7,7 +7,7 @@ left: 0;
 bottom: 0;
 }
 html, body { height: 100%; }
-header { width: 100%; position: relative; background-color: #000; }
+header { height: 100%; position: relative; background-color: #000; }
 
 .carousel { height: 100%; }
 .carousel-inner, .carousel-item { height: 100%; }
@@ -19,11 +19,6 @@ header { width: 100%; position: relative; background-color: #000; }
 .carousel-caption p { font-size: 13px; }
 @media screen and (min-width: 768px){
 .carousel-caption { display: block; }
-}
-
-.imgt1 {
-    margin-left: 250px;
-    margin-right: auto;
 }
 
 .btn1 {       
