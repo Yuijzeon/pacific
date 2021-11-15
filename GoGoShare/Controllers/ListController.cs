@@ -157,7 +157,14 @@ namespace GoGoShare.Controllers
 
             return null;
         }
-        
+
+        [HttpPost]
+        //刪除收藏
+        public ActionResult 刪除收藏(int? id)
+        {
+            new 用戶().刪除收藏文章((int)Session["ID"], (int)id);
+            return RedirectToAction("Favotite");
+        }
 
         //public JsonResult MyAllPosts()
         //{
