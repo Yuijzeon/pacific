@@ -7,12 +7,33 @@ namespace GoGoShare.Models
 {
     public class ControlPanelPage
     {
+        用戶 User { get; set; }
+
+        public ControlPanelPage(用戶 user = null) {
+            this.User = user;
+        }
+
         public List<文章> 所有文章 {
             get
             {
-                return new SQL任務().文章.OrderByDescending(x => x.Id).ToList();
+                if (this.User == null)
+                    return new SQL任務().文章.OrderByDescending(x => x.Id).ToList();
+
+                return User.Get創作文章清單();
             }
         }
+
+        public List<旅程包> 所有旅程包
+        {
+            get
+            {
+                if (this.User == null)
+                    return new SQL任務().旅程包.OrderByDescending(x => x.Id).ToList();
+
+                return User.Get旅程包清單();
+            }
+        }
+
         public List<用戶> 所有用戶
         {
             get
@@ -20,11 +41,15 @@ namespace GoGoShare.Models
                 return new SQL任務().用戶.OrderByDescending(x => x.Id).ToList();
             }
         }
+
         public List<圖片> 所有圖片
         {
             get
             {
-                return new SQL任務().圖片.OrderByDescending(x => x.Id).ToList();
+                if (this.User == null)
+                    return new SQL任務().圖片.OrderByDescending(x => x.Id).ToList();
+
+                return User.圖片.ToList();
             }
         }
     }

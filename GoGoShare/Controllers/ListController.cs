@@ -20,8 +20,8 @@ namespace GoGoShare.Controllers
             if (!(Session["ID"] is int))
                 return Redirect("/SignUp");
 
-            List<文章> model = new SQL任務().用戶.Find((int)Session["ID"]).Get創作文章清單();
-            return View(model);
+            用戶 user = new SQL任務().用戶.Find((int)Session["ID"]);
+            return View(new ControlPanelPage(user));
         }
 
         public ActionResult Favorite()

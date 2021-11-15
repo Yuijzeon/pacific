@@ -374,6 +374,7 @@
     <Content Include="Views\List\_圖片列表.cshtml" />
     <Content Include="Views\List\_側邊欄.cshtml" />
     <Content Include="Views\List\_Script.cshtml" />
+    <Content Include="Views\List\_旅程包列表.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

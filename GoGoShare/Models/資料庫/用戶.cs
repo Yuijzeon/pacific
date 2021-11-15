@@ -26,5 +26,10 @@ namespace GoGoShare
         {
             return new SQL任務().圖片.Where(img => img.上傳用戶_FK == this.Id).OrderByDescending(x => x.Id).Take(1).SingleOrDefault();
         }
+
+        public List<旅程包> Get旅程包清單()
+        {
+            return new SQL任務().旅程包.Where(pack => pack.作者用戶_FK == this.Id).OrderByDescending(x => x.Id).ToList();
+        }
     }
 }

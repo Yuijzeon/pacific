@@ -1,5 +1,5 @@
 ﻿@using GoGoShare.Models
-@model List<文章>
+@model ControlPanelPage
 
 @{
     ViewBag.Title = "我的旅程文章";
@@ -48,14 +48,14 @@
                                 <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                                     <div class="e-table">
                                         <div class="table-responsive table-lg mt-3">
-                                            @Html.Partial("_文章列表", Model)
+                                            @Html.Partial("_文章列表", Model.所有文章)
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="packs" role="tabpanel" aria-labelledby="packs-tab">
                                     <div class="e-table">
                                         <div class="table-responsive table-lg mt-3">
-                                            @*@Html.Partial("_旅程包列表", Model.所有旅程包)*@
+                                            @Html.Partial("_旅程包列表", Model.所有旅程包)
                                         </div>
                                     </div>
                                 </div>
