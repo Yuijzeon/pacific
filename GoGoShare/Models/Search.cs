@@ -31,6 +31,17 @@ namespace GoGoShare.Models
         public List<文章> 搜尋結果 {
             get
             {
+                if (name["pack"] != null)
+                {
+                    var 旅程包_link = new SQL任務().旅程包.Find(name["pack"]).旅程包_link.OrderBy(x => x.索引);
+                    var result = new List<文章>();
+                    foreach (var link in 旅程包_link)
+                    {
+                        result.Add(link.文章);
+                    }
+                    return result;
+                }
+
                 List<文章> 全部文章 = new SQL任務().文章.ToList();
 
                 if (name["user"] != null)

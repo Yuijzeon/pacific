@@ -319,7 +319,7 @@
     <Compile Include="Models\資料庫\SQL任務.cs" />
     <Compile Include="Models\資料庫\用戶.cs" />
     <Compile Include="Models\資料庫\文章.cs" />
-    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostPage.cs" />
     <Compile Include="Models\Search.cs" />
     <Compile Include="Models\登入view.cs" />
     <Compile Include="Models\註冊頁面.cs" />

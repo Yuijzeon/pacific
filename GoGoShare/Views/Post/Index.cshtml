@@ -1,4 +1,5 @@
-﻿@model 文章
+﻿@using GoGoShare.Models
+@model PostPage
 
 @{
     ViewBag.Title = "發表旅程";
@@ -12,9 +13,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 }
 
-@Html.Partial("_貼文抬頭", Model)
+@Html.Partial("_貼文抬頭", Model.文章)
 
-@Html.Partial("_編輯區域", Model)
+@Html.Partial("_編輯區域", Model.文章)
 
 @section HtmlBodyEnd{
     <script src="https://kit.fontawesome.com/af1cff1fa5.js" crossorigin="anonymous"></script>
@@ -49,7 +50,7 @@
             $('span.ui-spinner').css('width', '100%');
 
             // 預設照片
-            var firstImg = "../images/@Html.Raw(string.IsNullOrEmpty(Model.Get圖片路徑()) ? "post_img_1_s.jpg" : Model.Get圖片路徑())";
+            var firstImg = "../images/@Html.Raw(string.IsNullOrEmpty(Model.文章.Get圖片路徑()) ? "post_img_1_s.jpg" : Model.文章.Get圖片路徑())";
             $(".preview").css("background-image", "url(" + firstImg + ")");
 
             // 照片更換
@@ -166,14 +167,14 @@
             theme: 'snow'
         });
 
-        @if (@Model.內容.StartsWith("{"))
+        @if (@Model.文章.內容.StartsWith("{"))
         {
-            @Html.Raw($"quill.setContents({@Html.Raw(@Model.內容)});")
+            @Html.Raw($"quill.setContents({@Html.Raw(@Model.文章.內容)});")
         }
-        else if (@Model.內容 == "") {}
+        else if (@Model.文章.內容 == "") {}
         else
         {
-            @Html.Raw($"quill.clipboard.dangerouslyPasteHTML(unescape('{@Html.Raw(@Model.內容)}'));")
+            @Html.Raw($"quill.clipboard.dangerouslyPasteHTML(unescape('{@Html.Raw(@Model.文章.內容)}'));")
         }
 
 
@@ -210,7 +211,7 @@ var form = document.querySelector('form');
             if (result.isConfirmed) {
                     $.ajax({
                 type: 'Post',
-                        url: '../Post/New',
+                        url: '@Model.actionUrl',
                         data: new FormData(form),
                         contentType: false,
                         processData: false,
@@ -245,7 +246,7 @@ var form = document.querySelector('form');
                 new Hashtag群組(hashtags, { 編輯模式: true }).at('#Hashtag選擇區');
 
                 var hashtagInput = $('input[list="hashtags"]');
-                @foreach (var AAA in Model.GetHashtag清單())
+                @foreach (var AAA in Model.文章.GetHashtag清單())
                 {
                     @Html.Raw($"hashtagInput.val('{AAA.名稱}').change();");
                 }

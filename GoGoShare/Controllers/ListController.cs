@@ -46,9 +46,19 @@ namespace GoGoShare.Controllers
                 文章 文章 = 刪除任務.文章.Find(id);
 
                 文章.Hashtag.Clear();
-                文章.旅程包_link.Clear();
                 文章.用戶.Clear();
-                文章.評級.Clear();
+
+                var 全部旅程包link = 刪除任務.旅程包_link.Where(x => x.文章_FK == id);
+                foreach (var 旅程包link in 全部旅程包link)
+                {
+                    刪除任務.旅程包_link.Remove(旅程包link);
+                }
+
+                var 全部評級 = 刪除任務.評級.Where(x => x.文章_FK == id);
+                foreach (var 評級 in 全部評級)
+                {
+                    刪除任務.評級.Remove(評級);
+                }
 
                 刪除任務.文章.Remove(文章);
                 刪除任務.SaveChanges();
