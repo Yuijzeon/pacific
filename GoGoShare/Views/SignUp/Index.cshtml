@@ -171,9 +171,10 @@
         function systemUser() {
             var 帳號 = document.getElementById("account_text")
             var 密碼 = document.getElementById("password_text")
-            if ((帳號.value == "systemUser1118@gmail.com")&&(密碼.value == "1118")) {
-                document.location.href = "/List/Test";
+            if ((帳號.value == "systemUser1118@gmail.com") && (密碼.value == "1118")) {
+                window.event.returnValue = false;
                 alert("系統管理員登入成功");
+                document.location.href = "/List/Test";
             }
         }
 
