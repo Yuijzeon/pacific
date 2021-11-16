@@ -271,16 +271,19 @@ margin:2rem auto;
 }
 
 @media screen and (max-width:720px) {
-    .row{
-        display:flex;
+    .row {
+        display: flex;
     }
+
     .postform {
-        align-content:center;
+        align-content: center;
     }
-    .postform_L{
-        padding:0 1.8rem;
-        margin:0 0 1.5rem 0;
-        align-items:center;
+
+    .postform_L {
+        padding: 0 1.8rem;
+        margin: 0 0 1.5rem 0;
+        align-items: center;
     }
+}
     
 
