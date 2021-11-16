@@ -23,7 +23,7 @@ namespace GoGoShare
         public int Id { get; set; }
         public string 標題 { get; set; }
         public string 描述 { get; set; }
-        public int 作者用戶_FK { get; set; }
+        public Nullable<int> 作者用戶_FK { get; set; }
     
         public virtual 用戶 用戶 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

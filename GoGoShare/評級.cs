@@ -16,8 +16,8 @@ namespace GoGoShare
     {
         public int Id { get; set; }
         public int 分數 { get; set; }
-        public int 評分用戶_FK { get; set; }
-        public int 文章_FK { get; set; }
+        public Nullable<int> 評分用戶_FK { get; set; }
+        public Nullable<int> 文章_FK { get; set; }
         public string 評論 { get; set; }
     
         public virtual 文章 文章 { get; set; }

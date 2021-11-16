@@ -17,7 +17,7 @@ namespace GoGoShare
         public int Id { get; set; }
         public string 問題 { get; set; }
         public string 回答 { get; set; }
-        public int 提問用戶_FK { get; set; }
+        public Nullable<int> 提問用戶_FK { get; set; }
     
         public virtual 用戶 用戶 { get; set; }
     }

@@ -15,7 +15,7 @@ namespace GoGoShare
     public partial class 圖片
     {
         public int Id { get; set; }
-        public int 上傳用戶_FK { get; set; }
+        public Nullable<int> 上傳用戶_FK { get; set; }
         public string 路徑 { get; set; }
     
         public virtual 用戶 用戶 { get; set; }

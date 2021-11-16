@@ -25,7 +25,7 @@ namespace GoGoShare
     
         public int Id { get; set; }
         public string 標題 { get; set; }
-        public int 作者用戶_FK { get; set; }
+        public Nullable<int> 作者用戶_FK { get; set; }
         public string 內容 { get; set; }
         public System.DateTime 日期起始 { get; set; }
         public System.DateTime 日期結束 { get; set; }
