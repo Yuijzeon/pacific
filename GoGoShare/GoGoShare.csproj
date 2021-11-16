@@ -315,7 +315,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\ControlPanelPage.cs" />
+    <Compile Include="Models\ListPage.cs" />
     <Compile Include="Models\SelectInterest.cs" />
     <Compile Include="Models\資料庫\SQL任務.cs" />
     <Compile Include="Models\資料庫\用戶.cs" />
@@ -377,6 +377,7 @@
     <Content Include="Views\List\_Script.cshtml" />
     <Content Include="Views\List\_旅程包列表.cshtml" />
     <Content Include="Views\Shared\_共用風格.cshtml" />
+    <Content Include="Views\List\_Hashtag列表.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

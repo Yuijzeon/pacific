@@ -5,11 +5,11 @@ using System.Web;
 
 namespace GoGoShare.Models
 {
-    public class ControlPanelPage
+    public class ListPage
     {
         用戶 User { get; set; }
 
-        public ControlPanelPage(用戶 user = null) {
+        public ListPage(用戶 user = null) {
             this.User = user;
         }
 
@@ -50,6 +50,17 @@ namespace GoGoShare.Models
                     return new SQL任務().圖片.OrderByDescending(x => x.Id).ToList();
 
                 return User.圖片.ToList();
+            }
+        }
+
+        public List<Hashtag> 所有Hashtag
+        {
+            get
+            {
+                if (this.User == null)
+                    return new SQL任務().Hashtag.OrderByDescending(x => x.Id).ToList();
+
+                return User.Hashtag.ToList();
             }
         }
     }

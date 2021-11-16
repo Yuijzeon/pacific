@@ -21,7 +21,7 @@ namespace GoGoShare.Controllers
                 return Redirect("/SignUp");
 
             用戶 user = new SQL任務().用戶.Find((int)Session["ID"]);
-            return View(new ControlPanelPage(user));
+            return View(new ListPage(user));
         }
 
         public ActionResult Favorite()
@@ -35,7 +35,7 @@ namespace GoGoShare.Controllers
 
         public ActionResult Test()
         {
-            return View(new ControlPanelPage());
+            return View(new ListPage());
         }
 
         public string DeletePost(int id)
