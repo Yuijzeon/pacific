@@ -38,7 +38,9 @@ namespace GoGoShare.Controllers
                 新評級.文章_FK = Convert.ToInt32(form["文章_FK"]);
                 新評級.評論 = form["評論"];
 
-                new SQL任務().評級.Add(新評級);
+                var 新增評論 = new SQL任務();
+                新增評論.評級.Add(新評級);
+                新增評論.SaveChanges();
             }
             catch {}
 
