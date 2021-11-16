@@ -12,20 +12,18 @@
         </ol>
         <!-- 以下是 slider 中的影像圖片區 -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="../../images/image_11.jpg" class="img-fluid" alt="pancake1">
-                <!-- 下方 div 是標題說明區 -->
-				<div class="carousel-caption d-none d-md-block"  style="background-color: dimgray; opacity: 0.8; margin-top:30px; padding:15px;">
-					<h3 style= "color:white">@Model[1].標題</h3>
+			<div class="carousel-item active">
+				<img src="../../images/image_11.jpg" class="img-fluid" alt="pancake1">
+				<!-- 下方 div 是標題說明區 -->
+				<div class="carousel-caption d-none d-md-block" @*style="background-color:rgba(black, 0.5);  margin-top: 5%; padding: 15px;"*@>
+					<h3 style="color:white">@Model[1].標題</h3>
 					<p class="location"><span class="fa fa-map-marker"></span> @Model[1].地點</p>
-					<p>
-						@Model[1].內容
-					</p>
-					<button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModalone">
+					<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalone">
 						查看更多
 					</button>
 				</div>
-            </div>
+
+			</div>
             <!-- Modal -->
             <div class="modal fade" id="myModalone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -52,13 +50,10 @@
             <div class="carousel-item">
                 <img src="../../images/image_7.jpg" class="img-fluid" alt="pancake1">
                 <!-- 下方 div 是標題說明區 -->
-                <div class="carousel-caption d-none d-md-block" style="background-color: dimgray; opacity: 0.8; margin-top:30px; padding:15px;">
+                <div class="carousel-caption d-none d-md-block" @*style="background-color: dimgray; opacity: 0.8; margin-top:5%; padding:15px;"*@>
 					<h3 style="color:white">@Model[0].標題</h3>
 					<p class="location"><span class="fa fa-map-marker"></span> @Model[0].地點</p>
-					<p>
-						@Model[0].內容
-					</p>
-                    <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModaltwo">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModaltwo">
                         查看更多
                     </button>
                 </div>
@@ -88,14 +83,11 @@
             <div class="carousel-item">
                 <img src="../../images/image_12.jpg" class="img-fluid">
                 <!-- 下方 div 是標題說明區 -->
-                <div class="carousel-caption d-none d-md-block" style="background-color: dimgray; opacity: 0.8; margin-top:30px; padding:15px;">
+                <div class="carousel-caption d-none d-md-block" @*style="background-color: dimgray; opacity: 0.8; margin-top:5%; padding:15px;"*@>
 
 					<h3 style="color:white">@Model[2].標題</h3>
 					<p class="location"><span class="fa fa-map-marker"></span> @Model[2].地點</p>
-					<p>
-						@Model[2].內容
-					</p>
-                    <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModalthree">
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalthree">
                         查看更多
                     </button>
                 </div>
