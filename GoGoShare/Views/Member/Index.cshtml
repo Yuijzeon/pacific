@@ -12,35 +12,17 @@
 
 <!DOCTYPE html>
 
-<html style="height:100%;">
+<html>
 <head>
+    <link href="~/Content/myInfo.css" rel="stylesheet" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <style>
-        #mymember {
-            font-size: 30px;
-            text-align : center;
-        }
-
-        .form-group {
-            font-size: 18px;
-
-        }
-        .square {
-            width: 100px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,0,0,1.00);
-        }
-        .mylabel {
-            letter-spacing: 1px !important;
-        }
-    </style>
 </head>
 <body style="height: 100%; font-family:Arial,sans-serif;">
-    <div class="content py-5  bg-light" style="height: 100%; background-image: url('../../images/bg_5.jpg');">
+    <div class="content py-5  bg-light mybg" >
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -56,49 +38,49 @@
                             <form class="form" role="form" method="post" action="~/Member/Update" enctype="multipart/form-data">
                                 <input type="hidden" name="Id" value="@Model.Id">
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:69px;">上傳大頭照</label>
+                                    <label class="mylabelImgUpload col-lg-3 col-form-label form-control-label">上傳大頭照</label>
                                     <div class="col-lg-9">
                                         <input type="file" name="myfile" id="photo">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">帳號</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">帳號</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="email" name="Email" value="@Model.帳號" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">密碼</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">密碼</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="password" name="Password" disabled="disabled" value="@Model.密碼" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">姓名</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">姓名</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="text" name="Name" value="@Model.名字" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">手機</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">手機</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="text" name="Phone" value="@Model.手機" required />
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:88px;">註冊日期</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">註冊日期</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="text" disabled="disabled" value="@Model.註冊日期">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">點數</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">點數</label>
                                     <div class="col-lg-7">
                                         <input class="form-control form-control" type="url" disabled="disabled" value="@Model.點數">
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="mylabel col-lg-3 col-form-label form-control-label" style="padding-left:125px;">標籤</label>
+                                    <label class="mylabel col-lg-3 col-form-label form-control-label">標籤</label>
                                     <div class="col-lg-7">
                                         @{
                                             foreach (var Hashtag in Model.Hashtag)
@@ -109,7 +91,7 @@
                                         }
                                     </div>
                                 </div>
-                                <a href="/SignUp/SelectInterest" style="padding-left:88px;">新增標籤</a>
+                                <a href="/SignUp/SelectInterest" class="newHashtag">新增標籤</a>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label" ></label>
                                     <div class="col-lg-9" style="padding-left:120px">
