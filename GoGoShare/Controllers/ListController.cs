@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GoGoShare.Models;
 
 namespace GoGoShare.Controllers
 {
@@ -79,9 +80,32 @@ namespace GoGoShare.Controllers
                 用戶 用戶 = 刪除任務.用戶.Find(id);
 
                 用戶.Hashtag.Clear();
-                用戶.旅程包.Clear();
                 用戶.文章.Clear();
-                用戶.評級.Clear();
+
+                var 全部旅程包 = 刪除任務.旅程包.Where(x => x.作者用戶_FK == id);
+                foreach (var 旅程包 in 全部旅程包)
+                {
+                    旅程包.作者用戶_FK = null;
+                }
+
+                var 全部文章 = 刪除任務.文章.Where(x => x.作者用戶_FK == id);
+                foreach (var 文章 in 全部文章)
+                {
+                    文章.作者用戶_FK = null;
+                }
+
+                var 全部圖片 = 刪除任務.圖片.Where(x => x.上傳用戶_FK == id);
+                foreach (var 圖片 in 全部圖片)
+                {
+                    圖片.上傳用戶_FK = null;
+                }
+
+                var 全部評級 = 刪除任務.評級.Where(x => x.評分用戶_FK == id);
+                foreach (var 評級 in 全部評級)
+                {
+                    評級.評分用戶_FK = null;
+                }
+                刪除任務.SaveChanges();
 
                 刪除任務.用戶.Remove(用戶);
                 刪除任務.SaveChanges();
