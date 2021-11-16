@@ -54,5 +54,27 @@
             })
         }
 
+        function del(id) {
+        /*swal.fire('收藏文章', '刪除成功', 'success');*/
+        Swal.fire({
+            title: `確定刪除收藏文章?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: `刪除收藏`,
+            cancelButtonText: '再等一下',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("刪除收藏", "List")',
+                    data: { id: id }
+                })
+                window.location.reload();
+            }
+        });
+    }
+
         $('.collapse').collapse('show');
 </script>

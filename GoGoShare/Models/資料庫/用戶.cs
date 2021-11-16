@@ -31,5 +31,12 @@ namespace GoGoShare
         {
             return new SQL任務().旅程包.Where(pack => pack.作者用戶_FK == this.Id).OrderByDescending(x => x.Id).ToList();
         }
+
+        //刪除收藏文章
+        public void 刪除收藏文章(int userid, int 文章id)
+        {
+            string sql = "DELETE FROM 用戶Favorite WHERE 收藏文章_FK=" + 文章id + "and 用戶_FK=" + userid;
+            new SQL任務(sql).讀取();
+        }
     }
 }
