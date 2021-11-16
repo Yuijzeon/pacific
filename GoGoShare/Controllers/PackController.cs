@@ -31,20 +31,26 @@ namespace GoGoShare.Controllers
             新旅程包.描述 = post["pContent"];
 
             新增旅程包.旅程包.Add(新旅程包);
+            新增旅程包.SaveChanges();
 
-            var pack = new SQL任務().旅程包.Where(x => x.作者用戶_FK == (int)Session["ID"]).OrderByDescending(x => x.Id).SingleOrDefault();
+            var pack = 新增旅程包.用戶.Find(Convert.ToInt32(Session["ID"])).Get最新旅程包();
 
             string[] postIds = post["packPosts"].Split(',');
 
             int count = 1;
             foreach (string postId in postIds)
             {
-                new SQL任務().旅程包_link.Add(new 旅程包_link()
+                var 新增旅程連結 = new SQL任務();
+
+                新增旅程連結.旅程包_link.Add(new 旅程包_link()
                 {
                     旅程包_FK = pack.Id,
                     文章_FK = Convert.ToInt32(postId),
                     索引 = count
                 });
+
+                新增旅程連結.SaveChanges();
+
                 count++;
             }
 

@@ -33,7 +33,7 @@ namespace GoGoShare.Models
             {
                 if (name["pack"] != null)
                 {
-                    var 旅程包_link = new SQL任務().旅程包.Find(name["pack"]).旅程包_link.OrderBy(x => x.索引);
+                    var 旅程包_link = new SQL任務().旅程包.Find(Convert.ToInt32(name["pack"])).旅程包_link.OrderBy(x => x.索引);
                     var result = new List<文章>();
                     foreach (var link in 旅程包_link)
                     {
