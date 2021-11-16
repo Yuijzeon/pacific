@@ -1,4 +1,14 @@
-﻿#mymember {
+﻿body {
+    height: 100%;
+    width: auto;
+    /* min-width: auto;*/
+    height: 100% !important;
+    background-image: url('../../images/bg_5.jpg');
+    background-attachment: fixed !important;
+    background-size: cover;
+}
+
+#mymember {
     font-size: 30px;
     text-align: center;
 }
@@ -20,15 +30,6 @@
 
 .col-form-label{
     padding-left:2rem!important;
-}
-
-.mybg {
-    width: auto;
-    /* min-width: auto;*/
-    height: 100% !important;
-    background-image: url('../../images/bg_5.jpg');
-    background-attachment: fixed !important;
-    background-size: cover;
 }
 
 .newHashtag{
