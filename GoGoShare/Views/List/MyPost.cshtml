@@ -204,12 +204,6 @@
             });
         });
 
-        $('ul.nav').find('a').click(function (e) {
-            console.log(e.target);
-
-            更新文章('active=' + $(e.target).attr('name'));
-        });
-
         function 更新文章(data) {
             $.ajax({
                 type: 'GET',
