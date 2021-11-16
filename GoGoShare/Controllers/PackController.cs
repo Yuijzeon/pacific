@@ -29,7 +29,7 @@ namespace GoGoShare.Controllers
 
             new SQL任務().旅程包.Add(新旅程包);
 
-            var pack = new SQL任務().旅程包.Where(x => x.作者用戶_FK == (int)Session["ID"]).LastOrDefault();
+            var pack = new SQL任務().旅程包.Where(x => x.作者用戶_FK == (int)Session["ID"]).OrderByDescending(x => x.Id).SingleOrDefault();
 
             string[] postIds = post["packPosts"].Split(',');
 
