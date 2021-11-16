@@ -1,5 +1,5 @@
 ﻿@using GoGoShare.Models
-@model ControlPanelPage
+@model ListPage
 
 @{
     ViewBag.Title = "我的旅程文章";
@@ -62,7 +62,7 @@
                                 <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
                                     <div class="e-table">
                                         <div class="table-responsive table-lg mt-3">
-                                            @Html.Partial("_圖片列表", Model.所有圖片)
+                                            @*@Html.Partial("_圖片列表", Model.所有圖片)*@
                                         </div>
                                     </div>
                                 </div>
@@ -200,18 +200,33 @@
             $('#postsSearch').click(function (e) {
                 var form = $(e.target).closest('form');
                 console.log($(form).serialize());
-                更新文章($(form).serialize());
+
+                更新('/List/SearchMyArticle', $(form).serialize(), '#posts-table');
             });
         });
 
-        function 更新文章(data) {
+        //function 更新文章(data) {
+        //    $.ajax({
+        //        type: 'GET',
+        //        url: '/List/SearchMyArticle',
+        //        data: data,
+        //        success: function (e) {
+        //            $('#posts-table').html(e);
+        //        }
+        //    });
+        //}
+
+        $('#ftco-loader').removeClass('fullscreen');
+        function 更新(url, data, at) {
+            $('#ftco-loader').addClass('show');
             $.ajax({
                 type: 'GET',
-                url: '/List/SearchMyArticle',
-                data: data,
-                success: function (e) {
-                    $('#posts-table').html(e);
-                }
+                url: url,
+                data: data
+            }).done(function (e) {
+                $(at).html(e);
+            }).always(function () {
+                $('#ftco-loader').removeClass('show');
             });
         }
     </script>

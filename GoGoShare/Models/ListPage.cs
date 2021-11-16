@@ -34,14 +34,6 @@ namespace GoGoShare.Models
             }
         }
 
-        public List<用戶> 所有用戶
-        {
-            get
-            {
-                return new SQL任務().用戶.OrderByDescending(x => x.Id).ToList();
-            }
-        }
-
         public List<圖片> 所有圖片
         {
             get
@@ -61,6 +53,36 @@ namespace GoGoShare.Models
                     return new SQL任務().Hashtag.OrderByDescending(x => x.Id).ToList();
 
                 return User.Hashtag.ToList();
+            }
+        }
+
+        public List<評級> 所有評級
+        {
+            get
+            {
+                if (this.User == null)
+                    return new SQL任務().評級.OrderByDescending(x => x.Id).ToList();
+
+                return User.評級.ToList();
+            }
+        }
+
+        public List<提問> 所有提問
+        {
+            get
+            {
+                if (this.User == null)
+                    return new SQL任務().提問.OrderByDescending(x => x.Id).ToList();
+
+                return User.提問.ToList();
+            }
+        }
+
+        public List<用戶> 所有用戶
+        {
+            get
+            {
+                return new SQL任務().用戶.OrderByDescending(x => x.Id).ToList();
             }
         }
     }
