@@ -102,6 +102,11 @@
                     var id = row.attr('image-id');
                     刪除('圖片', id, '/List/DeleteImage', row);
                 }
+
+                if (row.attr('hashtag-id')) {
+                    var id = row.attr('hashtag-id');
+                    刪除('Hashtag', id, '/List/DeleteHashtag', row);
+                }
             });
         });
 

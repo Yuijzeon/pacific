@@ -14,7 +14,7 @@
     <tbody>
         @foreach (var hashtag in Model)
         {
-            <tr atricle-id="@hashtag.Id">
+            <tr hashtag-id="@hashtag.Id"> @*這裡要改*@
                 <td class="text-nowrap align-middle titleTxt">@hashtag.Id</td>
                 <td class="text-nowrap align-middle titleTxt"><a href="~/Article?id=@hashtag.Id#抬頭">@hashtag.名稱</a></td>
                 <td class="text-nowrap align-middle dateTxt">@hashtag.類別</td>
