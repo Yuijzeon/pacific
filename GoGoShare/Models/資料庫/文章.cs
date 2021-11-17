@@ -14,6 +14,9 @@ namespace GoGoShare
 
         public 用戶 Get作者()
         {
+            if (this.作者用戶_FK == null)
+                return new 用戶() { 名字 = "已刪除的用戶" };
+
             return new SQL任務().用戶.Find(this.作者用戶_FK);
         }
 
