@@ -144,6 +144,27 @@ namespace GoGoShare.Controllers
             return null;
         }
 
+        public string DeleteHashtag(int id)
+        {
+            try
+            {
+                SQL任務 刪除任務 = new SQL任務();
+                Hashtag hashtag = 刪除任務.Hashtag.Find(id);
+
+                hashtag.文章.Clear();
+                hashtag.用戶.Clear();
+
+                刪除任務.Hashtag.Remove(hashtag);
+                刪除任務.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+            return null;
+        }
+
         public ActionResult SearchMyArticle()
         {
             var name = Request.Params;
