@@ -165,7 +165,7 @@ namespace GoGoShare.Controllers
 
         public JsonResult AddHashtag()
         {
-            object result;
+            Dictionary<string, object> result;
             try
             {
                 HttpRequestBase post = Request;
@@ -180,7 +180,7 @@ namespace GoGoShare.Controllers
                 新增任務.Hashtag.Add(新Hashtag);
                 新增任務.SaveChanges();
 
-                result = new SQL任務().Hashtag.Where(x => x.名稱 == post["名稱"]).SingleOrDefault();
+                result = new SQL任務("SELECT TOP 1 [Hashtag].* FROM [Hashtag] ORDER BY [Id] DESC").讀取()[0];
             }
             catch (Exception e)
             {

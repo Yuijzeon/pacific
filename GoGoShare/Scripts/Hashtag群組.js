@@ -46,6 +46,7 @@ class Hashtag群組 {
                 url: '/Post/AddHashtag',
                 data: newHashtag
             }).done((hashtag) => {
+                console.log('完成ADD HASHTAG',hashtag);
                 resolve(hashtag);
             });
         });
@@ -126,7 +127,7 @@ class Hashtag群組 {
                 var 新Hashtag = (await this.新增Hashtag({
                     名稱: 新hashtag名稱.value,
                     類別: 新hashtag類別.value
-                }))[0];
+                }));
 
                 hashtags.push(新Hashtag);
                 input選項列表.append(convertToElement(this.Input選項(新Hashtag)));
