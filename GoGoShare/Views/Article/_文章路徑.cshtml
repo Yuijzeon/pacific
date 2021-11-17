@@ -1,3 +1,10 @@
 ﻿@model 用戶
 
-<p class="breadcrumbs"><span class="mr-2"><a href="~/Home">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="/Search?user=@Model.Id">@Model.名字 <i class="fa fa-chevron-right"></i></a></span></p>
+@if (作者 is null)
+{
+    <p class="breadcrumbs"><span class="mr-2"><a href="~/Home">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a class="font-italic">@Model.名字 <i class="fa fa-chevron-right"></i></a></span></p>
+}
+else
+{
+    <p class="breadcrumbs"><span class="mr-2"><a href="~/Home">Home <i class="fa fa-chevron-right"></i></a></span> <span class="mr-2"><a href="/Search?user=@Model.Id">@Model.名字 <i class="fa fa-chevron-right"></i></a></span></p>
+}
