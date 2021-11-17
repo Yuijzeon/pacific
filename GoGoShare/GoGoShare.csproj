@@ -336,7 +336,6 @@
     <Content Include="Views\Article\_分類.cshtml" />
     <Content Include="Views\Article\_搜尋欄.cshtml" />
     <Content Include="Views\Article\_文章內容.cshtml" />
-    <Content Include="Views\Article\_文章路徑.cshtml" />
     <Content Include="Views\Article\_新增評論.cshtml" />
     <Content Include="Views\Article\_最近文章.cshtml" />
     <Content Include="Views\Article\_活動時間.cshtml" />
