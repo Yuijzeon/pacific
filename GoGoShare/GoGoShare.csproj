@@ -212,11 +212,29 @@
     <Content Include="images\services-2.jpg" />
     <Content Include="images\services-3.jpg" />
     <Content Include="images\services-4.jpg" />
+    <Content Include="images\uploads\20211111111111.PNG" />
+    <Content Include="images\uploads\20211113050457.PNG" />
+    <Content Include="images\uploads\20211115020702.jpg" />
+    <Content Include="images\uploads\20211115032348.jpg" />
+    <Content Include="images\uploads\20211115032355.jpg" />
+    <Content Include="images\uploads\20211115034521.jpg" />
+    <Content Include="images\uploads\20211115034716.jpg" />
+    <Content Include="images\uploads\20211115041357.jfif" />
+    <Content Include="images\uploads\20211115041656.jpg" />
+    <Content Include="images\uploads\20211115101901.jpg" />
+    <Content Include="images\uploads\20211115102201.jpg" />
+    <Content Include="images\uploads\20211115102254.jpg" />
+    <Content Include="images\uploads\20211115120620.png" />
+    <Content Include="images\uploads\20211116094101.jpg" />
+    <Content Include="images\uploads\20211116100144.png" />
+    <Content Include="images\uploads\20211116100634.jpg" />
+    <Content Include="images\uploads\20211117092847.jpg" />
     <Content Include="images\初始照片.jpg" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\google-map.js" />
     <Content Include="Scripts\Hashtag群組.js" />
+    <None Include="Properties\PublishProfiles\GoGoShare - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
@@ -388,7 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
