@@ -12,4 +12,6 @@ public partial class 提問
     public string 回答 { get; set; } = null!;
 
     public int? 提問用戶Fk { get; set; }
+
+    public virtual 用戶? 提問用戶FkNavigation { get; set; }
 }

@@ -10,4 +10,6 @@ public partial class 圖片
     public int? 上傳用戶Fk { get; set; }
 
     public string 路徑 { get; set; } = null!;
+
+    public virtual 用戶? 上傳用戶FkNavigation { get; set; }
 }
