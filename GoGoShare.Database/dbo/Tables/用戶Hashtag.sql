@@ -1,9 +1,8 @@
-﻿CREATE TABLE [dbo].[用戶Hashtag](
-	[用戶_FK] [int] NOT NULL,
-	[Hashtag_FK] [int] NOT NULL,
- CONSTRAINT [PK_用戶Hashtag] PRIMARY KEY CLUSTERED 
+﻿CREATE TABLE [dbo].[用戶Hashtag]
 (
-	[用戶_FK] ASC,
-	[Hashtag_FK] ASC
-)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
+    [用戶_FK]    [int] NOT NULL,
+    [Hashtag_FK] [int] NOT NULL,
+    CONSTRAINT [PK_用戶Hashtag] PRIMARY KEY CLUSTERED ([用戶_FK] ASC, [Hashtag_FK] ASC),
+    CONSTRAINT [FK_用戶Hashtag_Hashtag] FOREIGN KEY ([Hashtag_FK]) REFERENCES [dbo].[Hashtag] ([Id]),
+    CONSTRAINT [FK_用戶Hashtag_用戶] FOREIGN KEY ([用戶_FK]) REFERENCES [dbo].[用戶] ([Id]),
+)
