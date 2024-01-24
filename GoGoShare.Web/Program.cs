@@ -1,3 +1,6 @@
+using GoGoShare.Web.Team2資料庫;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Team2Context>(x => x.UseSqlServer());
 
 var app = builder.Build();
 
