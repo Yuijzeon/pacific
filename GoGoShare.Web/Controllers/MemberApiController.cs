@@ -24,7 +24,7 @@ public class MemberApiController(Team2Context context) : ControllerBase
     }
 
     [HttpPost("api/members")]
-    public async Task<ActionResult> PostMembers(用戶 member)
+    public async Task<ActionResult> PostMembers([FromBody]用戶 member)
     {
         if (member.Id == 0)
         {
