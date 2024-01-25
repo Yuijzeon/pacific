@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoGoShare.Web", "GoGoShare.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "GoGoShare.Database", "GoGoShare.Database\GoGoShare.Database.sqlproj", "{512842C7-5B6A-4104-85CC-C4519E602469}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoGoShare.Tests", "GoGoShare.Tests\GoGoShare.Tests.csproj", "{901991D2-4B36-46CA-BFF3-AFA9C5E62239}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{512842C7-5B6A-4104-85CC-C4519E602469}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{512842C7-5B6A-4104-85CC-C4519E602469}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{512842C7-5B6A-4104-85CC-C4519E602469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901991D2-4B36-46CA-BFF3-AFA9C5E62239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901991D2-4B36-46CA-BFF3-AFA9C5E62239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901991D2-4B36-46CA-BFF3-AFA9C5E62239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901991D2-4B36-46CA-BFF3-AFA9C5E62239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
