@@ -25,6 +25,8 @@ public partial class 用戶
 
     public virtual ICollection<提問> 提問s { get; set; } = new List<提問>();
 
+    public virtual ICollection<文章> 文章s { get; set; } = new List<文章>();
+
     public virtual ICollection<旅程包> 旅程包s { get; set; } = new List<旅程包>();
 
     public virtual ICollection<評級> 評級s { get; set; } = new List<評級>();

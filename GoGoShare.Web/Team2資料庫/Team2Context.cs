@@ -54,7 +54,7 @@ public partial class Team2Context : DbContext
 
             entity.HasOne(d => d.上傳用戶FkNavigation).WithMany(p => p.圖片s)
                 .HasForeignKey(d => d.上傳用戶Fk)
-                .HasConstraintName("FK_圖片_圖片");
+                .HasConstraintName("FK_圖片_用戶");
         });
 
         modelBuilder.Entity<提問>(entity =>
@@ -79,6 +79,14 @@ public partial class Team2Context : DbContext
             entity.Property(e => e.日期起始).HasColumnType("datetime");
             entity.Property(e => e.標題).HasMaxLength(50);
             entity.Property(e => e.類型).HasMaxLength(50);
+
+            entity.HasOne(d => d.作者用戶FkNavigation).WithMany(p => p.文章s)
+                .HasForeignKey(d => d.作者用戶Fk)
+                .HasConstraintName("FK_文章_用戶");
+
+            entity.HasOne(d => d.圖片FkNavigation).WithMany(p => p.文章s)
+                .HasForeignKey(d => d.圖片Fk)
+                .HasConstraintName("FK_文章_圖片");
 
             entity.HasMany(d => d.HashtagFks).WithMany(p => p.文章Fks)
                 .UsingEntity<Dictionary<string, object>>(
