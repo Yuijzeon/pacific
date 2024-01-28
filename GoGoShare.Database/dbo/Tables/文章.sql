@@ -13,4 +13,6 @@
     [點數]         [int]                NOT NULL DEFAULT ((0)),
     [文章註冊時間] [smalldatetime]      NULL,
     CONSTRAINT [PK_文章] PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_文章_圖片] FOREIGN KEY ([圖片_FK]) REFERENCES [dbo].[圖片] ([Id]),
+    CONSTRAINT [FK_文章_用戶] FOREIGN KEY ([作者用戶_FK]) REFERENCES [dbo].[用戶] ([Id])
 )
