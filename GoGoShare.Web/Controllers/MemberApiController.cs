@@ -32,7 +32,7 @@ public class MemberApiController(Team2Context context) : ControllerBase
             return Ok();
         }
 
-        var entity = await context.用戶s.FindAsync(member.Id);
+        var entity = await context.用戶s.FirstAsync();
         context.Entry(entity).CurrentValues.SetValues(member);
         await context.SaveChangesAsync();
         return Ok();
@@ -41,7 +41,7 @@ public class MemberApiController(Team2Context context) : ControllerBase
     [HttpDelete("api/members/{id:int}")]
     public async Task<ActionResult> DeleteMembers(int id)
     {
-        var entity = await context.用戶s.FindAsync(id);
+        var entity = await context.用戶s.FirstAsync(x => x.Id == id);
         context.用戶s.Remove(entity);
         await context.SaveChangesAsync();
         return Ok();
