@@ -1,8 +1,14 @@
-﻿@{
+﻿@model List<GoGoShare.Web.Team2資料庫.文章>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var item in Model)
+{
+    <div>
+        <h2>@item.標題</h2>
+        <p>@item.Id</p>
+        <p>@(item.圖片FkNavigation?.路徑 ?? "bg_3.jpg")<p/>
+    </div>
+}

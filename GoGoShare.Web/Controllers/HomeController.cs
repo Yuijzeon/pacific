@@ -1,26 +1,22 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using GoGoShare.Web.Models;
+using GoGoShare.Web.Team2資料庫;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoGoShare.Web.Controllers;
 
-public class HomeController : Controller
+public class HomeController(Team2Context sql任務) : Controller
 {
-    private readonly ILogger<HomeController> _logger;
-
-    public HomeController(ILogger<HomeController> logger)
+    public async Task<IActionResult> Index()
     {
-        _logger = logger;
-    }
+        var 精選文章 = await sql任務.文章s
+            .Include(x => x.圖片FkNavigation)
+            .OrderByDescending(x => x.Id)
+            .Take(10)
+            .ToListAsync();
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
+        return View(精選文章);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
