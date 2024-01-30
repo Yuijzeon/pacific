@@ -4,11 +4,15 @@
     ViewData["Title"] = "Home Page";
 }
 
+<a asp-controller="SignUp" asp-action="Index">登入/註冊</a>
+
+<h2>精選旅程</h2>
+
 @foreach (var item in Model)
 {
     <div>
         <h2>@item.標題</h2>
         <p>@item.Id</p>
-        <p>@(item.圖片FkNavigation?.路徑 ?? "bg_3.jpg")<p/>
+        <img alt="" src="~/images/@item.Get圖片路徑()" />
     </div>
 }
