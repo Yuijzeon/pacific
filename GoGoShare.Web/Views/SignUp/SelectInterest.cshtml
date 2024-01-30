@@ -5,4 +5,19 @@
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>SelectInterest</h2>
+
+@foreach(var hashtag in Model.全部Hashtags)
+{
+    <p>@hashtag.名稱</p>
+
+    <input type="button" value="ADD" onclick="(async () => {
+        await new Promise((resolve, reject) => $.ajax({
+            url: '@Url.Action("AddUserHashtag", "SignUp")',
+            type: 'POST',
+            data: { id: @hashtag.Id },
+            success: resolve,
+            error: reject,
+        }));
+    })()"/>
+}

@@ -5,4 +5,40 @@
     Layout = "_Layout";
 }
 
-<h2>title</h2>
+<h2>登入</h2>
+
+<form id="signup">
+    <input type="email" name="帳號" placeholder="電子郵件" required/>
+    <input type="password" name="密碼" placeholder="密碼" required/>
+    <input type="button" value="登入" onclick="(async () => {
+        try {
+            await new Promise((resolve, reject) => $.ajax({
+                url: '@Url.Action("Login", "SignUp")',
+                type: 'POST',
+                data: $('form#signup').serialize(),
+                success: resolve,
+                error: reject,
+            }));
+            
+            alert('登入成功');
+            location.href = '@Url.Action("Index", "Home")';
+        }
+        catch (e) {
+            $('form#signup span.error').text('帳號或密碼錯誤');
+        }
+    })()">
+    <span class="error" style="color: red;"></span>
+</form>
+
+<h2>註冊</h2>
+
+<form method="post" asp-controller="SignUp" asp-action="註冊">
+    <input type="email" name="Email" placeholder="電子郵件" required/>
+    <input type="password" name="Password" placeholder="密碼" required/>
+    <input type="text" name="Name" placeholder="姓名" required/>
+    <input type="text" name="Phone" placeholder="手機號碼" required/>
+    <input type="submit" value="下一步"><br>
+</form>
+
+<script>
+</script>

@@ -49,7 +49,7 @@ public class SignUpController(Team2Context sql任務) : Controller
 
     //新增用戶標籤
     [RequireLogin]
-    public async Task<IActionResult> AddUserHashtag(int memberId, [FromBody] int id)
+    public async Task<IActionResult> AddUserHashtag(int memberId, [FromForm] int id)
     {
         var 用戶 = await sql任務.用戶s.FirstAsync(x => x.Id == memberId);
         var hashtag = await sql任務.Hashtags.FirstAsync(x => x.Id == id);
@@ -61,7 +61,7 @@ public class SignUpController(Team2Context sql任務) : Controller
 
     //刪除用戶標籤
     [RequireLogin]
-    public async Task<IActionResult> 刪除用戶標籤(int memberId, [FromBody] int id)
+    public async Task<IActionResult> 刪除用戶標籤(int memberId, [FromForm] int id)
     {
         var 用戶 = await sql任務.用戶s.SingleAsync(x => x.Id == memberId);
         var hashtag = await sql任務.Hashtags.SingleAsync(x => x.Id == id);
@@ -78,25 +78,22 @@ public class SignUpController(Team2Context sql任務) : Controller
     // }
 
     //登入
-    [HttpPost]
-    public async Task<IActionResult> Index([FromForm] 登入view request)
+    [HttpPost("api/login")]
+    public async Task<IActionResult> Login([FromForm] 登入view request)
     {
         var 用戶 = await sql任務.用戶s
-            .Where(x => x.帳號 == request.帳號)
-            .Where(x => x.密碼 == request.密碼)
+            .Where(x => x.帳號 == request.Email)
+            .Where(x => x.密碼 == request.Password)
             .SingleOrDefaultAsync();
 
         if (用戶 is null)
         {
-            ViewBag.msg = "帳號密碼錯誤";
-            return View();
+            return BadRequest();
         }
 
-        TempData["message"] = "登入成功";
-        TempData["account_text"] = request.帳號;
-        TempData["password_text"] = request.密碼;
         HttpContext.Session.SetInt32("ID", 用戶.Id);
         HttpContext.Session.SetString("Name", 用戶.名字);
-        return View();
+
+        return Ok();
     }
 }
