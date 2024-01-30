@@ -12,6 +12,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Team2Context>(x => x.UseSqlServer());
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,6 +37,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+app.UseSession();
+
+app.MapDefaultControllerRoute();
 
 app.Run();
