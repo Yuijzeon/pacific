@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoGoShare.Web.Controllers;
 
-public class MemberApiController(Team2Context context) : ControllerBase
+public class MemberApiController(Team2Context context) : Controller
 {
     [HttpGet("api/members")]
     public async Task<ActionResult> GetMembers([FromQuery(Name = "id")] List<int> ids)
