@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace GoGoShare.Web;
 
 [AttributeUsage(AttributeTargets.Method)]
-public class RequireLoginAttribute(string userIdKey) : Attribute, IAsyncActionFilter
+public class RequireLoginAttribute(string loginIdParam) : Attribute, IAsyncActionFilter
 {
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
@@ -16,7 +16,7 @@ public class RequireLoginAttribute(string userIdKey) : Attribute, IAsyncActionFi
             return;
         }
 
-        context.ActionArguments[userIdKey] = userId;
+        context.ActionArguments[loginIdParam] = userId;
         await next();
     }
 }
