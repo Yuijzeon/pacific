@@ -7,17 +7,39 @@
 
 <h2>SelectInterest</h2>
 
-@foreach(var hashtag in Model.全部Hashtags)
+@foreach (var hashtag in Model.全部Hashtags)
 {
     <p>@hashtag.名稱</p>
 
-    <input type="button" value="ADD" onclick="(async () => {
-        await new Promise((resolve, reject) => $.ajax({
-            url: '@Url.Action("AddUserHashtag", "SignUp")',
-            type: 'POST',
-            data: { id: @hashtag.Id },
-            success: resolve,
-            error: reject,
-        }));
-    })()"/>
+    if (Model.已選Hashtags.Contains(hashtag))
+    {
+        <input type="button" value="Remove" onclick="removeUserHashtag(@hashtag.Id)"/>
+    }
+    else
+    {
+        <input type="button" value="ADD" onclick="addUserHashtag(@hashtag.Id)"/>
+    }
+}
+
+@section Scripts {
+    <script>
+        async function addUserHashtag(hashtagId) {
+            await new Promise((resolve, reject) => $.ajax({
+                url: `/api/users/me/hashtags/${hashtagId}`,
+                type: 'POST',
+                data: { id: hashtagId },
+                success: resolve,
+                error: reject,
+            }));
+        }
+        async function removeUserHashtag(hashtagId) {
+            await new Promise((resolve, reject) => $.ajax({
+                url: `/api/users/me/hashtags/${hashtagId}`,
+                type: 'DELETE',
+                data: { id: hashtagId },
+                success: resolve,
+                error: reject,
+            }));
+        }
+    </script>
 }

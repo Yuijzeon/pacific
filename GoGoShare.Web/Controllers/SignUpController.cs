@@ -14,7 +14,7 @@ public class SignUpController(Team2Context sql任務) : Controller
     }
 
     //SHOW出所有標籤
-    [RequireLogin]
+    [RequireLogin(nameof(memberId))]
     public async Task<IActionResult> SelectInterest(int memberId)
     {
         var data = new SelectInterest
@@ -48,7 +48,7 @@ public class SignUpController(Team2Context sql任務) : Controller
     }
 
     //新增用戶標籤
-    [RequireLogin]
+    [RequireLogin(nameof(memberId))]
     public async Task<IActionResult> AddUserHashtag(int memberId, [FromForm] int id)
     {
         var 用戶 = await sql任務.用戶s.FirstAsync(x => x.Id == memberId);
@@ -60,7 +60,7 @@ public class SignUpController(Team2Context sql任務) : Controller
     }
 
     //刪除用戶標籤
-    [RequireLogin]
+    [RequireLogin(nameof(memberId))]
     public async Task<IActionResult> 刪除用戶標籤(int memberId, [FromForm] int id)
     {
         var 用戶 = await sql任務.用戶s.SingleAsync(x => x.Id == memberId);

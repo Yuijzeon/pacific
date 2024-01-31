@@ -82,7 +82,7 @@ public class SearchController(Team2Context sql任務) : Controller
     }
 
     //用戶新增收藏
-    [RequireLogin]
+    [RequireLogin(nameof(memberId))]
     public async Task 加入收藏(int memberId, [FromQuery(Name = "id")] int articleId)
     {
         var 用戶Favorite = await sql任務.文章s.FirstAsync(x => x.Id == articleId);
