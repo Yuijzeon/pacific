@@ -2,7 +2,7 @@
 
 namespace GoGoShare.Web.Models;
 
-public class AddHashtagRequest
+public class NewHashtagRequest
 {
     [FromForm(Name = "名稱")]
     public required string HashtagName { get; set; }

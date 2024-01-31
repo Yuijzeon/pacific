@@ -8,7 +8,7 @@ namespace GoGoShare.Web.Controllers;
 public class HashtagController(Team2Context context) : Controller
 {
     [HttpPost("api/hashtags")]
-    public async Task<IActionResult> CreateHashtag([FromForm] AddHashtagRequest request)
+    public async Task<IActionResult> CreateHashtag([FromForm] NewHashtagRequest request)
     {
         var hashtag = await context.Hashtags
             .Where(x => x.名稱 == request.HashtagName)
