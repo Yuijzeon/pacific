@@ -1,12 +1,12 @@
-﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build-env
-WORKDIR /App
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 
-COPY . ./
-RUN dotnet restore "GoGoShare.Web/GoGoShare.Web.csproj"
-RUN dotnet publish -c Release -o out
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+COPY . ./src
+WORKDIR /src/GoGoShare.Web
+RUN dotnet restore GoGoShare.Web.csproj
+RUN dotnet publish GoGoShare.Web.csproj -c Release -o /app/publish /p:UseAppHost=false
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
-ENV ASPNETCORE_ENVIRONMENT=Production
-WORKDIR /App
-COPY --from=build-env /App/out .
-ENTRYPOINT ["dotnet", "GoGoShare.Web.dll"]
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+ENTRYPOINT dotnet GoGoShare.Web.dll
